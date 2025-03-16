@@ -18,7 +18,7 @@ const config = {
         }
 }
 };
-
+// prueba carmen
 app.use(cors(
     config.application.cors.server
   ));
