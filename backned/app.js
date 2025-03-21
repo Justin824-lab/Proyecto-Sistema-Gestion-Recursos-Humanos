@@ -26,7 +26,7 @@ app.use(cors(
 
 
 // rutas backend
-const bancosRoutes = require('./rutas/bancos');
+const NivelDeUtilizacionRoutes = require('./ruta/NiveldeUtilizacion');
 
 app.set('port', process.env.PORT || 3000);
 
@@ -34,9 +34,9 @@ app.use(morgan('dev'));
 app.use(myConnection(mysql,{
     host:'localhost',
     user:'root',
-    password:'Sierra84',
+    password:'rojo123',
     port:3306,
-    database:'RecursoLaborales'
+    database:'RecursosLaborales'
 }, 'single'));
 app.use(express.urlencoded({extended: false}));
 
