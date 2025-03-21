@@ -27,6 +27,7 @@ app.use(cors(
 
 // rutas backend
 const NivelDeUtilizacionRoutes = require('./ruta/NiveldeUtilizacion');
+const OtrosPagosRoutes = require('./ruta/OtrosPagos');
 
 app.set('port', process.env.PORT || 3000);
 
