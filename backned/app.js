@@ -28,6 +28,14 @@ app.use(cors(
 // rutas backend
 const NivelDeUtilizacionRoutes = require('./ruta/NiveldeUtilizacion');
 const OtrosPagosRoutes = require('./ruta/OtrosPagos');
+const NoResolucionRoutes = require('./ruta/NoResolucion');
+const CatOcupacionalRoutes = require('./ruta/CatOcupacional');
+const cFTPrincipalesRoutes = require('./ruta/cFTPrincipales');
+const ContratoRoutes = require('./ruta/Contrato');
+const CargoRoutes = require('./ruta/Cargo');
+const EmpleadosRoutes = require('./ruta/Empleados');
+
+
 
 app.set('port', process.env.PORT || 3000);
 
