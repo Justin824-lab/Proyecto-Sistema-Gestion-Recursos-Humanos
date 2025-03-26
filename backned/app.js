@@ -53,6 +53,12 @@ var bodyParser = require('body-parser');
  // create application/json parser
 app.use(bodyParser.json());
 
+//Rutas frontend
+app.use('/api/Empleados', EmpleadosRoutes);
+
+// archivos estaticos frontend
+app.use(express.static(path.join(__dirname,'public')));
+
 
 //inicializando el server
 app.listen(app.get('port'), () =>{
