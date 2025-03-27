@@ -34,6 +34,8 @@ const cFTPrincipalesRoutes = require('./ruta/cFTPrincipales');
 const ContratoRoutes = require('./ruta/Contrato');
 const CargoRoutes = require('./ruta/Cargo');
 const EmpleadosRoutes = require('./ruta/Empleados');
+const EstadoCivilRoutes = require('./ruta/EstadoCivil');
+const EtniaRoutes = require('./ruta/Etnia');
 
 
 
