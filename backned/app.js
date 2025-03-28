@@ -49,7 +49,7 @@ const CargoRequisitosRoutes = require('./ruta/CargoRequisitos');
 const CargoNivelUtilizacionRoutes = require('./ruta/CargoNivelUtilizacion');
 const OtrosPagosEmpleadosRoutes = require('./ruta/OtrosPagosEmpleados');
 const TlaboralRoutes = require('./ruta/Tlaboral');
-const CargoFuncioneRoutes = require('./ruta/CargoFuncione');
+const CargoFuncionesRoutes = require('./ruta/CargoFunciones');
 
 
 

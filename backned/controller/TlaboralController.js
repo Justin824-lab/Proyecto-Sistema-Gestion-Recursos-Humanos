@@ -2,21 +2,21 @@ const controller = {};
 
 controller.list = (req, res) => {
     req.getConnection((error, conn) => {
-        conn.query('SELECT * FROM Tlaboral ', (err, Tlaboral ) => {
+        conn.query('SELECT * FROM Tlaboral', (err, Tlaboral) => {
             if (err) {
                 res.json(err);
             }
-            res.json(Tlaboral );
+            res.json(Tlaboral);
         });
     });
 };
 
 controller.edit = (req, res) => {
-    const { CI } = req.params;
+    const { IdCargo } = req.params;
 
     req.getConnection((err, conn) => {
-        conn.query('SELECT * FROM Tlaboral  WHERE CI = ?', [CI], (err, Tlaboral ) => {
-            res.json(Tlaboral [0]);
+        conn.query('SELECT * FROM Tlaboral WHERE IdCargo = ?', [IdCargo], (err, Tlaboral) => {
+            res.json(Tlaboral[0]);
         });
     });
 };
@@ -24,27 +24,27 @@ controller.edit = (req, res) => {
 controller.save = (req, res) => {
     const data = req.body;
     req.getConnection((err, conn) => {
-        conn.query('INSERT  Tlaboral  SET ?', [data], (err, Tlaboral ) => {
-            res.json(Tlaboral );
+        conn.query('INSERT INTO Tlaboral SET ?', [data], (err, Tlaboral) => {
+            res.json(Tlaboral);
         });
     });
 };
 
 controller.update = (req, res) => {
-    const { CI } = req.params;
-    const nuevo_Tlaboral  = req.body;
+    const { IdCargo } = req.params;
+    const nuevo_Tlaboral = req.body;
 
     req.getConnection((err, conn) => {
-        conn.query('UPDATE Tlaboral  SET ? WHERE CI = ?', [nuevo_Tlaboral , CI], (err, rows) => { 
+        conn.query('UPDATE Tlaboral SET ? WHERE IdCargo = ?', [nuevo_Tlaboral, IdCargo], (err, rows) => { 
             res.json({ message: "Registro Actualizado" }); 
         });
     });
 };
 
 controller.delete = (req, res) => {
-    const { CI } = req.params;
+    const { IdCargo } = req.params;
     req.getConnection((err, conn) => {
-        conn.query('DELETE FROM Tlaboral  WHERE CI = ?', [CI], (err, rows) => {
+        conn.query('DELETE FROM Tlaboral WHERE IdCargo = ?', [IdCargo], (err, rows) => {
             res.json({ message: "Registro Eliminado" });
         });
     });
