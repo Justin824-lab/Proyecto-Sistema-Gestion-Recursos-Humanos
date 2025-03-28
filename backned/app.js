@@ -36,6 +36,12 @@ const CargoRoutes = require('./ruta/Cargo');
 const EmpleadosRoutes = require('./ruta/Empleados');
 const EstadoCivilRoutes = require('./ruta/EstadoCivil');
 const EtniaRoutes = require('./ruta/Etnia');
+const ColorPeloRoutes = require('./rutas/ColorPelo');
+const UbicacionRoutes = require('./rutas/Ubicacion');
+const EstadoRoutes = require('./rutas/Estado');
+const DepartamentoRoutes = require('./rutas/Departamento');
+const ReqConocimientosRoutes = require('./rutas/ReqConocimiento');
+const GrupoEscalaRoutes = require('./rutas/GrupoEscala');
 
 const TrabajaEnRoutes = require('./ruta/TrabajaEn');
 const PlantillaFuncionesRoutes = require('./ruta/Plantilla');
