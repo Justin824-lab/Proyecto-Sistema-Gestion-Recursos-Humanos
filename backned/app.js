@@ -34,6 +34,16 @@ const cFTPrincipalesRoutes = require('./ruta/cFTPrincipales');
 const ContratoRoutes = require('./ruta/Contrato');
 const CargoRoutes = require('./ruta/Cargo');
 const EmpleadosRoutes = require('./ruta/Empleados');
+const EstadoCivilRoutes = require('./ruta/EstadoCivil');
+const EtniaRoutes = require('./ruta/Etnia');
+
+const TrabajaEnRoutes = require('./ruta/TrabajaEn');
+const PlantillaFuncionesRoutes = require('./ruta/Plantilla');
+const CargoRequisitosRoutes = require('./ruta/CargoRequisitos');
+const CargoNivelUtilizacionRoutes = require('./ruta/CargoNivelUtilizacion');
+const OtrosPagosEmpleadosRoutes = require('./ruta/OtrosPagosEmpleados');
+const TlaboralRoutes = require('./ruta/Tlaboral');
+const CargoFuncioneRoutes = require('./ruta/CargoFuncione');
 
 
 
@@ -52,6 +62,12 @@ app.use(express.urlencoded({extended: false}));
 var bodyParser = require('body-parser');
  // create application/json parser
 app.use(bodyParser.json());
+
+//Rutas frontend
+app.use('/api/Empleados', EmpleadosRoutes);
+
+// archivos estaticos frontend
+app.use(express.static(path.join(__dirname,'public')));
 
 
 //inicializando el server

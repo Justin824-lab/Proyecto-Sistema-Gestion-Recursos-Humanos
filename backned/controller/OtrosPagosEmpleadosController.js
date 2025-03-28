@@ -12,10 +12,17 @@ controller.list = (req, res) => {
 };
 
 controller.edit = (req, res) => {
+<<<<<<< HEAD
     const { IdCargo } = req.params;
 
     req.getConnection((err, conn) => {
         conn.query('SELECT * FROM OtrosPagosEmpleados WHERE IdCargo = ?', [IdCargo], (err, OtrosPagosEmpleados) => {
+=======
+    const { CI } = req.params;
+
+    req.getConnection((err, conn) => {
+        conn.query('SELECT * FROM OtrosPagosEmpleados WHERE CI = ?', [CI], (err, OtrosPagosEmpleados) => {
+>>>>>>> 835de4343bcb8ac2cde08abd686c95236680d7ca
             res.json(OtrosPagosEmpleados[0]);
         });
     });
@@ -31,20 +38,34 @@ controller.save = (req, res) => {
 };
 
 controller.update = (req, res) => {
+<<<<<<< HEAD
     const { IdCargo } = req.params;
     const nuevo_OtrosPagosEmpleados = req.body;
 
     req.getConnection((err, conn) => {
         conn.query('UPDATE OtrosPagosEmpleados SET ? WHERE IdCargo = ?', [nuevo_OtrosPagosEmpleados, IdCargo], (err, rows) => { 
+=======
+    const { CI } = req.params;
+    const nuevo_OtrosPagosEmpleados = req.body;
+
+    req.getConnection((err, conn) => {
+        conn.query('UPDATE OtrosPagosEmpleados SET ? WHERE CI = ?', [nuevo_OtrosPagosEmpleados, CI], (err, rows) => { 
+>>>>>>> 835de4343bcb8ac2cde08abd686c95236680d7ca
             res.json({ message: "Registro Actualizado" }); 
         });
     });
 };
 
 controller.delete = (req, res) => {
+<<<<<<< HEAD
     const { IdCargo } = req.params;
     req.getConnection((err, conn) => {
         conn.query('DELETE FROM OtrosPagosEmpleados WHERE IdCargo = ?', [IdCargo], (err, rows) => {
+=======
+    const { CI } = req.params;
+    req.getConnection((err, conn) => {
+        conn.query('DELETE FROM OtrosPagosEmpleados WHERE CI = ?', [CI], (err, rows) => {
+>>>>>>> 835de4343bcb8ac2cde08abd686c95236680d7ca
             res.json({ message: "Registro Eliminado" });
         });
     });

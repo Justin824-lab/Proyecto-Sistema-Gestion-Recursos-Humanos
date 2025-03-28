@@ -1,0 +1,43 @@
+<nav class="navbar navbar-dark bg-dark">
+    <a href="/" class="navbar-brand">REGISTRO DE EMPLEADOS</a>
+</nav>
+
+<div class="container">  
+    <div class="row mt-25">          
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>CI</th>
+                    <th>NOMBRE</th>
+                    <th>APELLIDO</th>
+                    <th>ETNIA</th>
+                    <th>ESTADO CIVIL</th>
+                    <th>COLOR DE PELO</th>
+                    <th>UBICACION</th>
+                    <th>CONTRATO</th>
+                    <th>CARGO</th>
+                    <th>ESTADO</th>
+                    <th>ACCIONES</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let User of TUser">
+                    <td>{{ User.CI }}</td>
+                    <td>{{ User.Nombre }}</td>
+                    <td>{{ User.Apellido }}</td>
+                    <td>{{ User.IdEtnia }}</td>
+                    <td>{{ User.IdCivil }}</td>
+                    <td>{{ User.IdColorPelo }}</td>
+                    <td>{{ User.IdUbicacion }}</td>
+                    <td>{{ User.IdContrato }}</td>
+                    <td>{{ User.IdCargo }}</td>
+                    <td>{{ User.IdEstado }}</td>
+                    <td>
+                        <button class="btn btn-danger">Eliminar</button>
+                        <button class="btn btn-success">Actualizar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
