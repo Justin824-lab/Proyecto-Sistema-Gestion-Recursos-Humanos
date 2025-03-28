@@ -1,43 +1,110 @@
 <nav class="navbar navbar-dark bg-dark">
     <a href="/" class="navbar-brand">REGISTRO DE EMPLEADOS</a>
-</nav>
-
-<div class="container">  
-    <div class="row mt-25">          
-        <table class="table table-bordered table-hover">
-            <thead>
-                <tr>
-                    <th>CI</th>
-                    <th>NOMBRE</th>
-                    <th>APELLIDO</th>
-                    <th>ETNIA</th>
-                    <th>ESTADO CIVIL</th>
-                    <th>COLOR DE PELO</th>
-                    <th>UBICACION</th>
-                    <th>CONTRATO</th>
-                    <th>CARGO</th>
-                    <th>ESTADO</th>
-                    <th>ACCIONES</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let User of TUser">
-                    <td>{{ User.CI }}</td>
-                    <td>{{ User.Nombre }}</td>
-                    <td>{{ User.Apellido }}</td>
-                    <td>{{ User.IdEtnia }}</td>
-                    <td>{{ User.IdCivil }}</td>
-                    <td>{{ User.IdColorPelo }}</td>
-                    <td>{{ User.IdUbicacion }}</td>
-                    <td>{{ User.IdContrato }}</td>
-                    <td>{{ User.IdCargo }}</td>
-                    <td>{{ User.IdEstado }}</td>
-                    <td>
-                        <button class="btn btn-danger">Eliminar</button>
-                        <button class="btn btn-success">Actualizar</button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+  </nav>
+  
+  <div class="agregar_contenedor"></div>
+  <div class="row mt-5">
+    <div class="card">
+      <div class="card-body">
+        <form id="formulario" name="formulario" #f="ngForm" (ngSubmit)="AgregarValor()" novalidate>
+          <div class="form-group">
+            <label for="" class="control-label">CI</label>
+            <input type="text" [(ngModel)]="user.CI" name="CI" placeholder="Digite el CI" class="form-control" required>
+          </div>
+  
+          <div class="form-group">
+            <label for="" class="control-label">Nombre</label>
+            <input type="text" [(ngModel)]="user.Nombre" name="Nombre" placeholder="Digite el Nombre" class="form-control" required>
+          </div>
+  
+          <div class="form-group">
+            <label for="" class="control-label">Apellido</label>
+            <input type="text" [(ngModel)]="user.Apellido" name="Apellido" placeholder="Digite el Apellido" class="form-control" required>
+          </div>
+  
+          <div class="form-group">
+            <label for="" class="control-label">IdEtnia</label>
+            <input type="number" [(ngModel)]="user.IdEtnia" name="IdEtnia" placeholder="Digite el IdEtnia" class="form-control" required>
+          </div>
+  
+          <div class="form-group">
+            <label for="" class="control-label">IdCivil</label>
+            <input type="number" [(ngModel)]="user.IdCivil" name="IdCivil" placeholder="Digite el IdCivil" class="form-control" required>
+          </div>
+  
+          <div class="form-group">
+            <label for="" class="control-label">IdColorPelo</label>
+            <input type="number" [(ngModel)]="user.IdColorPelo" name="IdColorPelo" placeholder="Digite el IdColorPelo" class="form-control" required>
+          </div>
+  
+          <div class="form-group">
+            <label for="" class="control-label">IdUbicacion</label>
+            <input type="number" [(ngModel)]="user.IdUbicacion" name="IdUbicacion" placeholder="Digite el IdUbicacion" class="form-control" required>
+          </div>
+  
+          <div class="form-group">
+            <label for="" class="control-label">IdContrato</label>
+            <input type="number" [(ngModel)]="user.IdContrato" name="IdContrato" placeholder="Digite el IdContrato" class="form-control" required>
+          </div>
+  
+          <div class="form-group">
+            <label for="" class="control-label">IdCargo</label>
+            <input type="number" [(ngModel)]="user.IdCargo" name="IdCargo" placeholder="Digite el IdCargo" class="form-control" required>
+          </div>
+  
+          <div class="form-group">
+            <label for="" class="control-label">IdEstado</label>
+            <input type="number" [(ngModel)]="user.IdEstado" name="IdEstado" placeholder="Digite el IdEstado" class="form-control" required>
+          </div>
+  
+          <button type="submit" class="btn btn-primary" formnovalidate value="Save" onclick="javascript:alert('Registro Almacenado')">
+            Agregar
+          </button>
+        </form>
+      </div>
     </div>
-</div>
+  </div>
+  
+  <br>
+  <div class="container">
+    <div class="row mt-25">
+      <div>
+        <table>
+          <thead>
+            <tr>
+              <th>CI</th>
+              <th>Nombre</th>
+              <th>Apellido</th>
+              <th>IdEtnia</th>
+              <th>IdCivil</th>
+              <th>IdColorPelo</th>
+              <th>IdUbicacion</th>
+              <th>IdContrato</th>
+              <th>IdCargo</th>
+              <th>IdEstado</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let User of TUser">
+              <td>{{User.CI}}</td>
+              <td>{{User.Nombre}}</td>
+              <td>{{User.Apellido}}</td>
+              <td>{{User.IdEtnia}}</td>
+              <td>{{User.IdCivil}}</td>
+              <td>{{User.IdColorPelo}}</td>
+              <td>{{User.IdUbicacion}}</td>
+              <td>{{User.IdContrato}}</td>
+              <td>{{User.IdCargo}}</td>
+              <td>{{User.IdEstado}}</td>
+              <td>
+                <button class="btn btn-danger" (click)="EliminarData(User.CI)" onclick="javascript:alert('Registro Eliminado')">Eliminar</button>
+                <button class="btn btn-success" [routerLink]="['/empleados/edit', User.CI]">Actualizar</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  

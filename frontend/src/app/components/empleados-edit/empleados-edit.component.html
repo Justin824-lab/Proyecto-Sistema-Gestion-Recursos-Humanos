@@ -1,0 +1,76 @@
+<nav class="navbar navbar-dark bg-dark">
+    <a href="/" class="navbar-brand">EMPLEADOS</a>
+</nav>
+
+<div class="row mt-5">
+    <div class="card">
+        <div class="card-body">
+            <form action="">
+               
+                <div class="form-group">
+                    <label for="" class="control-label" hidden>Registro No.</label>
+                    <input type="text" readonly="readonly" [(ngModel)]="user.CI" name="CI" placeholder="CI del empleado" class="form-control" required hidden>
+                </div>
+
+               
+                <div class="form-group">
+                    <label for="" class="control-label">Nombre</label>
+                    <input type="text" [(ngModel)]="user.Nombre" name="Nombre" placeholder="DIGITE EL NOMBRE" class="form-control" autofocus>
+                </div>
+
+                
+                <div class="form-group">
+                    <label for="" class="control-label">Apellido</label>
+                    <input type="text" [(ngModel)]="user.Apellido" name="Apellido" placeholder="DIGITE EL APELLIDO" class="form-control" autofocus>
+                </div>
+
+                
+                <div class="form-group">
+                    <label for="" class="control-label">Etnia</label>
+                    <input type="number" [(ngModel)]="user.IdEtnia" name="IdEtnia" placeholder="DIGITE LA ETNIA" class="form-control" autofocus>
+                </div>
+
+               
+                <div class="form-group">
+                    <label for="" class="control-label">Estado Civil</label>
+                    <input type="number" [(ngModel)]="user.IdCivil" name="IdCivil" placeholder="DIGITE EL ESTADO CIVIL" class="form-control" autofocus>
+                </div>
+
+                
+                <div class="form-group">
+                    <label for="" class="control-label">Color de Pelo</label>
+                    <input type="number" [(ngModel)]="user.IdColorPelo" name="IdColorPelo" placeholder="DIGITE EL COLOR DE PELO" class="form-control" autofocus>
+                </div>
+
+               
+                <div class="form-group">
+                    <label for="" class="control-label">Ubicación</label>
+                    <input type="number" [(ngModel)]="user.IdUbicacion" name="IdUbicacion" placeholder="DIGITE LA UBICACION" class="form-control" autofocus>
+                </div>
+
+                
+                <div class="form-group">
+                    <label for="" class="control-label">Contrato</label>
+                    <input type="number" [(ngModel)]="user.IdContrato" name="IdContrato" placeholder="DIGITE EL CONTRATO" class="form-control" autofocus>
+                </div>
+
+               
+                <div class="form-group">
+                    <label for="" class="control-label">Cargo</label>
+                    <input type="number" [(ngModel)]="user.IdCargo" name="IdCargo" placeholder="DIGITE EL CARGO" class="form-control" autofocus>
+                </div>
+
+             
+                <div class="form-group">
+                    <label for="" class="control-label">Estado</label>
+                    <input type="number" [(ngModel)]="user.IdEstado" name="IdEstado" placeholder="DIGITE EL ESTADO" class="form-control" autofocus>
+                </div>
+
+            
+                <button class="btn btn-success btn-block" (click)="updateUser()">
+                    Actualizar
+                </button>    
+            </form>
+        </div>
+    </div>
+</div>

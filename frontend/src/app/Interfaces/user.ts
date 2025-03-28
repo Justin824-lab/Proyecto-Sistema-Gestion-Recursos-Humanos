@@ -10,3 +10,11 @@ export interface Empleados {
     IdCargo?: number | null;
     IdEstado?: number | null;
 }
+
+export interface User{
+    CI?: number | null;  // Añade CI aquí para que sea compartido
+    ctipou?: number;
+    descripcion?: string;
+    estado?: string;
+  }
+

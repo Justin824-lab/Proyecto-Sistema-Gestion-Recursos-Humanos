@@ -3,6 +3,8 @@ import {  Empleados } from 'src/app/Interfaces/user';
 import { DataService } from '../../Services/data.service';
 
 
+
+
 @Component({
   selector: 'app-empleados',
   templateUrl: './empleados.component.html',
@@ -35,6 +37,29 @@ export class EmpleadosComponent implements OnInit  {
         
         }, err => console.error(err));
   }
+
+  AgregarValor(){
+    
+    
+    this.Data.save(this.user,'/empleados')
+       .subscribe(
+         res => {
+
+this.getUser();
+         },
+         err => console.error(err)
+       );
+}
+  EliminarData(id: number){
+    this.Data.delete(id, '/empleados')
+      .subscribe(
+        res => {
+          this.getUser();
+        },
+        err => console.error(err)
+      );
+  }
+
 
 
 }

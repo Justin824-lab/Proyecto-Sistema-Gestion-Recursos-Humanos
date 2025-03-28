@@ -15,8 +15,8 @@ controller.edit = (req, res) => {
     const { CI } = req.params;
 
     req.getConnection((err, conn) => {
-        conn.query('SELECT * FROM Empleados WHERE CI = ?', [CI], (err, empleado) => {
-            res.json(empleado[0]);
+        conn.query('SELECT * FROM Empleados WHERE CI = ?', [CI], (err, empleados) => {
+            res.json(empleados[0]);
         });
     });
 };
@@ -24,8 +24,8 @@ controller.edit = (req, res) => {
 controller.save = (req, res) => {
     const data = req.body;
     req.getConnection((err, conn) => {
-        conn.query('INSERT INTO Empleados SET ?', [data], (err, empleado) => {
-            res.json(empleado);
+        conn.query('INSERT INTO Empleados SET ?', [data], (err, empleados) => {
+            res.json(empleados);
         });
     });
 };
