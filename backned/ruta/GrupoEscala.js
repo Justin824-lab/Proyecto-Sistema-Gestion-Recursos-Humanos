@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const GrupoEscalasController = require('../controller/GrupoEscalasController');
+const GrupoEscalasController = require('../controller/GrupoEscalaController');
 router.get('/', GrupoEscalasController.list);
 router.post('/', GrupoEscalasController.save);
 router.delete('/:IdGrupoEscala', GrupoEscalasController.delete);

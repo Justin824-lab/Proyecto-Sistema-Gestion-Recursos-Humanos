@@ -1,12 +1,12 @@
 const express = require('express');
 const router = express.Router();
 
-const bancosController = require('../controller/bancosController');
-router.get('/', bancosController.list);
-router.post('/', bancosController.save);
-router.delete('/:cbank', bancosController.delete);
-router.get('/:cbank', bancosController.edit);
-router.post('/:cbank', bancosController.update);
+const UbicacionController = require('../controller/UbicacionController');
+router.get('/', UbicacionController.list);
+router.post('/', UbicacionController.save);
+router.delete('/:IdUbicacion', UbicacionController.delete);
+router.get('/:IdUbicacion', UbicacionController.edit);
+router.post('/:IdUbicacion', UbicacionController.update);
 
 module.exports = router;
 

@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const ReqConocimientoController = require('../controller/ReqConocimientoController');
+const ReqConocimientoController = require('../controller/ReqConocimientosController');
 router.get('/', ReqConocimientoController.list);
 router.post('/', ReqConocimientoController.save);
 router.delete('/:IdReqConoc', ReqConocimientoController.delete);
