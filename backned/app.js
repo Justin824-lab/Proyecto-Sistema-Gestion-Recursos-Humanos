@@ -37,6 +37,14 @@ const EmpleadosRoutes = require('./ruta/Empleados');
 const EstadoCivilRoutes = require('./ruta/EstadoCivil');
 const EtniaRoutes = require('./ruta/Etnia');
 
+const TrabajaEnRoutes = require('./ruta/TrabajaEn');
+const PlantillaFuncionesRoutes = require('./ruta/Plantilla');
+const CargoRequisitosRoutes = require('./ruta/CargoRequisitos');
+const CargoNivelUtilizacionRoutes = require('./ruta/CargoNivelUtilizacion');
+const OtrosPagosEmpleadosRoutes = require('./ruta/OtrosPagosEmpleados');
+const TlaboralRoutes = require('./ruta/Tlaboral');
+const CargoFuncioneRoutes = require('./ruta/CargoFuncione');
+
 
 
 app.set('port', process.env.PORT || 3000);
