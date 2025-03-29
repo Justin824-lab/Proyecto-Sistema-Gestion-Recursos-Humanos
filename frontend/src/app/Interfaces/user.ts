@@ -12,6 +12,12 @@ export interface Empleados {
     estado?: string;
 }
 
+export interface EstadoCivil{
+    IdCivil?: number | null;
+    EstadoCivil?: string | null;
+    estado?: string;
+}
+
 export interface User{
     CI?: number | null; 
     ctipou?: number;

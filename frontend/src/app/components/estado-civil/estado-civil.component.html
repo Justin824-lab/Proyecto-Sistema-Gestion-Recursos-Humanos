@@ -1,0 +1,58 @@
+<nav class="navbar navbar-dark bg-dark">
+  <a href="/" class="navbar-brand">REGISTRO DE ESTADO CIVIL</a>
+</nav>
+
+<div class="agregar_contenedor"></div>
+<div class="row mt-5">
+  <div class="card">
+    <div class="card-body">
+      <form id="formulario" name="formulario" #f="ngForm" (ngSubmit)="AgregarValor()" novalidate>
+        <div class="form-group">
+          <label for="" class="control-label" hidden>Registro No.</label>
+          <input type="text" readonly="readonly" [(ngModel)]="user.IdCivil" name="IdCivil" placeholder="No" class="form-control" required hidden>
+        </div>
+
+        <div class="form-group">
+          <label for="" class="control-label">Estado Civil</label>
+          <input type="text" [(ngModel)]="user.EstadoCivil" name="estado" placeholder="DIGITE EL ESTADO CIVIL" class="form-control" autofocus>
+          <div ng-show="!user.EstadoCivil && formulario.$submitted" class="alert alert-warning">Digite el Estado Civil</div>
+        </div>
+
+        <button type="submit" class="btn btn-primary" formnovalidate value="Save" onclick="javascript:alert('Registro Almacenado')">
+          Agregar
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<br>
+
+<div class="container">
+  <div class="row mt-25">
+    <div>
+      <table>
+        <thead>
+          <tr>
+            <th>NO</th>
+            <th>ESTADO CIVIL</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let User of TUser">
+            <td>{{User.IdCivil}}</td>
+            <td>{{User.EstadoCivil}}</td>
+            <td>
+              <button class="btn btn-danger" (click)="EliminarData(User.IdCivil)" onclick="javascript:alert('Registro Eliminado')">Eliminar</button>
+            </td>
+            <td>
+              <button class="btn btn-success" [routerLink]="['/estadocivil/edit', User.IdCivil]">
+                Actualizar
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

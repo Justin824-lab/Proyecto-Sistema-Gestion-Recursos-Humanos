@@ -71,6 +71,8 @@ app.use(bodyParser.json());
 
 //Rutas frontend
 app.use('/api/Empleados', EmpleadosRoutes);
+app.use('/api/EstadoCivil', EstadoCivilRoutes);
+
 
 // archivos estaticos frontend
 app.use(express.static(path.join(__dirname,'public')));
