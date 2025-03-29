@@ -82,6 +82,7 @@
               <th>IdContrato</th>
               <th>IdCargo</th>
               <th>IdEstado</th>
+              <th>Estado</th>
               <th>Acciones</th>
             </tr>
           </thead>
@@ -97,6 +98,7 @@
               <td>{{User.IdContrato}}</td>
               <td>{{User.IdCargo}}</td>
               <td>{{User.IdEstado}}</td>
+              <td>{{User.estado}}</td>
               <td>
                 <button class="btn btn-danger" (click)="EliminarData(User.CI)" onclick="javascript:alert('Registro Eliminado')">Eliminar</button>
                 <button class="btn btn-success" [routerLink]="['/empleados/edit', User.CI]">Actualizar</button>

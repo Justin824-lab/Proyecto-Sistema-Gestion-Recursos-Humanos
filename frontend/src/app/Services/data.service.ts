@@ -18,8 +18,9 @@ export class DataService {
     return this.http.get(`${this.API_URI}` + url);
   }
 
-  getOne<T>(id: string | number, url: string): Observable<T> {
-    return this.http.get<T>(`${this.API_URI}${url}/${id}`);
+  getOne(id: string, url: string) {
+    return this.http.get(`${this.API_URI}` + url + `/${id}`);
+
   
 }
 delete(id: number, url: string) {

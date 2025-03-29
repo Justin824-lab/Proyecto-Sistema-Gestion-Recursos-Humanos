@@ -23,7 +23,8 @@ export class EmpleadosEditComponent implements OnInit   {
     IdUbicacion: null,
     IdContrato: null,
     IdCargo: null,
-    IdEstado: null
+    IdEstado: null,
+    estado: 'Activo'
   }
   constructor(private Data: DataService,
     private router: Router,
@@ -32,11 +33,11 @@ export class EmpleadosEditComponent implements OnInit   {
       const params = this.activatedRoute.snapshot.params;
   
       if (params['id']) {
-        this.Data.getOne<Empleados>(params['id'], '/empleados')
+        this.Data.getOne(params['id'],'/empleados')
           .subscribe(
-            (res: Empleados) => {
+            res => {
               this.user = res;
-            },
+                                  },
             err => console.log(err)
           );
       }
@@ -51,6 +52,8 @@ export class EmpleadosEditComponent implements OnInit   {
           );
       }  
     }
+  
+    
   
 
 

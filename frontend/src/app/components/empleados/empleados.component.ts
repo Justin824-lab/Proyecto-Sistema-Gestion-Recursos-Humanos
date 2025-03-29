@@ -22,7 +22,8 @@ export class EmpleadosComponent implements OnInit  {
     IdUbicacion: null,
     IdContrato: null,
     IdCargo: null,
-    IdEstado: null
+    IdEstado: null,
+    estado: 'Activo'
   }
 
   constructor(private Data: DataService) { }
@@ -40,7 +41,7 @@ export class EmpleadosComponent implements OnInit  {
 
   AgregarValor(){
     
-    
+    delete this.user.CI;
     this.Data.save(this.user,'/empleados')
        .subscribe(
          res => {
