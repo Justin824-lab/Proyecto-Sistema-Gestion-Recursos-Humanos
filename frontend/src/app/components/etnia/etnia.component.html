@@ -1,0 +1,57 @@
+<nav class="navbar navbar-dark bg-dark">
+    <a href="/" class="navbar-brand">REGISTRO DE ETNIA</a>
+  </nav>
+  
+  <div class="agregar_contenedor"></div>
+  <div class="row mt-5">
+    <div class="card">
+      <div class="card-body">
+        <form id="formulario" name="formulario" #f="ngForm" (ngSubmit)="AgregarValor()" novalidate>
+          <div class="form-group">
+            <label for="" class="control-label" hidden>Registro No.</label>
+            <input type="text" readonly="readonly" [(ngModel)]="user.IdEtnia" name="IdEtnia" placeholder="No" class="form-control" required hidden>
+          </div>
+  
+          <div class="form-group">
+            <label for="" class="control-label">Nombre de la Etnia</label>
+            <input type="text" [(ngModel)]="user.Nombre" name="Nombre" placeholder="DIGITE EL NOMBRE DE LA ETNIA" class="form-control" autofocus>
+            <div ng-show="!user.Nombre && formulario.$submitted" class="alert alert-warning">Digite el Nombre de la Etnia</div>
+          </div>
+  
+          <button type="submit" class="btn btn-primary" formnovalidate value="Save" onclick="javascript:alert('Registro Almacenado')">
+            Agregar
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  <br>
+  
+  <div class="container">
+    <div class="row mt-25">
+      <div>
+        <table>
+          <thead>
+            <tr>
+              <th>NO</th>
+              <th>NOMBRE</th>
+              <th>ESTADO</th>
+              <th>ACCIONES</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let User of TUser">
+              <td>{{User.IdEtnia}}</td>
+              <td>{{User.Nombre}}</td>
+              <td>{{User.estado}}</td>
+              <td>
+                <button class="btn btn-danger" (click)="EliminarData(User.IdEtnia)" onclick="javascript:alert('Registro Eliminado')">Eliminar</button>
+                <button class="btn btn-success" [routerLink]="['/etnia/edit', User.IdEtnia]">Actualizar</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

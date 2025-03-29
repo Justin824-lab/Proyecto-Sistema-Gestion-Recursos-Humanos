@@ -72,6 +72,8 @@ app.use(bodyParser.json());
 //Rutas frontend
 app.use('/api/Empleados', EmpleadosRoutes);
 app.use('/api/EstadoCivil', EstadoCivilRoutes);
+app.use('/api/Cargo', CargoRoutes);
+app.use('/api/Etnia', EtniaRoutes);
 
 
 // archivos estaticos frontend

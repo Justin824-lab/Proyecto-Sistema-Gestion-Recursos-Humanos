@@ -1,0 +1,41 @@
+<nav class="navbar navbar-dark bg-dark">
+    <a href="/" class="navbar-brand">CARGOS</a>
+</nav>
+
+<div class="row mt-5">
+    <div class="card">
+        <div class="card-body">
+            <form action="">
+                <div class="form-group">
+                    <label for="" class="control-label" hidden>Registro No.</label>
+                    <input type="text" readonly="readonly" [(ngModel)]="user.IdCargo" name="IdCargo" placeholder="No" class="form-control" required hidden>
+                </div>
+
+                <div class="form-group">
+                    <label for="" class="control-label">No Resolución</label>
+                    <input type="text" [(ngModel)]="user.IdNoResolucion" name="IdNoResolucion" placeholder="DIGITE EL NO DE RESOLUCIÓN" class="form-control" autofocus>
+                </div>
+
+                <div class="form-group">
+                    <label for="" class="control-label">Grupo Escala</label>
+                    <input type="text" [(ngModel)]="user.IdGrupoEscala" name="IdGrupoEscala" placeholder="DIGITE EL GRUPO ESCALA" class="form-control" autofocus>
+                </div>
+
+                <div class="form-group">
+                    <label for="" class="control-label">Categoría Ocupacional</label>
+                    <input type="text" [(ngModel)]="user.IdCatOcupacional" name="IdCatOcupacional" placeholder="DIGITE LA CATEGORÍA OCUPACIONAL" class="form-control" autofocus>
+                </div>
+
+                <div class="form-group">
+                    <label for="" class="control-label">Estado</label>
+                    <input type="text" [(ngModel)]="user.estado" name="estado" placeholder="DIGITE EL ESTADO" class="form-control" autofocus>
+                </div>
+
+                <button class="btn btn-success btn-block" (click)="updateUser()" onclick="javascript:alert('Registro Actualizado')">
+                    Actualizar
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+

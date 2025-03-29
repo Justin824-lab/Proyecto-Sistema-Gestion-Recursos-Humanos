@@ -17,6 +17,18 @@ export interface EstadoCivil{
     EstadoCivil?: string | null;
     estado?: string;
 }
+export interface Cargo {
+    IdCargo?: number | null; 
+    IdNoResolucion?: number | null;
+    IdGrupoEscala?: number | null;
+    IdCatOcupacional?: number | null;
+    estado?: string;
+}
+export interface Etnia {
+    IdEtnia?: number | null; 
+    Nombre?: string | null;
+    estado?: string;
+}
 
 export interface User{
     CI?: number | null; 
