@@ -59,7 +59,7 @@ app.use(morgan('dev'));
 app.use(myConnection(mysql,{
     host:'localhost',
     user:'root',
-    password:'rojo123',
+    password:'zepeda12',
     port:3306,
     database:'RecursosLaborales'
 }, 'single'));
@@ -70,10 +70,29 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
 //Rutas frontend
+app.use('/api/NivelDeUtilizacion', NivelDeUtilizacionRoutes);
+app.use('/api/OtrosPagos', OtrosPagosRoutes);
+app.use('/api/NoResolucion', NoResolucionRoutes);
+app.use('/api/CatOcupacional', CatOcupacionalRoutes);
+app.use('/api/cFTPrincipales', cFTPrincipalesRoutes);
+app.use('/api/Contrato', ContratoRoutes);
+app.use('/api/Cargo', CargoRoutes);
 app.use('/api/Empleados', EmpleadosRoutes);
 app.use('/api/EstadoCivil', EstadoCivilRoutes);
-app.use('/api/Cargo', CargoRoutes);
 app.use('/api/Etnia', EtniaRoutes);
+app.use('/api/ColorPelo', ColorPeloRoutes);
+app.use('/api/Ubicacion', UbicacionRoutes);
+app.use('/api/Estado', EstadoRoutes);
+app.use('/api/Departamento', DepartamentoRoutes);
+app.use('/api/ReqConocimientos', ReqConocimientosRoutes);
+app.use('/api/GrupoEscala', GrupoEscalaRoutes);
+app.use('/api/TrabajaEn', TrabajaEnRoutes);
+app.use('/api/Plantilla', PlantillaFuncionesRoutes);
+app.use('/api/CargoRequisitos', CargoRequisitosRoutes);
+app.use('/api/CargoNivelUtilizacion', CargoNivelUtilizacionRoutes);
+app.use('/api/OtrosPagosEmpleados', OtrosPagosEmpleadosRoutes);
+app.use('/api/Tlaboral', TlaboralRoutes);
+app.use('/api/CargoFunciones', CargoFuncionesRoutes);
 
 
 // archivos estaticos frontend
