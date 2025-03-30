@@ -4,8 +4,8 @@ import { DataService } from '../../Services/data.service';
 
 @Component({
   selector: 'app-trabajaen',
-  templateUrl: './trabajaen.component.html',
-  styleUrls: ['./trabajaen.component.css']
+  templateUrl: './trabaja-en.component.html',
+  styleUrls: ['./trabaja-en.component.css']
 })
 export class TrabajaEnComponent implements OnInit {
 

@@ -4,8 +4,8 @@ import { DataService } from '../../Services/data.service';
 
 @Component({
   selector: 'app-reqconocimientos',
-  templateUrl: './reqconocimientos.component.html',
-  styleUrls: ['./reqconocimientos.component.css']
+  templateUrl: './req-conocimientos.component.html',
+  styleUrls: ['./req-conocimientos.component.css']
 })
 export class ReqConocimientosComponent implements OnInit {
 

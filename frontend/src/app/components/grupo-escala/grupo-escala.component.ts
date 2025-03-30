@@ -4,8 +4,8 @@ import { DataService } from '../../Services/data.service';
 
 @Component({
   selector: 'app-grupoescala',
-  templateUrl: './grupoescala.component.html',
-  styleUrls: ['./grupoescala.component.css']
+  templateUrl: './grupo-escala.component.html',
+  styleUrls: ['./grupo-escala.component.css']
 })
 export class GrupoEscalaComponent implements OnInit {
 

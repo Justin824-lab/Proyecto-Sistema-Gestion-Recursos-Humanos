@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { EmpleadosComponent } from './components/empleados/empleados.component';
-import { DataService } from './Services/data.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { DataService } from './Services/data.service';
+import { EmpleadosComponent } from './components/empleados/empleados.component';
 import { EmpleadosEditComponent } from './components/empleados-edit/empleados-edit.component';
 import { EstadoCivilComponent } from './components/estado-civil/estado-civil.component';
 import { EstadoCivilEditComponent } from './components/estado-civil-edit/estado-civil-edit.component';
@@ -18,7 +17,7 @@ import { NivelDeUtilizacionComponent } from './components/nivel-de-utilizacion/n
 import { OtrosPagosComponent } from './components/otros-pagos/otros-pagos.component';
 import { NoResolucionComponent } from './components/no-resolucion/no-resolucion.component';
 import { CatOcupacionalComponent } from './components/cat-ocupacional/cat-ocupacional.component';
-import { CFTPrincipalesComponent } from './components/c-ftprincipales/c-ftprincipales.component';
+import { CftPrincipalesComponent } from './components/c-ftprincipales/c-ftprincipales.component';
 import { ContratoComponent } from './components/contrato/contrato.component';
 import { ColorPeloComponent } from './components/color-pelo/color-pelo.component';
 import { UbicacionComponent } from './components/ubicacion/ubicacion.component';
@@ -49,7 +48,7 @@ import { CargoFuncionesComponent } from './components/cargo-funciones/cargo-func
     OtrosPagosComponent,
     NoResolucionComponent,
     CatOcupacionalComponent,
-    CFTPrincipalesComponent,
+    CftPrincipalesComponent, // Nombre corregido
     ContratoComponent,
     ColorPeloComponent,
     UbicacionComponent,

@@ -14,7 +14,7 @@ import { NivelDeUtilizacionComponent } from './components/nivel-de-utilizacion/n
 import { OtrosPagosComponent } from './components/otros-pagos/otros-pagos.component';
 import { NoResolucionComponent } from './components/no-resolucion/no-resolucion.component';
 import { CatOcupacionalComponent } from './components/cat-ocupacional/cat-ocupacional.component';
-import { CFTPrincipalesComponent } from './components/c-ftprincipales/c-ftprincipales.component';
+import { CftPrincipalesComponent } from './components/c-ftprincipales/c-ftprincipales.component';
 import { ContratoComponent } from './components/contrato/contrato.component';
 import { ColorPeloComponent } from './components/color-pelo/color-pelo.component';
 import { UbicacionComponent } from './components/ubicacion/ubicacion.component';
@@ -45,7 +45,7 @@ const routes: Routes = [
     component: CatOcupacionalComponent 
   },
   { path: 'cft-principales', 
-    component: CFTPrincipalesComponent 
+    component: CftPrincipalesComponent 
   },
   { path: 'contrato', 
     component: ContratoComponent 

@@ -4,8 +4,8 @@ import { DataService } from '../../Services/data.service';
 
 @Component({
   selector: 'app-cargorequisitos',
-  templateUrl: './cargorequisitos.component.html',
-  styleUrls: ['./cargorequisitos.component.css']
+  templateUrl: './cargo-requisitos.component.html',
+  styleUrls: ['./cargo-requisitos.component.css']
 })
 export class CargoRequisitosComponent implements OnInit {
 

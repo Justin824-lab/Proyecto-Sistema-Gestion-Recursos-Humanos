@@ -7,7 +7,7 @@ import { DataService } from '../../Services/data.service';
   templateUrl: './plantilla.component.html',
   styleUrls: ['./plantilla.component.css']
 })
-export class PlantillaFuncionesComponent implements OnInit {
+export class PlantillaComponent implements OnInit {
 
   TUser: any = [];
   user: Plantilla = {
