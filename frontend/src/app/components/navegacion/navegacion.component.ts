@@ -1,4 +1,6 @@
 import { Component,OnInit  } from '@angular/core';
+import { AuthService } from '../../auth/auth.service';
+
 
 @Component({
   selector: 'app-navegacion',
@@ -37,7 +39,11 @@ export class NavegacionComponent implements OnInit {
   // Items destacados (puedes personalizar esta lista)
   featuredItems = ['Empleados', 'Departamento', 'Plantilla'];
 
-  constructor() { }
+  constructor(private authService: AuthService) {}
+
+  logout() {
+    this.authService.logout();
+  }
 
   ngOnInit(): void {
   }
@@ -54,6 +60,7 @@ export class NavegacionComponent implements OnInit {
       item.title.toLowerCase().includes(searchTerm)
     );
   }
+  
 }
 
 

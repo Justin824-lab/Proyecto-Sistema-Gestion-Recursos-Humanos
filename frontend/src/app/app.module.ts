@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 import { DataService } from './Services/data.service';
 import { EmpleadosComponent } from './components/empleados/empleados.component';
 import { EmpleadosEditComponent } from './components/empleados-edit/empleados-edit.component';
@@ -38,6 +38,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavegacionComponent } from './components/navegacion/navegacion.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
+import { LoginComponent } from './auth/login/login.component';
 
 
 
@@ -74,6 +75,7 @@ import { MatMenuModule } from '@angular/material/menu';
     TrabajaEnEditComponent,
     FilterempresaPipe,
     NavegacionComponent,
+    LoginComponent,
    
 
   
@@ -83,6 +85,7 @@ import { MatMenuModule } from '@angular/material/menu';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     MatButtonModule,
     MatMenuModule    

@@ -31,7 +31,8 @@ import { OtrosPagosEmpleadosComponent } from './components/otros-pagos-empleados
 import { TlaboralComponent } from './components/tlaboral/tlaboral.component';
 import { CargoFuncionesComponent } from './components/cargo-funciones/cargo-funciones.component';
 import { NavegacionComponent } from './components/navegacion/navegacion.component';
-
+import { LoginComponent } from './auth/login/login.component';
+import { AuthGuard } from './auth/auth.guard';
 
 const routes: Routes = [
   { path: 'nivel-de-utilizacion', 
@@ -139,15 +140,17 @@ const routes: Routes = [
     component : EtniaEditComponent
   }
   ,
-  {
-    path: 'navegacion',
-    component:NavegacionComponent
-  }
+  { path: 'login', component: LoginComponent },
+  { 
+    path: 'navegacion', 
+    component: NavegacionComponent,
+    canActivate: [AuthGuard] 
+  },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: '**', redirectTo: '/login' }
+];
 
  
-
-
-];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
