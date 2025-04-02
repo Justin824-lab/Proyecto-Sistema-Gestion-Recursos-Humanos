@@ -1,0 +1,25 @@
+<div class="menu-wrapper">
+  <div class="menu-header">
+    <h1 class="menu-title">Gestión de Formularios</h1>
+    <p class="menu-subtitle">Sistema Integral de Recursos Humanos</p>
+  </div>
+
+  <div class="search-container mb-4">
+    <div class="input-group">
+      <span class="input-group-text"><i class="bi bi-search"></i></span>
+      <input type="text" class="form-control" placeholder="Buscar módulo..." (input)="filterItems($event)">
+    </div>
+  </div>
+
+  <div class="menu-grid">
+    <a *ngFor="let item of filteredItems" 
+       [routerLink]="item.path" 
+       class="menu-card"
+       [ngClass]="{'featured': featuredItems.includes(item.title)}">
+      <div class="card-icon">
+        <i [class]="item.icon"></i>
+      </div>
+      <h3 class="card-title">{{item.title}}</h3>
+    </a>
+  </div>
+</div>

@@ -2,7 +2,7 @@ const controller = {};
 
 controller.list = (req, res) => {
     req.getConnection((error,conn) =>{
-        conn.query('select *from EstadoCivil',(err,EstadoCivil) =>{
+        conn.query('select * from EstadoCivil',(err,EstadoCivil) =>{
             if(err){
                 res.json(err);
             }

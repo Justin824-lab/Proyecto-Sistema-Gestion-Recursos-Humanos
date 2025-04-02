@@ -17,6 +17,40 @@ export class DataService {
   getAll(url: string) {
     return this.http.get(`${this.API_URI}` + url);
   }
+  getDropListEmpleados():Observable<any[]>{
+    return this.http.get<any>(this.API_URI+'/Empleados')
+    }
+    getDropListDepartamento():Observable<any[]>{
+      return this.http.get<any>(this.API_URI+'/Departamento')
+      }
+      getDropListEtnia(): Observable<any[]> {
+        return this.http.get<any>(this.API_URI + '/Etnia');
+      }
+      
+      getDropListEstadoCivil(): Observable<any[]> {
+        return this.http.get<any>(this.API_URI + '/EstadoCivil');
+      }
+      
+      getDropListColorPelo(): Observable<any[]> {
+        return this.http.get<any>(this.API_URI + '/ColorPelo');
+      }
+      
+      getDropListUbicacion(): Observable<any[]> {
+        return this.http.get<any>(this.API_URI + '/Ubicacion');
+      }
+      
+      getDropListContrato(): Observable<any[]> {
+        return this.http.get<any>(this.API_URI + '/Contrato');
+      }
+      
+      getDropListCargo(): Observable<any[]> {
+        return this.http.get<any>(this.API_URI + '/Cargo');
+      }
+      
+      getDropListEstado(): Observable<any[]> {
+        return this.http.get<any>(this.API_URI + '/Estado');
+      }
+    
 
   getOne(id: string, url: string) {
     return this.http.get(`${this.API_URI}` + url + `/${id}`);

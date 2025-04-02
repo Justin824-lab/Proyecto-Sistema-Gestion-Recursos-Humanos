@@ -1,112 +1,232 @@
-<nav class="navbar navbar-dark bg-dark">
-    <a href="/" class="navbar-brand">REGISTRO DE EMPLEADOS</a>
+<div class="employee-management-container">
+  <!-- Encabezado mejorado -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
+    <div class="container-fluid">
+      <a class="navbar-brand fw-bold" href="/">
+        <i class="bi bi-person-badge me-2"></i>REGISTRO DE EMPLEADOS
+      </a>
+    </div>
   </nav>
-  
-  <div class="agregar_contenedor"></div>
-  <div class="row mt-5">
-    <div class="card">
-      <div class="card-body">
-        <form id="formulario" name="formulario" #f="ngForm" (ngSubmit)="AgregarValor()" novalidate>
-          <div class="form-group">
-            <label for="" class="control-label">CI</label>
-            <input type="text" [(ngModel)]="user.CI" name="CI" placeholder="Digite el CI" class="form-control" required>
-          </div>
-  
-          <div class="form-group">
-            <label for="" class="control-label">Nombre</label>
-            <input type="text" [(ngModel)]="user.Nombre" name="Nombre" placeholder="Digite el Nombre" class="form-control" required>
-          </div>
-  
-          <div class="form-group">
-            <label for="" class="control-label">Apellido</label>
-            <input type="text" [(ngModel)]="user.Apellido" name="Apellido" placeholder="Digite el Apellido" class="form-control" required>
-          </div>
-  
-          <div class="form-group">
-            <label for="" class="control-label">IdEtnia</label>
-            <input type="number" [(ngModel)]="user.IdEtnia" name="IdEtnia" placeholder="Digite el IdEtnia" class="form-control" required>
-          </div>
-  
-          <div class="form-group">
-            <label for="" class="control-label">IdCivil</label>
-            <input type="number" [(ngModel)]="user.IdCivil" name="IdCivil" placeholder="Digite el IdCivil" class="form-control" required>
-          </div>
-  
-          <div class="form-group">
-            <label for="" class="control-label">IdColorPelo</label>
-            <input type="number" [(ngModel)]="user.IdColorPelo" name="IdColorPelo" placeholder="Digite el IdColorPelo" class="form-control" required>
-          </div>
-  
-          <div class="form-group">
-            <label for="" class="control-label">IdUbicacion</label>
-            <input type="number" [(ngModel)]="user.IdUbicacion" name="IdUbicacion" placeholder="Digite el IdUbicacion" class="form-control" required>
-          </div>
-  
-          <div class="form-group">
-            <label for="" class="control-label">IdContrato</label>
-            <input type="number" [(ngModel)]="user.IdContrato" name="IdContrato" placeholder="Digite el IdContrato" class="form-control" required>
-          </div>
-  
-          <div class="form-group">
-            <label for="" class="control-label">IdCargo</label>
-            <input type="number" [(ngModel)]="user.IdCargo" name="IdCargo" placeholder="Digite el IdCargo" class="form-control" required>
-          </div>
-  
-          <div class="form-group">
-            <label for="" class="control-label">IdEstado</label>
-            <input type="number" [(ngModel)]="user.IdEstado" name="IdEstado" placeholder="Digite el IdEstado" class="form-control" required>
-          </div>
-  
-          <button type="submit" class="btn btn-primary" formnovalidate value="Save" onclick="javascript:alert('Registro Almacenado')">
-            Agregar
-          </button>
-        </form>
-      </div>
-    </div>
-  </div>
-  
-  <br>
+
+  <!-- Formulario de registro -->
   <div class="container">
-    <div class="row mt-25">
-      <div>
-        <table>
-          <thead>
-            <tr>
-              <th>CI</th>
-              <th>Nombre</th>
-              <th>Apellido</th>
-              <th>IdEtnia</th>
-              <th>IdCivil</th>
-              <th>IdColorPelo</th>
-              <th>IdUbicacion</th>
-              <th>IdContrato</th>
-              <th>IdCargo</th>
-              <th>IdEstado</th>
-              <th>Estado</th>
-              <th>Acciones</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let User of TUser">
-              <td>{{User.CI}}</td>
-              <td>{{User.Nombre}}</td>
-              <td>{{User.Apellido}}</td>
-              <td>{{User.IdEtnia}}</td>
-              <td>{{User.IdCivil}}</td>
-              <td>{{User.IdColorPelo}}</td>
-              <td>{{User.IdUbicacion}}</td>
-              <td>{{User.IdContrato}}</td>
-              <td>{{User.IdCargo}}</td>
-              <td>{{User.IdEstado}}</td>
-              <td>{{User.estado}}</td>
-              <td>
-                <button class="btn btn-danger" (click)="EliminarData(User.CI)" onclick="javascript:alert('Registro Eliminado')">Eliminar</button>
-                <button class="btn btn-success" [routerLink]="['/empleados/edit', User.CI]">Actualizar</button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+        <div class="card shadow-sm border-0">
+          <div class="card-header bg-white py-3">
+            <h5 class="mb-0 fw-bold text-primary">
+              <i class="bi bi-person-plus me-2"></i>Datos del Empleado
+            </h5>
+          </div>
+          <div class="card-body p-4">
+            <form #f="ngForm" (ngSubmit)="AgregarValor()" novalidate>
+              <div class="row g-3">
+                <!-- Primera columna -->
+                <div class="col-md-6">
+                  <!-- Grupo CI -->
+                  <div class="form-floating mb-3">
+                    <input type="hidden" [(ngModel)]="user.CI" name="CI">
+                  </div>
+
+                  <!-- Grupo Nombre -->
+                  <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="Nombre" 
+                           [(ngModel)]="user.Nombre" name="Nombre" 
+                           placeholder="Digite el Nombre" required>
+                    <label for="Nombre">Nombre</label>
+                  </div>
+
+                  <!-- Grupo Apellido -->
+                  <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="Apellido" 
+                           [(ngModel)]="user.Apellido" name="Apellido" 
+                           placeholder="Digite el Apellido" required>
+                    <label for="Apellido">Apellido</label>
+                  </div>
+
+                  <!-- Grupo Etnia -->
+                  <div class="mb-3">
+                    <label for="IdEtnia" class="form-label fw-semibold">Etnia</label>
+                    <select class="form-select" id="IdEtnia" 
+                            [(ngModel)]="user.IdEtnia" name="IdEtnia" required>
+                      <option value="" disabled selected>Seleccione la Etnia</option>
+                      <option *ngFor="let lista of EtniaList" [value]="lista.IdEtnia">
+                        {{lista.Nombre}}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+
+                <!-- Segunda columna -->
+                <div class="col-md-6">
+                  <!-- Grupo Estado Civil -->
+                  <div class="mb-3">
+                    <label for="IdCivil" class="form-label fw-semibold">Estado Civil</label>
+                    <select class="form-select" id="IdCivil" 
+                            [(ngModel)]="user.IdCivil" name="IdCivil" required>
+                      <option value="" disabled selected>Seleccione el Estado Civil</option>
+                      <option *ngFor="let lista of EstadoCivilList" [value]="lista.IdCivil">
+                        {{lista.EstadoCivil}}
+                      </option>
+                    </select>
+                  </div>
+
+                  <!-- Grupo Color de Pelo -->
+                  <div class="mb-3">
+                    <label for="IdColorPelo" class="form-label fw-semibold">Color de Pelo</label>
+                    <select class="form-select" id="IdColorPelo" 
+                            [(ngModel)]="user.IdColorPelo" name="IdColorPelo" required>
+                      <option value="" disabled selected>Seleccione el Color de Pelo</option>
+                      <option *ngFor="let lista of ColorPeloList" [value]="lista.IdColorPelo">
+                        {{lista.Color}}
+                      </option>
+                    </select>
+                  </div>
+
+                  <!-- Grupo Ubicación -->
+                  <div class="mb-3">
+                    <label for="IdUbicacion" class="form-label fw-semibold">Ubicación</label>
+                    <select class="form-select" id="IdUbicacion" 
+                            [(ngModel)]="user.IdUbicacion" name="IdUbicacion" required>
+                      <option value="" disabled selected>Seleccione la Ubicación</option>
+                      <option *ngFor="let lista of UbicacionList" [value]="lista.IdUbicacion">
+                        {{lista.Direccion}}
+                      </option>
+                    </select>
+                  </div>
+
+                  <!-- Grupo Contrato -->
+                  <div class="mb-3">
+                    <label for="IdContrato" class="form-label fw-semibold">Tipo de Contrato</label>
+                    <select class="form-select" id="IdContrato" 
+                            [(ngModel)]="user.IdContrato" name="IdContrato" required>
+                      <option value="" disabled selected>Seleccione el Tipo de Contrato</option>
+                      <option *ngFor="let lista of ContratoList" [value]="lista.IdContrato">
+                        {{lista.TipoContrato}}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+
+                <!-- Tercera columna (ocupando todo el ancho) -->
+                <div class="col-12">
+                  <div class="row g-3">
+                    <div class="col-md-4">
+                      <div class="mb-3">
+                        <label for="IdCargo" class="form-label fw-semibold">Cargo</label>
+                        <select class="form-select" id="IdCargo" 
+                                [(ngModel)]="user.IdCargo" name="IdCargo" required>
+                          <option value="" disabled selected>Seleccione el Cargo</option>
+                          <option *ngFor="let lista of CargoList" [value]="lista.IdCargo">
+                            {{lista.IdCargo}}
+                          </option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="col-md-4">
+                      <div class="mb-3">
+                        <label for="IdEstado" class="form-label fw-semibold">Estado</label>
+                        <select class="form-select" id="IdEstado" 
+                                [(ngModel)]="user.IdEstado" name="IdEstado" required>
+                          <option value="" disabled selected>Seleccione el Estado</option>
+                          <option *ngFor="let lista of EstadoList" [value]="lista.IdEstado">
+                            {{lista.NombreEstado}}
+                          </option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="col-md-4 d-flex align-items-end">
+                      <button type="submit" class="btn btn-primary w-100 py-3 fw-bold" 
+                              [disabled]="f.invalid">
+                        <i class="bi bi-save me-2"></i>GUARDAR EMPLEADO
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sección de búsqueda y tabla -->
+    <div class="row justify-content-center mt-4">
+      <div class="col-lg-10">
+        <div class="card shadow-sm border-0">
+          <div class="card-header bg-white py-3">
+            <div class="row align-items-center">
+              <div class="col-md-6">
+                <h5 class="mb-0 fw-bold text-primary">
+                  <i class="bi bi-people-fill me-2"></i>Listado de Empleados
+                </h5>
+              </div>
+              <div class="col-md-6">
+                <div class="input-group">
+                  <span class="input-group-text bg-white">
+                    <i class="bi bi-search text-secondary"></i>
+                  </span>
+                  <input type="text" class="form-control" 
+                         placeholder="Buscar empleado..." 
+                         [(ngModel)]="filterPost" name="filterPost">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-body p-0">
+            <div class="table-responsive">
+              <table class="table table-hover align-middle mb-0">
+                <thead class="table-light">
+                  <tr>
+                    <th class="text-nowrap">CI</th>
+                    <th class="text-nowrap">Nombre</th>
+                    <th class="text-nowrap">Apellido</th>
+                    <th class="text-nowrap">Etnia</th>
+                    <th class="text-nowrap">Estado Civil</th>
+                    <th class="text-nowrap">IdColorPelo</th>
+                    <th class="text-nowrap">IdUbicacion</th>
+                    <th class="text-nowrap">IdContrato</th>
+                    <th class="text-nowrap">IdCargo</th>
+                    <th class="text-nowrap">IdEstado</th>
+                    <th class="text-nowrap">Estado</th>
+                    <th class="text-nowrap">Acciones</th>
+
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let User of TUser | filterempresa:filterPost">
+                    <td class="fw-semibold">{{User.CI}}</td>
+                    <td>{{User.Nombre}}</td>
+                    <td>{{User.Apellido}}</td>
+                    <td>{{User.IdEtnia}}</td>
+                    <td>{{User.IdCivil}}</td>
+                    <td>{{User.IdColorPelo}}</td>
+                    <td>{{User.IdUbicacion}}</td>
+                    <td>{{User.IdContrato}}</td>
+                    <td>{{User.IdCargo}}</td>
+                    <td>{{User.IdEstado}}</td>
+                    <td>{{User.estado}}</td>
+                    <td>
+                      <div class="d-flex gap-2">
+                        <button class="btn btn-sm btn-danger" 
+                                (click)="EliminarData(User.CI)">
+                          <i class="bi bi-trash"></i>
+                        </button>
+                        <button class="btn btn-sm btn-success" 
+                                [routerLink]="['/empleados/edit', User.CI]">
+                          <i class="bi bi-pencil"></i>
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-  
+</div>

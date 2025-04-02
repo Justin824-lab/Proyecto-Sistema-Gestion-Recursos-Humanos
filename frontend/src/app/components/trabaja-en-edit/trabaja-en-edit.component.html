@@ -1,0 +1,41 @@
+<nav class="navbar navbar-dark bg-dark">
+    <a href="/" class="navbar-brand">TRABAJOS</a>
+  </nav>
+  
+  <div class="row mt-5">
+    <div class="card">
+      <div class="card-body">
+        <form action="">
+          <div class="form-group">
+            <option>Seleccione el empleado</option>
+<select class="form-control" size="1" [(ngModel)]="user.CI" name="CI" required>
+  <option *ngFor="let lista of Empleadoslist" [value]="lista.CI">
+    {{ lista.Nombre }} {{ lista.Apellido }}
+  </option>
+</select>
+          </div>
+  
+          <div class="form-group">
+            <option>Seleccione el Departamento</option>
+              <select class="form-control" size="1" [(ngModel)]="user.IdDpto" name="IdDpto" required>
+                     <option *ngFor="let lista of Departamentolist" value={{lista.IdDpto}}>{{lista.Nombre}}</option>
+            </select>
+          </div>
+  
+          <div class="form-group">
+            <label for="" class="control-label">Fecha de Alta</label>
+            <input type="date" [(ngModel)]="user.FechaAlta" name="FechaAlta" class="form-control">
+          </div>
+  
+          <div class="form-group">
+            <label for="" class="control-label">Estado</label>
+            <input type="text" [(ngModel)]="user.estado" name="estado" placeholder="ESTADO DEL EMPLEADO" class="form-control">
+          </div>   
+  
+          <button class="btn btn-success btn-block" (click)="updateUser()" onclick="javascript:alert('Registro Actualizado')">
+            Actualizar
+          </button>    
+        </form>
+      </div>
+    </div>
+  </div>

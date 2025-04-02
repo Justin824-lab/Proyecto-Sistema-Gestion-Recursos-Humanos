@@ -26,44 +26,59 @@
 
                 
                 <div class="form-group">
-                    <label for="" class="control-label">Etnia</label>
-                    <input type="number" [(ngModel)]="user.IdEtnia" name="IdEtnia" placeholder="DIGITE LA ETNIA" class="form-control" autofocus>
+                    <label for="" class="control-label">IdEtnia</label>
+                    <select class="form-control" [(ngModel)]="user.IdEtnia" name="IdEtnia" required>
+                        <option>Seleccione la Etnia</option>
+                        <option *ngFor="let lista of EtniaList" [value]="lista.IdEtnia">{{lista.Nombre}}</option>
+                    </select>
                 </div>
-
-               
-                <div class="form-group">
-                    <label for="" class="control-label">Estado Civil</label>
-                    <input type="number" [(ngModel)]="user.IdCivil" name="IdCivil" placeholder="DIGITE EL ESTADO CIVIL" class="form-control" autofocus>
-                </div>
-
                 
                 <div class="form-group">
-                    <label for="" class="control-label">Color de Pelo</label>
-                    <input type="number" [(ngModel)]="user.IdColorPelo" name="IdColorPelo" placeholder="DIGITE EL COLOR DE PELO" class="form-control" autofocus>
+                    <label for="" class="control-label">IdCivil</label>
+                    <select class="form-control" [(ngModel)]="user.IdCivil" name="IdCivil" required>
+                        <option>Seleccione el Estado Civil</option>
+                        <option *ngFor="let lista of EstadoCivilList" [value]="lista.IdCivil">{{lista.EstadoCivil}}</option>
+                    </select>
                 </div>
-
-               
-                <div class="form-group">
-                    <label for="" class="control-label">Ubicación</label>
-                    <input type="number" [(ngModel)]="user.IdUbicacion" name="IdUbicacion" placeholder="DIGITE LA UBICACION" class="form-control" autofocus>
-                </div>
-
                 
                 <div class="form-group">
-                    <label for="" class="control-label">Contrato</label>
-                    <input type="number" [(ngModel)]="user.IdContrato" name="IdContrato" placeholder="DIGITE EL CONTRATO" class="form-control" autofocus>
+                    <label for="" class="control-label">IdColorPelo</label>
+                    <select class="form-control" [(ngModel)]="user.IdColorPelo" name="IdColorPelo" required>
+                        <option>Seleccione el Color de Pelo</option>
+                        <option *ngFor="let lista of ColorPeloList" [value]="lista.IdColorPelo">{{lista.Color}}</option>
+                    </select>
                 </div>
-
-               
+                
                 <div class="form-group">
-                    <label for="" class="control-label">Cargo</label>
-                    <input type="number" [(ngModel)]="user.IdCargo" name="IdCargo" placeholder="DIGITE EL CARGO" class="form-control" autofocus>
+                    <label for="" class="control-label">IdUbicacion</label>
+                    <select class="form-control" [(ngModel)]="user.IdUbicacion" name="IdUbicacion" required>
+                        <option>Seleccione la Ubicación</option>
+                        <option *ngFor="let lista of UbicacionList" [value]="lista.IdUbicacion">{{lista.Direccion}}</option>
+                    </select>
                 </div>
-
-             
+                
                 <div class="form-group">
-                    <label for="" class="control-label">Estado</label>
-                    <input type="number" [(ngModel)]="user.IdEstado" name="IdEstado" placeholder="DIGITE EL ESTADO" class="form-control" autofocus>
+                    <label for="" class="control-label">IdContrato</label>
+                    <select class="form-control" [(ngModel)]="user.IdContrato" name="IdContrato" required>
+                        <option>Seleccione el Tipo de Contrato</option>
+                        <option *ngFor="let lista of ContratoList" [value]="lista.IdContrato">{{lista.TipoContrato}}</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="" class="control-label">IdCargo</label>
+                    <select class="form-control" [(ngModel)]="user.IdCargo" name="IdCargo" required>
+                        <option>Seleccione el Cargo</option>
+                        <option *ngFor="let lista of CargoList" [value]="lista.IdCargo">{{lista.IdCargo}}</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="" class="control-label">IdEstado</label>
+                    <select class="form-control" [(ngModel)]="user.IdEstado" name="IdEstado" required>
+                        <option>Seleccione el Estado</option>
+                        <option *ngFor="let lista of EstadoList" [value]="lista.IdEstado">{{lista.NombreEstado}}</option>
+                    </select>
                 </div>
 
             

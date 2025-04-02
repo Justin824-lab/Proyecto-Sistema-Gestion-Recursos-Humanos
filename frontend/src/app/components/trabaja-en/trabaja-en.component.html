@@ -1,1 +1,74 @@
-<p>trabaja-en works!</p>
+<nav class="navbar navbar-dark bg-dark">
+    <a href="/" class="navbar-brand">REGISTRO DE TRABAJO</a>
+  </nav>
+  
+  <div class="agregar_contenedor"></div>
+  <div class="row mt-5">
+    <div class="card">
+      <div class="card-body">
+        <form id="formulario" name="formulario" #f="ngForm" (ngSubmit)="AgregarValor()" novalidate>
+          <div class="form-group">
+            <option>Seleccione el empleado</option>
+<select class="form-control" size="1" [(ngModel)]="user.CI" name="CI" required>
+  <option *ngFor="let lista of Empleadoslist" [value]="lista.CI">
+    {{ lista.Nombre }} {{ lista.Apellido }}
+  </option>
+</select>
+          </div>
+
+  
+          <div class="form-group">
+            <option>Seleccione el Departamento</option>
+              <select class="form-control" size="1" [(ngModel)]="user.IdDpto" name="IdDpto" required>
+                     <option *ngFor="let lista of Departamentolist" value={{lista.IdDpto}}>{{lista.Nombre}}</option>
+            </select>
+          </div>
+
+  
+          <div class="form-group">
+            <label for="" class="control-label">Fecha de Alta</label>
+            <input type="date" [(ngModel)]="user.FechaAlta" name="fechaAlta" class="form-control">
+          </div>  
+  
+          <button type="submit" class="btn btn-primary" formnovalidate value="Save" onclick="javascript:alert('Registro Almacenado')">
+            Agregar
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  <br>
+  
+  <div class="container">  
+    <div class="row mt-25">    
+      <div>
+        <table>
+          <thead>
+            <tr>
+              <th>NO</th>
+              <th>ID DEPARTAMENTO</th>
+              <th>FECHA DE ALTA</th>
+              <th>ESTADO</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let User of TUser">
+              <td>{{User.CI}}</td>
+              <td>{{User.IdDpto}}</td>
+              <td>{{User.FechaAlta}}</td>
+              <td>{{User.estado}}</td>
+              <td>
+                <button class="btn btn-danger" (click)="EliminarData(User.CI)" onclick="javascript:alert('Registro Eliminado')">Eliminar</button>
+              </td>
+              <td>
+                <button class="btn btn-success" [routerLink]="['/trabaja-en/edit', User.CI]">
+                  Actualizar
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

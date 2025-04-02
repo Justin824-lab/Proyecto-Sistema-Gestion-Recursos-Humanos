@@ -32,6 +32,14 @@ import { CargoNivelUtilizacionComponent } from './components/cargo-nivel-utiliza
 import { OtrosPagosEmpleadosComponent } from './components/otros-pagos-empleados/otros-pagos-empleados.component';
 import { TlaboralComponent } from './components/tlaboral/tlaboral.component';
 import { CargoFuncionesComponent } from './components/cargo-funciones/cargo-funciones.component';
+import { TrabajaEnEditComponent } from './components/trabaja-en-edit/trabaja-en-edit.component';
+import { FilterempresaPipe } from './Pipes/filterempresa.pipe';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NavegacionComponent } from './components/navegacion/navegacion.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatMenuModule } from '@angular/material/menu';
+
+
 
 @NgModule({
   declarations: [
@@ -62,13 +70,23 @@ import { CargoFuncionesComponent } from './components/cargo-funciones/cargo-func
     CargoNivelUtilizacionComponent,
     OtrosPagosEmpleadosComponent,
     TlaboralComponent,
-    CargoFuncionesComponent
+    CargoFuncionesComponent,
+    TrabajaEnEditComponent,
+    FilterempresaPipe,
+    NavegacionComponent,
+   
+
+  
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatMenuModule    
+
   ],
   providers: [DataService],
   bootstrap: [AppComponent]

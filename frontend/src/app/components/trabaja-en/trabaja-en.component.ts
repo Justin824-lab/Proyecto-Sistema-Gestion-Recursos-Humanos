@@ -11,16 +11,30 @@ export class TrabajaEnComponent implements OnInit {
 
   TUser: any = [];
   user: TrabajaEn = {
-      ci: null,
-      idDpto: null,
-      fechaAlta: null,
+      CI: null,
+      IdDpto: null,
+      FechaAlta: null,
       estado: 'Activo'
   };
 
+  Empleadoslist: any;
+  Departamentolist: any;  
   constructor(private Data: DataService) { }
 
   ngOnInit(): void {
     this.getUser();
+    this.getDropListEmpleados();
+    this.getDropListDepartamento();
+  }
+  getDropListEmpleados() {
+    this.Data.getDropListEmpleados().subscribe((data:any)=>{
+      this.Empleadoslist=data;
+    })
+  }
+  getDropListDepartamento() {
+    this.Data.getDropListDepartamento().subscribe((data:any)=>{
+      this.Departamentolist=data;
+    })
   }
 
   getUser() {
@@ -31,7 +45,6 @@ export class TrabajaEnComponent implements OnInit {
   }
 
   AgregarValor() {
-    delete this.user.ci;
     this.Data.save(this.user, '/TrabajaEn')
       .subscribe(
         res => {

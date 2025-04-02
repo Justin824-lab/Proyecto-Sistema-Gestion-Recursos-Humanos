@@ -26,6 +26,14 @@ export class EmpleadosEditComponent implements OnInit   {
     IdEstado: null,
     estado: 'Activo'
   }
+  EtniaList: any;
+  EstadoCivilList: any;
+  ColorPeloList: any;
+  UbicacionList: any;
+  ContratoList: any;
+  CargoList: any;
+  EstadoList: any;
+
   constructor(private Data: DataService,
     private router: Router,
     private activatedRoute: ActivatedRoute) { }
@@ -40,7 +48,55 @@ export class EmpleadosEditComponent implements OnInit   {
                                   },
             err => console.log(err)
           );
+          this.getDropListEtnia();
+          this.getDropListEstadoCivil();
+          this.getDropListColorPelo();
+          this.getDropListUbicacion();
+          this.getDropListContrato();
+          this.getDropListCargo();
+          this.getDropListEstado();
       }
+      }
+      getDropListEtnia() {
+        this.Data.getDropListEtnia().subscribe((data: any) => {
+          this.EtniaList = data;
+        });
+      }
+      
+      getDropListEstadoCivil() {
+        this.Data.getDropListEstadoCivil().subscribe((data: any) => {
+          this.EstadoCivilList = data;
+        });
+      }
+      
+      getDropListColorPelo() {
+        this.Data.getDropListColorPelo().subscribe((data: any) => {
+          this.ColorPeloList = data;
+        });
+      }
+      
+      getDropListUbicacion() {
+        this.Data.getDropListUbicacion().subscribe((data: any) => {
+          this.UbicacionList = data;
+        });
+      }
+      
+      getDropListContrato() {
+        this.Data.getDropListContrato().subscribe((data: any) => {
+          this.ContratoList = data;
+        });
+      }
+      
+      getDropListCargo() {
+        this.Data.getDropListCargo().subscribe((data: any) => {
+          this.CargoList = data;
+        });
+      }
+      
+      getDropListEstado() {
+        this.Data.getDropListEstado().subscribe((data: any) => {
+          this.EstadoList = data;
+        });
       }
       updateUser() {
         this.Data.update(this.user.CI!, this.user,'/empleados')

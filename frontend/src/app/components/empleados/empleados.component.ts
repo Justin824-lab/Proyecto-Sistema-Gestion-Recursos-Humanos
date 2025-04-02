@@ -1,7 +1,7 @@
 import { Component, OnInit  } from '@angular/core';
 import {  Empleados } from 'src/app/Interfaces/user';
 import { DataService } from '../../Services/data.service';
-
+import { ViewChild, ElementRef } from '@angular/core';
 
 
 
@@ -11,6 +11,9 @@ import { DataService } from '../../Services/data.service';
   styleUrls: ['./empleados.component.css']
 })
 export class EmpleadosComponent implements OnInit  {
+  @ViewChild('htmlData') htmlData!: ElementRef;
+  filterPost = '';
+
   TUser: any = [];
   user: Empleados = {
     CI: null, 
@@ -25,11 +28,67 @@ export class EmpleadosComponent implements OnInit  {
     IdEstado: null,
     estado: 'Activo'
   }
+  EtniaList: any;
+EstadoCivilList: any;
+ColorPeloList: any;
+UbicacionList: any;
+ContratoList: any;
+CargoList: any;
+EstadoList: any;
 
   constructor(private Data: DataService) { }
 
   ngOnInit(): void {
     this.getUser();
+    this.getDropListEtnia();
+this.getDropListEstadoCivil();
+this.getDropListColorPelo();
+this.getDropListUbicacion();
+this.getDropListContrato();
+this.getDropListCargo();
+this.getDropListEstado();
+  }
+  
+  getDropListEtnia() {
+    this.Data.getDropListEtnia().subscribe((data: any) => {
+      this.EtniaList = data;
+    });
+  }
+  
+  getDropListEstadoCivil() {
+    this.Data.getDropListEstadoCivil().subscribe((data: any) => {
+      this.EstadoCivilList = data;
+    });
+  }
+  
+  getDropListColorPelo() {
+    this.Data.getDropListColorPelo().subscribe((data: any) => {
+      this.ColorPeloList = data;
+    });
+  }
+  
+  getDropListUbicacion() {
+    this.Data.getDropListUbicacion().subscribe((data: any) => {
+      this.UbicacionList = data;
+    });
+  }
+  
+  getDropListContrato() {
+    this.Data.getDropListContrato().subscribe((data: any) => {
+      this.ContratoList = data;
+    });
+  }
+  
+  getDropListCargo() {
+    this.Data.getDropListCargo().subscribe((data: any) => {
+      this.CargoList = data;
+    });
+  }
+  
+  getDropListEstado() {
+    this.Data.getDropListEstado().subscribe((data: any) => {
+      this.EstadoList = data;
+    });
   }
   getUser() {
     this.Data.getAll('/empleados')

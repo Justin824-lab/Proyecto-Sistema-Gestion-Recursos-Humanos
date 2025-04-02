@@ -114,9 +114,9 @@ export interface GrupoEscala {
 }
 
 export interface TrabajaEn {
-    ci?: number | null;
-    idDpto?: number | null;
-    fechaAlta?: Date | null;
+    CI?: number | null;
+    IdDpto?: number | null;
+    FechaAlta?: Date | null;
     estado?: string;
 }
 

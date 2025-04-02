@@ -23,12 +23,14 @@ import { DepartamentoComponent } from './components/departamento/departamento.co
 import { ReqConocimientosComponent } from './components/req-conocimientos/req-conocimientos.component';
 import { GrupoEscalaComponent } from './components/grupo-escala/grupo-escala.component';
 import { TrabajaEnComponent } from './components/trabaja-en/trabaja-en.component';
+import { TrabajaEnEditComponent } from './components/trabaja-en-edit/trabaja-en-edit.component';
 import { PlantillaComponent } from './components/plantilla/plantilla.component';
 import { CargoRequisitosComponent } from './components/cargo-requisitos/cargo-requisitos.component';
 import { CargoNivelUtilizacionComponent } from './components/cargo-nivel-utilizacion/cargo-nivel-utilizacion.component';
 import { OtrosPagosEmpleadosComponent } from './components/otros-pagos-empleados/otros-pagos-empleados.component';
 import { TlaboralComponent } from './components/tlaboral/tlaboral.component';
 import { CargoFuncionesComponent } from './components/cargo-funciones/cargo-funciones.component';
+import { NavegacionComponent } from './components/navegacion/navegacion.component';
 
 
 const routes: Routes = [
@@ -71,6 +73,11 @@ const routes: Routes = [
   { path: 'trabaja-en', 
     component: TrabajaEnComponent 
   },
+  {
+    path: 'trabaja-en/edit/:id',
+    component :TrabajaEnEditComponent
+  }
+  ,
   { path: 'plantilla', 
     component: PlantillaComponent 
   },
@@ -131,6 +138,14 @@ const routes: Routes = [
     path: 'etnia/edit/:id',
     component : EtniaEditComponent
   }
+  ,
+  {
+    path: 'navegacion',
+    component:NavegacionComponent
+  }
+
+ 
+
 
 ];
 

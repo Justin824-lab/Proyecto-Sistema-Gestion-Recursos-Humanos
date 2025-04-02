@@ -31,11 +31,13 @@
 <div class="container">
   <div class="row mt-25">
     <div>
-      <table>
+      <table class="table table-bordered table-hover" id="tabla">
+
         <thead>
           <tr>
             <th>NO</th>
             <th>ESTADO CIVIL</th>
+            <th>ACCIONES</th>
           </tr>
         </thead>
         <tbody>
@@ -44,8 +46,6 @@
             <td>{{User.EstadoCivil}}</td>
             <td>
               <button class="btn btn-danger" (click)="EliminarData(User.IdCivil)" onclick="javascript:alert('Registro Eliminado')">Eliminar</button>
-            </td>
-            <td>
               <button class="btn btn-success" [routerLink]="['/estadocivil/edit', User.IdCivil]">
                 Actualizar
               </button>
