@@ -9,25 +9,25 @@ export interface Empleados {
     IdContrato?: number | null;
     IdCargo?: number | null;
     IdEstado?: number | null;
-    estado?: string;
+    Estado?: string;
 }
 
 export interface EstadoCivil{
     IdCivil?: number | null;
-    EstadoCivil?: string | null;
-    estado?: string;
+    Estado?: string | null;
+    EstadoRegistro?: string;
 }
 export interface Cargo {
     IdCargo?: number | null; 
     IdNoResolucion?: number | null;
     IdGrupoEscala?: number | null;
     IdCatOcupacional?: number | null;
-    estado?: string;
+    Estado?: string;
 }
 export interface Etnia {
     IdEtnia?: number | null; 
     Nombre?: string | null;
-    estado?: string;
+    Estado?: string;
 }
 
 export interface User{
@@ -40,118 +40,118 @@ export interface User{
 // Editado por Jose 
 
 export interface NivelDeUtilizacion {
-    idNivelUtilizacion?: number | null;
-    descripcion?: string | null | undefined;
-    estado?: string;
+    IdNivelUtilizacion?: number | null;
+    Descripcion?: string | null | undefined;
+    Estado?: string;
 }
 
 export interface OtrosPagos {
-    idPagos?: number | null;
-    monto?: number | null;
-    descripcion?: string | null;
-    estado?: string;
+    IdPagos?: number | null;
+    Monto?: number | null;
+    Descripcion?: string | null;
+    Estado?: string;
 }
 
 export interface NoResolucion {
-    idNoResolucion?: number | null;
-    descripcion?: string | null;
-    estado?: string;
+    IdNoResolucion?: number | null;
+    Descripcion?: string | null;
+    Estado?: string;
 }
 
 export interface CatOcupacional {
-    idCatOcupacional?: number | null;
-    nombre?: string | null;
-    estado?: string;
+    IdCatOcupacional?: number | null;
+    Nombre?: string | null;
+    Estado?: string;
 }
 
 export interface CFTPrincipales {
-    idFTPrincipales?: number | null;
-    descripcion?: string | null;
-    estado?: string;
+    IdFTPrincipales?: number | null;
+    Descripcion?: string | null;
+    Estado?: string;
 }
 
 export interface Contrato {
-    idContrato?: number | null;
-    tipoContrato?: string | null;
-    duracion?: number | null;
-    estado?: string;
+    IdContrato?: number | null;
+    TipoContrato?: string | null;
+    Duracion?: number | null;
+    Estado?: string;
 }
 
 export interface ColorPelo {
-    idColorPelo?: number | null;
-    color?: string | null;
-    estado?: string;
+    IdColorPelo?: number | null;
+    Color?: string | null;
+    Estado?: string;
 }
 
 export interface Ubicacion {
-    idUbicacion?: number | null;
-    direccion?: string | null;
-    estado?: string;
+    IdUbicacion?: number | null;
+    Direccion?: string | null;
+    Estado?: string;
 }
 
 export interface Estado {
-    idEstado?: number | null;
-    nombreEstado?: string | null;
-    estado?: string;
+    IdEstado?: number | null;
+    NombreEstado?: string | null;
+    Estado?: string;
 }
 
 export interface Departamento {
-    idDpto?: number | null;
-    nombre?: string | null;
-    estado?: string;
+    IdDpto?: number | null;
+    Nombre?: string | null;
+    Estado?: string;
 }
 
 export interface ReqConocimientos {
-    idReqConoc?: number | null;
-    descripcion?: string | null;
-    estado?: string;
+    IdReqConoc?: number | null;
+    Descripcion?: string | null;
+    Estado?: string;
 }
 
 export interface GrupoEscala {
-    idGrupoEscala?: number | null;
-    escala?: string | null;
-    estado?: string;
+    IdGrupoEscala?: number | null;
+    Escala?: string | null;
+    Estado?: string;
 }
 
 export interface TrabajaEn {
     CI?: number | null;
     IdDpto?: number | null;
     FechaAlta?: Date | null;
-    estado?: string;
+    Estado?: string;
 }
 
 export interface Plantilla {
-    idCargo?: number | null;
-    idDpto?: number | null;
-    estado?: string;
+    IdCargo?: number | null;
+    IdDpto?: number | null;
+    Estado?: string;
 }
 
 export interface CargoRequisitos {
-    idCargo?: number | null;
-    idReqConoc?: number | null;
-    estado?: string;
+    IdCargo?: number | null;
+    IdReqConoc?: number | null;
+    Estado?: string;
 }
 
 export interface CargoNivelUtilizacion {
-    idCargo?: number | null;
-    idNivelUtilizacion?: number | null;
-    estado?: string;
+    IdCargo?: number | null;
+    IdNivelUtilizacion?: number | null;
+    Estado?: string;
 }
 
 export interface OtrosPagosEmpleados {
-    ci?: number | null;
-    idPagos?: number | null;
-    estado?: string;
+    CI?: number | null;
+    IdPagos?: number | null;
+    Estado?: string;
 }
 
 export interface Tlaboral {
-    ci?: number | null;
-    idCargo?: number | null;
-    estado?: string;
+    CI?: number | null;
+    IdCargo?: number | null;
+    Estado?: string;
 }
 
 export interface CargoFunciones {
-    idCargo?: number | null;
-    idFTPrincipales?: number | null;
-    estado?: string;
+    IdCargo?: number | null;
+    IdFTPrincipales?: number | null;
+    Estado?: string;
 }
