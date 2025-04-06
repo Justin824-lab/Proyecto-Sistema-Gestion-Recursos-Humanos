@@ -8,13 +8,17 @@
         <form action="">
             <div class="form-group">
                 <label for="" class="control-label">Tipo de Contrato</label>
-                      <input type="text"  [(ngModel)]="user.IdContrato" name="idcontrato" placeholder="DIGITE TIPO DE CONTRATO" class="form-control" required >
+                      <input type="text"  [(ngModel)]="user.TipoContrato" name="idcontrato" placeholder="DIGITE TIPO DE CONTRATO" class="form-control" required >
                       </div>                  
                 <div class="form-group">
                   <label for="" class="control-label">Duracion (Meses)</label>
                   <input type="text"  [(ngModel)]="user.Duracion"  name="Duracion" placeholder="DIGITE LA DURACION DEL CONTRATO" class="form-control">
               </div>
-              <button class="btn btn-success btn-block" (click)="updateUser()" onclick="javascript:alert('Registro Actualizado')">
+              <div class="form-group">
+                <label for="" class="control-label">Estado</label>
+                <input type="text"  [(ngModel)]="user.Estado"  name="Estado" placeholder="DIGITE EL ESTADO" class="form-control">
+            </div>
+               <button class="btn btn-success btn-block" (click)="updateUser()" onclick="javascript:alert('Registro Actualizado') ">
                 Actualizar
               </button>    
         </form>
