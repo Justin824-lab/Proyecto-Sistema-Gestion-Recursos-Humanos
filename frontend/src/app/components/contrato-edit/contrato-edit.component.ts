@@ -39,7 +39,7 @@ export class ContratoEditComponent implements OnInit {
       this.Data.update(this.user.IdContrato!, this.user,'/contrato')
         .subscribe(
           res => {
-            this.router.navigate(['/Contrato']);
+            this.router.navigate(['/contrato']);
           },
           err => console.error(err)
         );

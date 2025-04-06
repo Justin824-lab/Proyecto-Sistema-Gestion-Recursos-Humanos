@@ -14,7 +14,7 @@ export class ContratoComponent implements OnInit {
     IdContrato: null,
     TipoContrato: null,
     Duracion: null,
-    Estado: 'Activo'
+    Estado: ''
   };
 
   constructor(private Data: DataService) { }
@@ -31,13 +31,23 @@ export class ContratoComponent implements OnInit {
   }
 
   AgregarValor() {
-    delete this.user.IdContrato;
-    this.Data.save(this.user, '/Contrato')
-      .subscribe(
-        res => { this.getUser(); },
-        err => console.error(err)
-      );
+    delete this.user.IdContrato; // Elimina IdContrato para evitar enviarlo
+    this.Data.save(this.user, '/Contrato').subscribe(
+      res => {
+        console.log('Contrato agregado:', res);
+        this.getUser(); // Recarga la lista de contratos
+        // Limpia los campos del formulario
+        this.user.TipoContrato= '';
+        this.user.Duracion= null;
+        this.user.Estado= '' ;
+      },
+      err => {
+        console.error('Error al agregar:', err);
+        alert('Hubo un error al agregar el contrato');
+      }
+    );
   }
+
 
   EliminarData(id: number) {
     this.Data.delete(id, '/Contrato')

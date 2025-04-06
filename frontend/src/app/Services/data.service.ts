@@ -59,7 +59,8 @@ export class DataService {
     return this.http.get(`${this.API_URI}` + url + `/${id}`);
   }
 
-  delete(id: number, url: string) {
+  delete(id: string|number, url: string) {
+    console.log('ID recibido:', id, typeof id);
     return this.http.delete(`${this.API_URI}` + url + `/${id}`);
   }
 
