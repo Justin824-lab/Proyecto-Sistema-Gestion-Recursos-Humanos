@@ -11,9 +11,9 @@ export class CargoNivelUtilizacionComponent implements OnInit {
 
   TUser: any = [];
   user: CargoNivelUtilizacion = {
-      idCargo: null,
-      idNivelUtilizacion: null,
-      estado: 'Activo'
+      IdCargo: null,
+      IdNivelUtilizacion: null,
+      Estado: 'Activo'
   };
 
   constructor(private Data: DataService) { }
@@ -30,7 +30,7 @@ export class CargoNivelUtilizacionComponent implements OnInit {
   }
 
   AgregarValor() {
-    delete this.user.idNivelUtilizacion;
+    delete this.user.IdNivelUtilizacion;
     this.Data.save(this.user, '/CargoNivelUtilizacion')
       .subscribe(
         res => {

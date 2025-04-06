@@ -43,13 +43,14 @@
   <div class="container">  
     <div class="row mt-25">    
       <div>
-        <table>
+        <table class="table table-bordered table-hover">
           <thead>
             <tr>
               <th>NO</th>
               <th>ID DEPARTAMENTO</th>
               <th>FECHA DE ALTA</th>
               <th>ESTADO</th>
+              <th>ACCIONES</th>
             </tr>
           </thead>
           <tbody>
@@ -57,11 +58,9 @@
               <td>{{User.CI}}</td>
               <td>{{User.IdDpto}}</td>
               <td>{{User.FechaAlta}}</td>
-              <td>{{User.estado}}</td>
+              <td>{{User.Estado}}</td>
               <td>
                 <button class="btn btn-danger" (click)="EliminarData(User.CI)" onclick="javascript:alert('Registro Eliminado')">Eliminar</button>
-              </td>
-              <td>
                 <button class="btn btn-success" [routerLink]="['/trabaja-en/edit', User.CI]">
                   Actualizar
                 </button>

@@ -13,9 +13,9 @@ export class CargoFuncionesComponent implements OnInit {
 
   TUser: any = [];
   user: CargoFunciones = {
-    idCargo: null,
-    idFTPrincipales: null,
-    estado: 'Activo'
+    IdCargo: null,
+    IdFTPrincipales: null,
+    Estado: 'Activo'
   };
 
   constructor(private Data: DataService) { }
@@ -33,7 +33,7 @@ export class CargoFuncionesComponent implements OnInit {
 
   AgregarValor() {
     // Asegúrate de eliminar el id cuando estés creando un nuevo registro
-    delete this.user.idCargo; 
+    delete this.user.IdCargo; 
     this.Data.save(this.user, '/CargoFunciones')
       .subscribe(
         res => {

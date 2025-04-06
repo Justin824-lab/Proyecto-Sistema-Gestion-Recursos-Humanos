@@ -11,10 +11,10 @@ export class OtrosPagosComponent implements OnInit {
 
   TUser: any = [];
   user: OtrosPagos = {
-    idPagos: null,
-    monto: null,
-    descripcion: null,
-    estado: 'Activo'
+    IdPagos: null,
+    Monto: null,
+    Descripcion: null,
+    Estado: 'Activo'
   };
 
   constructor(private Data: DataService) { }
@@ -31,7 +31,7 @@ export class OtrosPagosComponent implements OnInit {
   }
 
   AgregarValor() {
-    delete this.user.idPagos;
+    delete this.user.IdPagos;
     this.Data.save(this.user, '/OtrosPagos')
       .subscribe(
         res => { this.getUser(); },

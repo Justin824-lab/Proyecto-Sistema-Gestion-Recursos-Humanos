@@ -1,1 +1,53 @@
-<p>contrato works!</p>
+<div class="row mb-5">
+    <div class="card">
+      <div class="card-body">
+        <h2 class="card-title">Contrato</h2>
+        <form id="formContrato" name="formContrato" #f="ngForm" (ngSubmit)="AgregarValor()" novalidate>
+          <div class="form-group">
+            <label for="TipoContrato" class="control-label">Tipo de Contrato</label>
+            <input type="text" [(ngModel)]="user.TipoContrato" name="TipoContrato" placeholder="DIGITE EL TIPO DE CONTRATO" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label for="Duracion" class="control-label">Duración (meses)</label>
+            <input type="number" [(ngModel)]="user.Duracion" name="Duracion" placeholder="DIGITE LA DURACIÓN" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label for="Duracion" class="control-label">Estado</label>
+            <input type="text" name="Duracion" placeholder="DIGITE EL ESTADO" class="form-control" required>
+          </div>
+          <button type="submit" class="btn btn-primary mt-2" [disabled]="f.invalid" onclick="javascript:alert('Registro Almacenado')">
+            Agregar
+          </button>
+        </form>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>ID CONTRATO</th>
+            <th>TIPO CONTRATO</th>
+            <th>DURACIÓN</th>
+            <th>ESTADO</th>
+            <th>ACCIONES</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of TUser">
+            <td>{{item.IdContrato}}</td>
+            <td>{{item.TipoContrato}}</td>
+            <td>{{item.Duracion}}</td>
+            <td>{{item.Estado}}</td>
+            <td>
+              <button class="btn btn-danger" (click)="EliminarData(item.IdContrato)" onclick="javascript:alert('Registro Eliminado')">
+                Eliminar
+              </button>
+              <button class="btn btn-success ms-2" [routerLink]="['/contrato/edit', item.IdContrato]">
+                Actualizar
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

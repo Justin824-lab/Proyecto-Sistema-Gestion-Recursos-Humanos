@@ -13,7 +13,7 @@ export class EtniaComponent implements OnInit {
   user: Etnia = {
       IdEtnia: null,
       Nombre: null,
-      estado: 'Activo'
+      Estado: 'Activo'
   };
   constructor(private Data: DataService) { }
 

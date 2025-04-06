@@ -26,7 +26,7 @@ export class EmpleadosComponent implements OnInit  {
     IdContrato: null,
     IdCargo: null,
     IdEstado: null,
-    estado: 'Activo'
+    Estado: 'Activo'
   }
   EtniaList: any;
 EstadoCivilList: any;

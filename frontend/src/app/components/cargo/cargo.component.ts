@@ -16,7 +16,7 @@ export class CargoComponent implements OnInit {
       IdNoResolucion: null,
       IdGrupoEscala: null,
       IdCatOcupacional: null,
-      estado: 'Activo'
+      Estado: 'Activo'
   };
   constructor(private Data: DataService) { }
 

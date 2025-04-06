@@ -11,9 +11,9 @@ export class CftPrincipalesComponent implements OnInit {
 
   TUser: any = [];
   user: CFTPrincipales = {
-    idFTPrincipales: null,
-    descripcion: null,
-    estado: 'Activo'
+    IdFTPrincipales: null,
+    Descripcion: null,
+    Estado: 'Activo'
   };
 
   constructor(private Data: DataService) { }
@@ -30,7 +30,7 @@ export class CftPrincipalesComponent implements OnInit {
   }
 
   AgregarValor() {
-    delete this.user.idFTPrincipales;
+    delete this.user.IdFTPrincipales;
     this.Data.save(this.user, '/CFTPrincipales')
       .subscribe(
         res => { this.getUser(); },

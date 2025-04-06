@@ -14,7 +14,7 @@ export class TrabajaEnComponent implements OnInit {
       CI: null,
       IdDpto: null,
       FechaAlta: null,
-      estado: 'Activo'
+      Estado: 'Activo'
   };
 
   Empleadoslist: any;

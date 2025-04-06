@@ -1,23 +1,22 @@
-import { Component, OnInit } from '@angular/core';
-import { Cargo } from '../../Interfaces/user';
+import { Component,OnInit } from '@angular/core';
+import { Contrato } from '../../Interfaces/user';
 import { DataService } from '../../Services/data.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
-
 @Component({
-  selector: 'app-cargo-edit',
-  templateUrl: './cargo-edit.component.html',
-  styleUrls: ['./cargo-edit.component.css']
+  selector: 'app-contrato-edit',
+  templateUrl: './contrato-edit.component.html',
+  styleUrls: ['./contrato-edit.component.css']
 })
-export class CargoEditComponent implements OnInit {
+export class ContratoEditComponent implements OnInit {
+
   valorInput: number | undefined;
   TUser: any = [];
-  user: Cargo = {
-      IdCargo: null,
-      IdNoResolucion: null,
-      IdGrupoEscala: null,
-      IdCatOcupacional: null,
-      Estado: 'Activo'
+  user: Contrato = {
+    IdContrato:  null ,
+    TipoContrato: null,
+    Duracion: null,
+    Estado: 'Activo'
   };
   constructor(private Data: DataService,
     private router: Router,
@@ -27,7 +26,7 @@ export class CargoEditComponent implements OnInit {
     const params = this.activatedRoute.snapshot.params;
 
     if (params['id']) {
-      this.Data.getOne(params['id'],'/Cargo')
+      this.Data.getOne(params['id'],'/Contrato')
         .subscribe(
           res => {
             this.user = res;
@@ -37,15 +36,12 @@ export class CargoEditComponent implements OnInit {
     }
     }
     updateUser() {
-      this.Data.update(this.user.IdCargo!, this.user,'/Cargo')
+      this.Data.update(this.user.IdContrato!, this.user,'/contrato')
         .subscribe(
           res => {
-            this.router.navigate(['/cargo']);
+            this.router.navigate(['/Contrato']);
           },
           err => console.error(err)
         );
     }  
   }
-
-
-

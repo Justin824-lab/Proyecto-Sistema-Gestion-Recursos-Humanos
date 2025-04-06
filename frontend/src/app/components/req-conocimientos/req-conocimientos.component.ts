@@ -11,9 +11,9 @@ export class ReqConocimientosComponent implements OnInit {
 
   TUser: any = [];
   user: ReqConocimientos = {
-     idReqConoc: null,
-     descripcion: '',
-      estado: 'Activo'
+     IdReqConoc: null,
+     Descripcion: '',
+      Estado: 'Activo'
   };
 
   constructor(private Data: DataService) { }
@@ -30,7 +30,7 @@ export class ReqConocimientosComponent implements OnInit {
   }
 
   AgregarValor() {
-    delete this.user.idReqConoc;
+    delete this.user.IdReqConoc;
     this.Data.save(this.user, '/ReqConocimientos')
       .subscribe(
         res => {

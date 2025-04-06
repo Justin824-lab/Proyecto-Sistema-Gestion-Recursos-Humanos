@@ -14,7 +14,7 @@
 
         <div class="form-group">
           <label for="" class="control-label">Estado Civil</label>
-          <input type="text" [(ngModel)]="user.EstadoCivil" name="estado" placeholder="DIGITE EL ESTADO CIVIL" class="form-control" autofocus>
+          <input type="text" [(ngModel)]="user.Estado" name="estado" placeholder="DIGITE EL ESTADO CIVIL" class="form-control" autofocus>
           <div ng-show="!user.EstadoCivil && formulario.$submitted" class="alert alert-warning">Digite el Estado Civil</div>
         </div>
 
@@ -37,13 +37,15 @@
           <tr>
             <th>NO</th>
             <th>ESTADO CIVIL</th>
+            <th>ESTADO REGISTRO</th>
             <th>ACCIONES</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let User of TUser">
             <td>{{User.IdCivil}}</td>
-            <td>{{User.EstadoCivil}}</td>
+            <td>{{User.Estado}}</td>
+            <td>{{User.EstadoRegistro}}</td>
             <td>
               <button class="btn btn-danger" (click)="EliminarData(User.IdCivil)" onclick="javascript:alert('Registro Eliminado')">Eliminar</button>
               <button class="btn btn-success" [routerLink]="['/estadocivil/edit', User.IdCivil]">

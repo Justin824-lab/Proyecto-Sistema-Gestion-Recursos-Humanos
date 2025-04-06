@@ -11,9 +11,9 @@ export class NivelDeUtilizacionComponent implements OnInit {
 
   TUser: any = [];
   user: NivelDeUtilizacion = {
-    idNivelUtilizacion: null,
-    descripcion: null,
-    estado: 'Activo'
+    IdNivelUtilizacion: null,
+    Descripcion: null,
+    Estado: 'Activo'
   };
 
   constructor(private Data: DataService) { }
@@ -30,7 +30,7 @@ export class NivelDeUtilizacionComponent implements OnInit {
   }
 
   AgregarValor() {
-    delete this.user.idNivelUtilizacion;
+    delete this.user.IdNivelUtilizacion;
     this.Data.save(this.user, '/NivelDeUtilizacion')
       .subscribe(
         res => { this.getUser(); },
