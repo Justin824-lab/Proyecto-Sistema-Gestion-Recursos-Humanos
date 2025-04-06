@@ -11,9 +11,9 @@ export class ColorPeloComponent implements OnInit {
 
   TUser: any = [];
   user: ColorPelo = {
-      idColorPelo: null,
-      color: '',
-      estado: 'Activo'
+      IdColorPelo: null,
+      Color: '',
+      Estado: 'Activo'
   };
 
   constructor(private Data: DataService) { }
@@ -30,7 +30,7 @@ export class ColorPeloComponent implements OnInit {
   }
 
   AgregarValor() {
-    delete this.user.idColorPelo;
+    delete this.user.IdColorPelo;
     this.Data.save(this.user, '/ColorPelo')
       .subscribe(
         res => {

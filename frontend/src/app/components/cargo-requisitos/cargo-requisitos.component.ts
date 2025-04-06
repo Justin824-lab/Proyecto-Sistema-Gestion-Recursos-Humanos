@@ -11,9 +11,9 @@ export class CargoRequisitosComponent implements OnInit {
 
   TUser: any = [];
   user: CargoRequisitos = {
-     idCargo: null,
-     idReqConoc: null,
-      estado: 'Activo'
+     IdCargo: null,
+     IdReqConoc: null,
+     Estado: 'Activo'
   };
 
   constructor(private Data: DataService) { }
@@ -30,7 +30,7 @@ export class CargoRequisitosComponent implements OnInit {
   }
 
   AgregarValor() {
-    delete this.user.idReqConoc;
+    delete this.user.IdReqConoc;
     this.Data.save(this.user, '/CargoRequisitos')
       .subscribe(
         res => {

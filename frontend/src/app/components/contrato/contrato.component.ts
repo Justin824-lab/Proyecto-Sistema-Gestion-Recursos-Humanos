@@ -11,10 +11,10 @@ export class ContratoComponent implements OnInit {
 
   TUser: any = [];
   user: Contrato = {
-    idContrato: null,
-    tipoContrato: null,
-    duracion: null,
-    estado: 'Activo'
+    IdContrato: null,
+    TipoContrato: null,
+    Duracion: null,
+    Estado: 'Activo'
   };
 
   constructor(private Data: DataService) { }
@@ -31,7 +31,7 @@ export class ContratoComponent implements OnInit {
   }
 
   AgregarValor() {
-    delete this.user.idContrato;
+    delete this.user.IdContrato;
     this.Data.save(this.user, '/Contrato')
       .subscribe(
         res => { this.getUser(); },

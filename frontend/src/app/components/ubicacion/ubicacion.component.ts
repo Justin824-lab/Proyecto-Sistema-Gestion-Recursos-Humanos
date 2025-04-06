@@ -11,9 +11,9 @@ export class UbicacionComponent implements OnInit {
 
   TUser: any = [];
   user: Ubicacion = {
-      idUbicacion: null,
-      direccion: '',
-      estado: 'Activo'
+      IdUbicacion: null,
+      Direccion: '',
+      Estado: 'Activo'
   };
 
   constructor(private Data: DataService) { }
@@ -30,7 +30,7 @@ export class UbicacionComponent implements OnInit {
   }
 
   AgregarValor() {
-    delete this.user.idUbicacion;
+    delete this.user.IdUbicacion;
     this.Data.save(this.user, '/Ubicacion')
       .subscribe(
         res => {

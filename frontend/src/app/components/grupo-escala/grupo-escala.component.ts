@@ -11,9 +11,9 @@ export class GrupoEscalaComponent implements OnInit {
 
   TUser: any = [];
   user: GrupoEscala = {
-     idGrupoEscala: null,
-     escala: '',
-      estado: 'Activo'
+     IdGrupoEscala: null,
+     Escala: '',
+     Estado: 'Activo'
   };
 
   constructor(private Data: DataService) { }
@@ -30,7 +30,7 @@ export class GrupoEscalaComponent implements OnInit {
   }
 
   AgregarValor() {
-    delete this.user.idGrupoEscala;
+    delete this.user.IdGrupoEscala;
     this.Data.save(this.user, '/GrupoEscala')
       .subscribe(
         res => {

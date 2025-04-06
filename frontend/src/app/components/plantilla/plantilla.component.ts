@@ -11,9 +11,9 @@ export class PlantillaComponent implements OnInit {
 
   TUser: any = [];
   user: Plantilla = {
-     idCargo: null,
-      idDpto: null,
-      estado: 'Activo'
+     IdCargo: null,
+      IdDpto: null,
+      Estado: 'Activo'
   };
 
   constructor(private Data: DataService) { }
@@ -30,7 +30,7 @@ export class PlantillaComponent implements OnInit {
   }
 
   AgregarValor() {
-    delete this.user.idCargo;
+    delete this.user.IdCargo;
     this.Data.save(this.user, '/Plantilla')
       .subscribe(
         res => {

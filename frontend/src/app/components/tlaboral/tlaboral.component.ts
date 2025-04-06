@@ -13,9 +13,9 @@ export class TlaboralComponent implements OnInit {
 
   TUser: any = [];
   user: Tlaboral = {
-    ci: null,
-    idCargo: null,
-    estado: 'Activo'
+    CI: null,
+    IdCargo: null,
+    Estado: 'Activo'
   };
 
   constructor(private Data: DataService) { }
@@ -33,7 +33,7 @@ export class TlaboralComponent implements OnInit {
 
   AgregarValor() {
     // Asegúrate de eliminar el id cuando estés creando un nuevo registro
-    delete this.user.ci;
+    delete this.user.CI;
     this.Data.save(this.user, '/Tlaboral')
       .subscribe(
         res => {

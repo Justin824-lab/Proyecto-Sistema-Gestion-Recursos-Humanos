@@ -11,8 +11,8 @@ export class EstadoCivilComponent implements OnInit  {
   TUser: any = [];
   user: EstadoCivil = {
       IdCivil: null,
-      EstadoCivil: null,
-      estado:'Activo'
+      Estado: null,
+      EstadoRegistro:'Activo'
   };
   constructor(private Data: DataService) { }
 

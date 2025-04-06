@@ -3,7 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common'; // Agregado
 import { DataService } from './Services/data.service';
 import { EmpleadosComponent } from './components/empleados/empleados.component';
 import { EmpleadosEditComponent } from './components/empleados-edit/empleados-edit.component';
@@ -39,8 +40,7 @@ import { NavegacionComponent } from './components/navegacion/navegacion.componen
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { LoginComponent } from './auth/login/login.component';
-
-
+import { ContratoEditComponent } from './components/contrato-edit/contrato-edit.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +57,7 @@ import { LoginComponent } from './auth/login/login.component';
     OtrosPagosComponent,
     NoResolucionComponent,
     CatOcupacionalComponent,
-    CftPrincipalesComponent, // Nombre corregido
+    CftPrincipalesComponent,
     ContratoComponent,
     ColorPeloComponent,
     UbicacionComponent,
@@ -76,9 +76,7 @@ import { LoginComponent } from './auth/login/login.component';
     FilterempresaPipe,
     NavegacionComponent,
     LoginComponent,
-   
-
-  
+    ContratoEditComponent,
   ],
   imports: [
     BrowserModule,
@@ -88,8 +86,8 @@ import { LoginComponent } from './auth/login/login.component';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MatButtonModule,
-    MatMenuModule    
-
+    MatMenuModule,
+    CommonModule // Agregado para ngClass
   ],
   providers: [DataService],
   bootstrap: [AppComponent]

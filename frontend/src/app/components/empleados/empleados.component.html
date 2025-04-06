@@ -66,7 +66,7 @@
                             [(ngModel)]="user.IdCivil" name="IdCivil" required>
                       <option value="" disabled selected>Seleccione el Estado Civil</option>
                       <option *ngFor="let lista of EstadoCivilList" [value]="lista.IdCivil">
-                        {{lista.EstadoCivil}}
+                        {{lista.Estado}}
                       </option>
                     </select>
                   </div>
@@ -207,7 +207,7 @@
                     <td>{{User.IdContrato}}</td>
                     <td>{{User.IdCargo}}</td>
                     <td>{{User.IdEstado}}</td>
-                    <td>{{User.estado}}</td>
+                    <td>{{User.Estado}}</td>
                     <td>
                       <div class="d-flex gap-2">
                         <button class="btn btn-sm btn-danger" 

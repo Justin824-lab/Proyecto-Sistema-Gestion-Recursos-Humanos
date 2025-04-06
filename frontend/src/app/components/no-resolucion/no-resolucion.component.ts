@@ -11,9 +11,9 @@ export class NoResolucionComponent implements OnInit {
 
   TUser: any = [];
   user: NoResolucion = {
-    idNoResolucion: null,
-    descripcion: null,
-    estado: 'Activo'
+    IdNoResolucion: null,
+    Descripcion: null,
+    Estado: 'Activo'
   };
 
   constructor(private Data: DataService) { }
@@ -30,7 +30,7 @@ export class NoResolucionComponent implements OnInit {
   }
 
   AgregarValor() {
-    delete this.user.idNoResolucion;
+    delete this.user.IdNoResolucion;
     this.Data.save(this.user, '/NoResolucion')
       .subscribe(
         res => { this.getUser(); },

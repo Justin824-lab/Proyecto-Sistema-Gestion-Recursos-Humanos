@@ -45,7 +45,7 @@
             <tr *ngFor="let User of TUser">
               <td>{{User.IdEtnia}}</td>
               <td>{{User.Nombre}}</td>
-              <td>{{User.estado}}</td>
+              <td>{{User.Estado}}</td>
               <td>
                 <button class="btn btn-danger" (click)="EliminarData(User.IdEtnia)" onclick="javascript:alert('Registro Eliminado')">Eliminar</button>
                 <button class="btn btn-success" [routerLink]="['/etnia/edit', User.IdEtnia]">Actualizar</button>

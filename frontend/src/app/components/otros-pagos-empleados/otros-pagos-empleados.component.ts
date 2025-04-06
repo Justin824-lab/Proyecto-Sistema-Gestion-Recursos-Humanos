@@ -11,15 +11,36 @@ export class OtrosPagosEmpleadosComponent implements OnInit {
 
   TUser: any = [];
   user: OtrosPagosEmpleados = {
-      ci: null,
-      idPagos: null,
-      estado: 'Activo'
+      CI: null,
+      IdPagos: null,
+      Estado: 'Activo'
   };
-
+  OtrosPagosList: any;
+  Empleadoslist: any;
   constructor(private Data: DataService) { }
 
   ngOnInit(): void {
     this.getUser();
+    this.getDropListEmpleados();
+  }
+  
+  getDropListOtrosPagos() {
+    this.Data.getDropListOtrosPagos().subscribe(
+      (data) => {
+        console.log('Datos recibidos de OtrosPagos:', data);
+        this.OtrosPagosList = data;
+        console.log('OtrosPagosList actualizado:', this.OtrosPagosList);
+      },
+      (error) => {
+        console.error('Error al obtener OtrosPagos:', error);
+      }
+    );
+  }
+
+  getDropListEmpleados() {
+    this.Data.getDropListEmpleados().subscribe((data:any)=>{
+      this.Empleadoslist=data;
+    })
   }
 
   getUser() {
@@ -30,7 +51,7 @@ export class OtrosPagosEmpleadosComponent implements OnInit {
   }
 
   AgregarValor() {
-    delete this.user.idPagos;
+    delete this.user.IdPagos;
     this.Data.save(this.user, '/OtrosPagosEmpleados')
       .subscribe(
         res => {
@@ -40,8 +61,8 @@ export class OtrosPagosEmpleadosComponent implements OnInit {
       );
   }
 
-  EliminarData(id: number) {
-    this.Data.delete(id, '/OtrosPagosEmpleados')
+  EliminarData(CI: number, IdPagos: number) {
+    this.Data.delete(CI/IdPagos, '/OtrosPagosEmpleados')
       .subscribe(
         res => {
           this.getUser();

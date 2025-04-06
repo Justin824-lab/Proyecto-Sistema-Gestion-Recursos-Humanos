@@ -32,9 +32,9 @@ export interface Etnia {
 
 export interface User{
     CI?: number | null; 
-    ctipou?: number;
-    descripcion?: string | null | undefined;
-    estado?: string;
+    Ctipou?: number;
+    Descripcion?: string | null | undefined;
+    Estado?: string;
 }
 
 // Editado por Jose 

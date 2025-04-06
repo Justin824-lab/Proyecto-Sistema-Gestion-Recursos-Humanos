@@ -36,7 +36,7 @@
   <div class="row mt-25">    
       <div>
       
-  <table>
+  <table class="table table-bordered table-hover">
     <thead>
       <tr>
           <th>NO</th>
@@ -52,7 +52,7 @@
           <td >{{User.IdNoResolucion}}</td>
           <td >{{User.IdGrupoEscala}}</td>
           <td >{{User.IdCatOcupacional}}</td>
-          <td >{{User.estado}}</td>
+          <td >{{User.Estado}}</td>
           <td>  <button class="btn btn-danger"  (click)="EliminarData(User.IdCargo)" onclick="javascript:alert('Registro Eliminado')">Eliminar</button> </td>
             <td>
           <button class="btn btn-success" [routerLink]="['/cargo/edit', User.IdCargo]">

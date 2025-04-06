@@ -11,9 +11,9 @@ export class DepartamentoComponent implements OnInit {
 
   TUser: any = [];
   user: Departamento = {
-      idDpto: null,
-      nombre: '',
-      estado: 'Activo'
+      IdDpto: null,
+      Nombre: '',
+      Estado: 'Activo'
   };
 
   constructor(private Data: DataService) { }
@@ -30,7 +30,7 @@ export class DepartamentoComponent implements OnInit {
   }
 
   AgregarValor() {
-    delete this.user.idDpto;
+    delete this.user.IdDpto;
     this.Data.save(this.user, '/Departamento')
       .subscribe(
         res => {

@@ -15,7 +15,7 @@ export class EtniaEditComponent implements OnInit {
   user: Etnia = {
       IdEtnia: null,
       Nombre: null,
-      estado: 'Activo'
+      Estado: 'Activo'
   };
   constructor(private Data: DataService,
     private router: Router,

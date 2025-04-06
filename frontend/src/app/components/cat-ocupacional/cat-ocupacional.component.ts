@@ -11,9 +11,9 @@ export class CatOcupacionalComponent implements OnInit {
 
   TUser: any = [];
   user: CatOcupacional = {
-    idCatOcupacional: null,
-    nombre: null,
-    estado: 'Activo'
+    IdCatOcupacional: null,
+    Nombre: null,
+    Estado: 'Activo'
   };
 
   constructor(private Data: DataService) { }
@@ -30,7 +30,7 @@ export class CatOcupacionalComponent implements OnInit {
   }
 
   AgregarValor() {
-    delete this.user.idCatOcupacional;
+    delete this.user.IdCatOcupacional;
     this.Data.save(this.user, '/CatOcupacional')
       .subscribe(
         res => { this.getUser(); },
