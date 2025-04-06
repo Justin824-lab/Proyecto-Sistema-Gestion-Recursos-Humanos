@@ -13,6 +13,8 @@ export class NavegacionComponent implements OnInit {
   menuItems = [
     { title: 'Empleados', path: '/empleados', icon: 'bi bi-people-fill' },
     { title: 'Etnia', path: '/etnia', icon: 'bi bi-people-fill' },
+    { title: 'EstadoCivil', path: '/estado-civil', icon: 'bi bi-people-fill' },
+    { title: 'Cargo', path: '/cargo', icon: 'bi bi-card-checklist' },
     { title: 'Nivel de Utilización', path: '/nivel-de-utilizacion', icon: 'bi bi-bar-chart-line-fill' },
     { title: 'Otros Pagos', path: '/otros-pagos', icon: 'bi bi-cash-stack' },
     { title: 'No Resolución', path: '/no-resolucion', icon: 'bi bi-file-earmark-excel-fill' },
@@ -37,7 +39,7 @@ export class NavegacionComponent implements OnInit {
   filteredItems = this.menuItems;
   
   // Items destacados (puedes personalizar esta lista)
-  featuredItems = ['Empleados', 'Departamento', 'Plantilla'];
+  featuredItems = ['Empleados', 'Departamento', 'Plantilla', 'Trabaja en', 'Cargo'];
 
   constructor(private authService: AuthService) {}
 
