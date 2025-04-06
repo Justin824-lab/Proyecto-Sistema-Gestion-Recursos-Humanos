@@ -14,15 +14,11 @@
         </div>
         <div class="form-group">
           <label for="IdPagos" class="control-label">Pago</label>
-          <select class="form-control" [(ngModel)]="user.IdPagos" name="IdPagos" placeholder="SELECCIONE EL PAGO" required>
-            <option value="" disabled selected>Seleccione el Pago</option>
-            <option *ngFor="let pago of OtrosPagosList" [value]="pago.IdPagos">
-              {{pago.Descripcion}} ({{pago.Monto}})
-            </option>
-          </select>
+          <input type="text" name="Pago" placeholder="DIGITE EL MONTO" class="form-control" required>
         </div>
         <div class="form-group">
-          <label for="IdPagos" class="control-label">Estado</label>
+          <label for="Duracion" class="control-label">Estado</label>
+          <input type="text" name="Duracion" placeholder="DIGITE EL ESTADO" class="form-control" required>
         </div>
         <button type="submit" class="btn btn-primary mt-2" [disabled]="f.invalid" onclick="javascript:alert('Registro Almacenado')">
           Agregar

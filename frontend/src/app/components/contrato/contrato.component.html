@@ -11,6 +11,10 @@
             <label for="Duracion" class="control-label">Duración (meses)</label>
             <input type="number" [(ngModel)]="user.Duracion" name="Duracion" placeholder="DIGITE LA DURACIÓN" class="form-control" required>
           </div>
+          <div class="form-group">
+            <label for="Duracion" class="control-label">Estado</label>
+            <input type="text" name="Duracion" placeholder="DIGITE EL ESTADO" class="form-control" required>
+          </div>
           <button type="submit" class="btn btn-primary mt-2" [disabled]="f.invalid" onclick="javascript:alert('Registro Almacenado')">
             Agregar
           </button>
