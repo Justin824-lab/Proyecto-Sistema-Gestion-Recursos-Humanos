@@ -188,6 +188,12 @@
                     <th class="text-nowrap">Nombre</th>
                     <th class="text-nowrap">Apellido</th>
                     <th class="text-nowrap">Etnia</th>
+                    <th class="text-nowrap">Estado Civil</th>
+                    <th class="text-nowrap">IdColorPelo</th>
+                    <th class="text-nowrap">IdUbicacion</th>
+                    <th class="text-nowrap">IdContrato</th>
+                    <th class="text-nowrap">IdCargo</th>
+                    <th class="text-nowrap">IdEstado</th>
                     <th class="text-nowrap">Estado</th>
                     <th class="text-nowrap">Acciones</th>
                   </tr>
@@ -198,6 +204,12 @@
                     <td>{{User.Nombre}}</td>
                     <td>{{User.Apellido}}</td>
                     <td>{{User.IdEtnia}}</td>
+                    <td>{{User.IdCivil}}</td>
+                    <td>{{User.IdColorPelo}}</td>
+                    <td>{{User.IdUbicacion}}</td>
+                    <td>{{User.IdContrato}}</td>
+                    <td>{{User.IdCargo}}</td>
+                    <td>{{User.IdEstado}}</td>
                     <td>
                       <span class="badge" [ngClass]="{
                         'bg-success': User.Estado === 'Activo',
