@@ -42,6 +42,8 @@ import { MatMenuModule } from '@angular/material/menu';
 import { LoginComponent } from './auth/login/login.component';
 import { ContratoEditComponent } from './components/contrato-edit/contrato-edit.component';
 import { FiltercontratoPipe } from './Pipes/filtercontrato.pipe';
+import { FiltertrabajaenPipe } from './Pipes/filtertrabajaen.pipe';
+import { OtrospagosempleadosEditComponent } from './components/otrospagosempleados-edit/otrospagosempleados-edit.component';
 
 
 @NgModule({
@@ -80,6 +82,8 @@ import { FiltercontratoPipe } from './Pipes/filtercontrato.pipe';
     LoginComponent,
     ContratoEditComponent,
     FiltercontratoPipe,
+    FiltertrabajaenPipe,
+    OtrospagosempleadosEditComponent,
   ],
   imports: [
     BrowserModule,

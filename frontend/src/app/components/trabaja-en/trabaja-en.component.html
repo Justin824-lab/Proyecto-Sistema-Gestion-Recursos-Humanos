@@ -85,10 +85,18 @@
             <h5 class="mb-0 text-primary fw-bold">
               <i class="bi bi-list-check me-2"></i> Registros de Trabajo
             </h5>
+            <button class="btn btn-danger" (click)="openPDF()">Descargar PDF</button>
+            <button class="btn btn-success" (click)="exportToExcel()" >Exportar a Excel</button>
+            <p>
+            </p>
+            <div class="form-group">
+            <input type="text" class="form-control" name="filterPost" placeholder="Digite el Empleado que desea Buscar" [(ngModel)]="filterPost">
+            </div>
+    
           </div>
           <div class="card-body p-0">
             <div class="table-responsive">
-              <table class="table table-hover align-middle mb-0">
+              <table class="table table-hover align-middle mb-0" id="tabla">
                 <thead class="table-light">
                   <tr>
                     <th class="text-nowrap">ID Empleado</th>
@@ -99,7 +107,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let User of TUser">
+                  <tr *ngFor="let User of TUser | filtertrabajaen: filterPost">
                     <td class="fw-semibold">{{User.CI}}</td>
                     <td>{{User.IdDpto}}</td>
                     <td>{{User.FechaAlta | date:'dd/MM/yyyy'}}</td>

@@ -24,9 +24,15 @@
               <label for="" class="control-label">Categoría Ocupacional</label>
               <input type="text"  [(ngModel)]="user.IdCatOcupacional"  name="IdCatOcupacional" placeholder="DIGITE LA CATEGORÍA OCUPACIONAL"  class="form-control">
             </div>
+            <p>
+            </p>
             <button type="submit" class="btn btn-primary" formnovalidate value="Save" onclick="javascript:alert('Registro Almacenado')">
                 Agregar
             </button>
+            <p>
+            </p>
+            <button class="btn btn-danger" (click)="openPDF()">Descargar PDF</button>
+            <button class="btn btn-ms btn-success" (click)="exportToExcel()" >Exportar a Excel</button>
           </form>
       </div>
   </div>
@@ -36,7 +42,7 @@
   <div class="row mt-25">    
       <div>
       
-  <table class="table table-bordered table-hover">
+  <table class="table table-bordered table-hover" id="tabla">
     <thead>
       <tr>
           <th>NO</th>
@@ -44,6 +50,7 @@
           <th>GRUPO ESCALA</th>
           <th>CATEGORÍA OCUPACIONAL</th>
           <th>ESTADO</th>
+          <th>ACCIONES</th>
       </tr>
     </thead>
   <tbody >
@@ -53,12 +60,12 @@
           <td >{{User.IdGrupoEscala}}</td>
           <td >{{User.IdCatOcupacional}}</td>
           <td >{{User.Estado}}</td>
-          <td>  <button class="btn btn-danger"  (click)="EliminarData(User.IdCargo)" onclick="javascript:alert('Registro Eliminado')">Eliminar</button> </td>
-            <td>
+          <td>  <button class="btn btn-danger"  (click)="EliminarData(User.IdCargo)" onclick="javascript:alert('Registro Eliminado')">Eliminar</button> 
           <button class="btn btn-success" [routerLink]="['/cargo/edit', User.IdCargo]">
-             Actualizar
+              Actualizar
           </button>
-            </td>
+          </td>        
+
         </tr>
    </tbody>
   </table>
