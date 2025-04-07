@@ -1,80 +1,139 @@
-<nav class="navbar navbar-dark bg-dark">
-  <a href="/navegacion" class="navbar-brand">OTROS PAGOS A EMPLEADOS</a>
-</nav>
-
-<div class="row mb-5">
-  <div class="card">
-    <div class="card-body">
-      <h2 class="card-title">Otros Pagos a Empleados</h2>
-      <form id="formOtrosPagos" name="formOtrosPagos" #f="ngForm" (ngSubmit)="AgregarValor()" novalidate>
-        
-        <!-- Campo de selección de Empleado -->
-        <div class="form-group">
-          <label for="CI" class="control-label">Empleado</label>
-          <select class="form-control" size="1" [(ngModel)]="user.CI" name="CI" required>
-            <option value="" disabled selected>Seleccione un empleado</option>
-            <option *ngFor="let lista of Empleadoslist" [value]="lista.CI">
-              {{ lista.Nombre }} {{ lista.Apellido }}
-            </option>
-          </select>         
-        </div>
-
-        <!-- Campo de selección de tipo de pago -->
-        <div class="form-group">
-          <label for="IdPagos">Seleccione el tipo de Pago</label>
-          <select class="form-control" size="1" [(ngModel)]="user.IdPagos" name="IdPagos" required>
-            <option value="" disabled selected>Seleccione el tipo de pago</option>
-            <option *ngFor="let lista of OtrosPagosList" [value]="lista.IdPagos">{{ lista.Descripcion }}</option>
-          </select>
-        </div>
-
-        <!-- Campo de selección de estado -->
-        <div class="form-group">
-          <label for="estado">Seleccione el Estado</label>
-          <select class="form-control" [(ngModel)]="user.Estado" name="estado" required>
-            <option value="" disabled selected>Seleccione el estado</option>
-            <option value="Activo">Activo</option>
-            <option value="Inactivo">Inactivo</option>
-            <option value="Pendiente">Pendiente</option>
-          </select>
-        </div>
-        <!-- Botón Agregar que se habilita cuando el formulario es válido -->
-        <button type="submit" class="btn btn-primary mt-2" [disabled]="f.invalid" onclick="javascript:alert('Registro Almacenado')">
-          Agregar
-        </button>
-        <p>
-        </p>
-      </form>
-      <button class="btn btn-danger" (click)="openPDF()">Descargar PDF</button>
-      <button class="btn btn-success" (click)="exportToExcel()" >Exportar a Excel</button>
+<div class="pagos-container">
+  <!-- Barra de navegación mejorada -->
+  <nav class="navbar navbar-expand-lg navbar-custom">
+    <div class="container">
+      <a class="navbar-brand" href="/navegacion">
+        <i class="bi bi-cash-stack me-2"></i> OTROS PAGOS A EMPLEADOS
+      </a>
     </div>
-  </div>
+  </nav>
 
-  <div class="row mt-3">
-    <table class="table table-bordered table-hover" id="tabla">
-      <thead>
-        <tr>
-          <th>CI</th>
-          <th>ID PAGO</th>
-          <th>ESTADO</th>
-          <th>ACCIONES</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let item of TUser" >
-          <td>{{item.CI }}</td>
-          <td>{{item.IdPagos }}</td>
-          <td>{{item.Estado }}</td>
-          <td>
-            <button class="btn btn-danger" (click)="EliminarData(item.CI)" onclick="javascript:alert('Registro Eliminado')">
-              Eliminar
-            </button>
-            <button class="btn btn-success ms-2" [routerLink]="['/otros-pagos-empleados-edit', item.CI, item.IdPagos]">
-              Actualizar
-            </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+  <!-- Contenido principal -->
+  <div class="container mt-4">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <!-- Tarjeta del formulario -->
+        <div class="card payment-card shadow">
+          <div class="card-header">
+            <h3 class="payment-title">
+              <i class="bi bi-wallet2 me-2"></i> Registrar Pago Adicional
+            </h3>
+          </div>
+          <div class="card-body">
+            <form #f="ngForm" (ngSubmit)="AgregarValor()" novalidate>
+              <div class="form-row">
+                <!-- Selector de Empleado -->
+                <div class="form-group mb-4">
+                  <label for="CI" class="form-label">Empleado</label>
+                  <div class="input-with-icon">
+                    <i class="bi bi-person-fill"></i>
+                    <select class="form-select" id="CI" [(ngModel)]="user.CI" name="CI" required>
+                      <option value="" disabled selected>Seleccione un empleado</option>
+                      <option *ngFor="let lista of Empleadoslist" [value]="lista.CI">
+                        {{ lista.Nombre }} {{ lista.Apellido }}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+
+                <!-- Selector de Tipo de Pago -->
+                <div class="form-group mb-4">
+                  <label for="IdPagos" class="form-label">Tipo de Pago</label>
+                  <div class="input-with-icon">
+                    <i class="bi bi-credit-card-fill"></i>
+                    <select class="form-select" id="IdPagos" [(ngModel)]="user.IdPagos" name="IdPagos" required>
+                      <option value="" disabled selected>Seleccione el tipo de pago</option>
+                      <option *ngFor="let lista of OtrosPagosList" [value]="lista.IdPagos">
+                        {{ lista.Descripcion }}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+
+                <!-- Selector de Estado -->
+                <div class="form-group mb-4">
+                  <label for="estado" class="form-label">Estado</label>
+                  <div class="input-with-icon">
+                    <i class="bi bi-check-circle-fill"></i>
+                    <select class="form-select" id="estado" [(ngModel)]="user.Estado" name="estado" required>
+                      <option value="" disabled selected>Seleccione el estado</option>
+                      <option value="Activo">Activo</option>
+                      <option value="Inactivo">Inactivo</option>
+                      <option value="Pendiente">Pendiente</option>
+                    </select>
+                  </div>
+                </div>
+
+                <!-- Botones de acción -->
+                <div class="d-flex flex-wrap justify-content-between align-items-center mt-4">
+                  <button type="submit" class="btn btn-primary btn-save" [disabled]="f.invalid">
+                    <i class="bi bi-check-circle me-2"></i> Registrar Pago
+                  </button>
+                </div>
+              </div>
+            </form>
+            <div class="btn-group">
+              <button class="btn btn-export btn-pdf" (click)="openPDF()">
+                <i class="bi bi-file-earmark-pdf me-2"></i> PDF
+              </button>
+              <button class="btn btn-export btn-excel" (click)="exportToExcel()">
+                <i class="bi bi-file-earmark-excel me-2"></i> Excel
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tabla de registros -->
+        <div class="card payment-table shadow mt-4">
+          <div class="card-header">
+            <div class="d-flex flex-wrap justify-content-between align-items-center">
+              <h3 class="payment-title">
+                <i class="bi bi-list-check me-2"></i> Historial de Pagos
+              </h3>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table id="tabla" class="table table-hover">
+                <thead>
+                  <tr>
+                    <th>CI Empleado</th>
+                    <th>Tipo de Pago</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of TUser">
+                    <td class="fw-semibold">{{item.CI}}</td>
+                    <td>{{item.IdPagos}}</td>
+                    <td>
+                      <span class="badge" [ngClass]="{
+                        'bg-success': item.Estado === 'Activo',
+                        'bg-warning': item.Estado === 'Pendiente',
+                        'bg-danger': item.Estado === 'Inactivo'
+                      }">
+                        {{item.Estado}}
+                      </span>
+                    </td>
+                    <td>
+                      <div class="d-flex gap-2">
+                        <button class="btn btn-action btn-delete" (click)="EliminarData(item.CI)">
+                          <i class="bi bi-trash"></i>
+                        </button>
+                        <button class="btn btn-action btn-edit" 
+                                [routerLink]="['/otros-pagos-empleados-edit', item.CI, item.IdPagos]">
+                          <i class="bi bi-pencil"></i>
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
