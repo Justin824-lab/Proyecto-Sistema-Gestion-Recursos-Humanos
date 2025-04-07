@@ -1,13 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { TrabajaEn } from 'src/app/Interfaces/user';
 import { DataService } from '../../Services/data.service';
-import { ViewChild, ElementRef } from '@angular/core';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import * as XLSX from 'xlsx';
-
-
-
 
 @Component({
   selector: 'app-trabajaen',
@@ -17,9 +13,84 @@ import * as XLSX from 'xlsx';
 export class TrabajaEnComponent implements OnInit {
   @ViewChild('htmlData') htmlData!: ElementRef;
   filterPost = '';
-  
   name = 'Trabajaen.xlsx';
 
+  TUser: any[] = [];
+  user: TrabajaEn = {
+    CI: null,
+    IdDpto: null,
+    FechaAlta: null,
+    Estado: 'Activo'
+  };
+
+  Empleadoslist: any[] = [];
+  Departamentolist: any[] = [];
+
+  constructor(private Data: DataService) {}
+
+  ngOnInit(): void {
+    this.loadTrabajaEn();
+    this.getDropListEmpleados();
+    this.getDropListDepartamento();
+  }
+
+  // Cargar los datos de TrabajaEn
+  loadTrabajaEn() {
+    this.Data.getAll('/TrabajaEn').subscribe({
+      next: (res) => {
+        this.TUser = res;
+        console.log('TrabajaEn cargados:', this.TUser); // Depuración
+      },
+      error: (err) => {
+        console.error('Error al cargar TrabajaEn:', err);
+        alert('No se pudieron cargar los datos.');
+      }
+    });
+  }
+
+  // Cargar listas para los dropdowns
+  getDropListEmpleados() {
+    this.Data.getDropListEmpleados().subscribe({
+      next: (data) => {
+        this.Empleadoslist = data;
+      },
+      error: (err) => console.error('Error al cargar empleados:', err)
+    });
+  }
+
+  getDropListDepartamento() {
+    this.Data.getDropListDepartamento().subscribe({
+      next: (data) => {
+        this.Departamentolist = data;
+      },
+      error: (err) => console.error('Error al cargar departamentos:', err)
+    });
+  }
+
+  // Guardar un nuevo registro
+  AgregarValor() {
+    this.Data.save(this.user, '/TrabajaEn').subscribe({
+      next: (res) => {
+        this.loadTrabajaEn(); // Recargar la lista
+        this.resetForm(); // Limpiar el formulario
+      },
+      error: (err) => console.error('Error al guardar:', err)
+    });
+  }
+
+  // Eliminar un registro (usando CI e IdDpto)
+  EliminarData(CI: number, IdDpto: number) {
+    if (confirm('¿Seguro que desea eliminar esta asignación?')) {
+      this.Data.delete(`${CI}/${IdDpto}`, '/TrabajaEn').subscribe({
+        next: (res) => {
+          this.loadTrabajaEn(); // Recargar la lista
+        },
+        error: (err) => console.error('Error al eliminar:', err)
+      });
+    }
+  }
+
+  // Exportar a Excel
   exportToExcel(): void {
     let element = document.getElementById('tabla');
     const worksheet: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
@@ -28,7 +99,7 @@ export class TrabajaEnComponent implements OnInit {
     XLSX.writeFile(book, this.name);
   }
 
-
+  // Exportar a PDF
   public openPDF(): void {
     let DATA: any = document.getElementById('tabla');
     html2canvas(DATA).then((canvas) => {
@@ -42,61 +113,13 @@ export class TrabajaEnComponent implements OnInit {
     });
   }
 
-
-
-  TUser: any = [];
-  user: TrabajaEn = {
+  // Limpiar el formulario después de guardar
+  private resetForm() {
+    this.user = {
       CI: null,
       IdDpto: null,
       FechaAlta: null,
       Estado: 'Activo'
-  };
-
-  Empleadoslist: any;
-  Departamentolist: any;  
-  constructor(private Data: DataService) { }
-
-  ngOnInit(): void {
-    this.getUser();
-    this.getDropListEmpleados();
-    this.getDropListDepartamento();
-  }
-  getDropListEmpleados() {
-    this.Data.getDropListEmpleados().subscribe((data:any)=>{
-      this.Empleadoslist=data;
-    })
-  }
-  getDropListDepartamento() {
-    this.Data.getDropListDepartamento().subscribe((data:any)=>{
-      this.Departamentolist=data;
-    })
-  }
-
-  getUser() {
-    this.Data.getAll('/TrabajaEn')
-      .subscribe(res => {
-          this.TUser = res;
-        }, err => console.error(err));
-  }
-
-  AgregarValor() {
-    this.Data.save(this.user, '/TrabajaEn')
-      .subscribe(
-        res => {
-          this.getUser();
-        },
-        err => console.error(err)
-      );
-  }
-
-  EliminarData(id: number) {
-    this.Data.delete(id, '/TrabajaEn')
-      .subscribe(
-        res => {
-          this.getUser();
-        },
-        err => console.error(err)
-      );
+    };
   }
 }
-

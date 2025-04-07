@@ -2,11 +2,24 @@ const controller = {};
 
 controller.list = (req, res) => {
     req.getConnection((error, conn) => {
-        conn.query('SELECT * FROM TrabajaEn', (err, TrabajaEn) => {
-            if (err) {
-                res.json(err);
-            }
-            res.json(TrabajaEn);
+        if (error) return res.status(500).json({ error: 'Error de conexión' });
+        const query = `
+            SELECT 
+                t.CI,
+                e.Nombre AS NombreEmpleado,
+                e.Apellido AS ApellidoEmpleado,
+                t.IdDpto,
+                d.Nombre AS NombreDepartamento,
+                t.FechaAlta,
+                t.Estado
+            FROM TrabajaEn t
+            INNER JOIN Empleados e ON t.CI = e.CI
+            INNER JOIN Departamento d ON t.IdDpto = d.IdDpto
+        `;
+        conn.query(query, (err, trabajaEn) => {
+            if (err) return res.status(500).json({ error: err.message });
+            console.log('Datos enviados desde TrabajaEn:', trabajaEn); // Depuración
+            res.json(trabajaEn);
         });
     });
 };

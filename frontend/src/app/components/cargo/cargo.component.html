@@ -2,7 +2,7 @@
   <!-- Barra de navegación -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
     <div class="container">
-      <a class="navbar-brand fw-bold" href="/">
+      <a class="navbar-brand fw-bold" href="/navegacion">
         <i class="bi bi-person-badge me-2"></i> REGISTRO DE CARGOS
       </a>
     </div>
@@ -92,7 +92,7 @@
 
         <!-- Tabla de registros -->
         <div class="card shadow border-0">
-          <div class="card-body p-0">
+          <div class="card-body p-0" id="tabla">
             <div class="table-responsive">
               <table id="tabla" class="table table-hover align-middle mb-0">
                 <thead class="table-light">
@@ -108,9 +108,9 @@
                 <tbody>
                   <tr *ngFor="let User of TUser">
                     <td class="fw-semibold">{{User.IdCargo}}</td>
-                    <td>{{User.IdNoResolucion}}</td>
-                    <td>{{User.IdGrupoEscala}}</td>
-                    <td>{{User.IdCatOcupacional}}</td>
+                    <td>{{User.Resolucion}}</td>
+                    <td>{{User.GrupoEscala}}</td>
+                    <td>{{User.CategoriaOcupacional}}</td>
                     <td>
                       <span class="badge" [ngClass]="{
                         'bg-success': User.Estado === 'Activo',
@@ -132,7 +132,7 @@
                     </td>
                   </tr>
                 </tbody>
-              </table>
+              </table> 
             </div>
           </div>
         </div>
