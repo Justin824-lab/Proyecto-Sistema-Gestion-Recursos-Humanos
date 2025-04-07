@@ -1,71 +1,118 @@
-<nav class="navbar navbar-dark bg-dark">
-  <a href="/navegacion" class="navbar-brand">Contrato</a>
-</nav>
-<div class="row mb-5">
-    <div class="card">
-      <div class="card-body">
-        <form id="formContrato" name="formContrato" #f="ngForm" (ngSubmit)="AgregarValor()" novalidate>
-          <div class="form-group">
-            <label for="TipoContrato" class="control-label">Tipo de Contrato</label>
-            <input type="text" [(ngModel)]="user.TipoContrato" name="TipoContrato" placeholder="DIGITE EL TIPO DE CONTRATO" class="form-control" required>
+<div class="contrato-wrapper">
+  <!-- Barra de navegación alternativa -->
+  <nav class="navbar navbar-expand-lg navbar-custom">
+    <div class="container">
+      <a class="navbar-brand" href="/navegacion">
+        <i class="bi bi-file-contract"></i> Registro de Contratos
+      </a>
+    </div>
+  </nav>
+
+  <!-- Contenedor principal -->
+  <div class="container mt-4">
+    <div class="row justify-content-center">
+      <div class="col-lg-9">
+        <!-- Tarjeta con diseño vertical -->
+        <div class="card form-card">
+          <div class="card-header">
+            <h3 class="section-title">
+              <i class="bi bi-pen-fill"></i> Datos del Contrato
+            </h3>
           </div>
-          <div class="form-group">
-            <label for="Duracion" class="control-label">Duración (meses)</label>
-            <input type="number" [(ngModel)]="user.Duracion" name="Duracion" placeholder="DIGITE LA DURACIÓN" class="form-control" required>
+          <div class="card-body">
+            <form #f="ngForm" (ngSubmit)="AgregarValor()" novalidate>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="TipoContrato">Tipo de Contrato</label>
+                  <input type="text" class="form-control input-style" 
+                         id="TipoContrato" [(ngModel)]="user.TipoContrato" 
+                         name="TipoContrato" placeholder="Ej: Tiempo completo" required>
+                </div>
+
+                <div class="form-group col-md-6">
+                  <label for="Duracion">Duración (meses)</label>
+                  <input type="number" class="form-control input-style" 
+                         id="Duracion" [(ngModel)]="user.Duracion" 
+                         name="Duracion" placeholder="Ej: 12" required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="Estado">Estado</label>
+                <select class="form-control input-style" id="Estado" 
+                        [(ngModel)]="user.Estado" name="Estado" required>
+                  <option value="" disabled selected>Seleccione estado</option>
+                  <option value="Activo">Activo</option>
+                  <option value="Inactivo">Inactivo</option>
+                  <option value="Pendiente">Pendiente</option>
+                </select>
+              </div>
+
+              <div class="action-buttons">
+                <button type="submit" class="btn btn-save" [disabled]="f.invalid">
+                  <i class="bi bi-check-circle"></i> Guardar
+                </button>
+                
+                <div class="search-box">
+                  <i class="bi bi-search"></i>
+                  <input type="text" class="form-control" 
+                         placeholder="Buscar contrato..." 
+                         [(ngModel)]="filterPost" name="filterPost">
+                </div>
+
+                <div class="export-buttons">
+                  <button class="btn btn-export" (click)="openPDF()">
+                    <i class="bi bi-filetype-pdf"></i> PDF
+                  </button>
+                  <button class="btn btn-export" (click)="exportToExcel()">
+                    <i class="bi bi-filetype-xlsx"></i> Excel
+                  </button>
+                </div>
+              </div>
+            </form>
           </div>
-          <div class="form-group">
-            <label for="Estado" class="control-label">Estado</label>
-            <select
-              [(ngModel)]="user.Estado"
-              name="Estado"
-              class="form-control"
-              required
-            >
-              <option value="">Seleccione un estado</option>
-              <option value="Activo">Activo</option>
-              <option value="Inactivo">Inactivo</option>
-              <option value="Pendiente">Pendiente</option>
-            </select>
+        </div>
+
+        <!-- Tabla con diseño compacto -->
+        <div class="card table-card mt-4">
+          <div class="card-body">
+            <div class="table-container">
+              <table class="table compact-table">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Tipo</th>
+                    <th>Duración</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of TUser | filtercontrato:filterPost">
+                    <td>{{item.IdContrato}}</td>
+                    <td>{{item.TipoContrato}}</td>
+                    <td>{{item.Duracion}} meses</td>
+                    <td>
+                      <span class="status-badge" [ngClass]="{
+                        'active': item.Estado === 'Activo',
+                        'inactive': item.Estado === 'Inactivo',
+                        'pending': item.Estado === 'Pendiente'
+                      }">
+                        {{item.Estado}}
+                      </span>
+                    </td>
+                    <td>
+                      <button class="btn btn-edit" [routerLink]="['/contrato/edit', item.IdContrato]">
+                        <i class="bi bi-pencil-square"></i>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
-          <button type="submit" class="btn btn-primary mt-2" [disabled]="f.invalid" onclick="javascript:alert('Registro Almacenado')">
-            Agregar
-          </button>
-          <p>
-          </p>
-          <div class="form-group">
-            <input type="text" class="form-control" name="filterPost" placeholder="Digite el tipo de contrato que desea Buscar" [(ngModel)]="filterPost">
-          </div>
-          <p>
-          </p>
-           <button class="btn btn-danger" (click)="openPDF()">Descargar PDF</button>
-          <button  class="btn btn-success" (click)="exportToExcel()" >Exportar a Excel</button>  
-        </form>
+        </div>
       </div>
     </div>
-    <div class="row mt-3">
-      <table class="table table-bordered table-hover" id="tabla">
-        <thead>
-          <tr>
-            <th>ID CONTRATO</th>
-            <th>TIPO CONTRATO</th>
-            <th>DURACIÓN</th>
-            <th>ESTADO</th>
-            <th>ACCIONES</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let item of TUser | filtercontrato:filterPost">
-            <td>{{item.IdContrato}}</td>
-            <td>{{item.TipoContrato}}</td>
-            <td>{{item.Duracion}}</td>
-            <td>{{item.Estado}}</td>
-            <td>
-              <button class="btn btn-success ms-2" [routerLink]="['/contrato/edit', item.IdContrato]">
-                Actualizar
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
   </div>
+</div>

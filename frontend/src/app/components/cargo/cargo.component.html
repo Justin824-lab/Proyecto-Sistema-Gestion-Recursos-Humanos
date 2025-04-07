@@ -1,86 +1,141 @@
-<nav class="navbar navbar-dark bg-dark">
-    <a href="/" class="navbar-brand">REGISTRO DE CARGO</a>
+<div class="cargo-container">
+  <!-- Barra de navegación -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="/">
+        <i class="bi bi-person-badge me-2"></i> REGISTRO DE CARGOS
+      </a>
+    </div>
   </nav>
-  
-  <div class="agregar_contenedor"></div>
-  <div class="row mt-5">
-  <div class="card">
-      <div class="card-body">
-          <form id="formulario" name="formulario" #f="ngForm" (ngSubmit)="AgregarValor()" novalidate >
-            <div class="form-group">
-              <label for="" class="control-label" hidden>Registro No.</label>
-                    <input type="text"  readonly="readonly"  [(ngModel)]="user.IdCargo" name="IdCargo" placeholder="No" class="form-control" required hidden>
-            </div>                  
-  
-            <div class="form-group">
-              <option>Seleccione la Resolución</option>
-              <select class="form-control" size="1" [(ngModel)]="user.IdNoResolucion" name="IdNoResolucion" required>
-                <option *ngFor="let item of NoResolucionList" [value]="item.IdNoResolucion">
-                  {{item.Descripcion}}
-                </option>
-              </select>
-            </div>
-            <div class="form-group">
-              <option>Seleccione el Grupo de Escala</option>
-              <select class="form-control" size="1" [(ngModel)]="user.IdGrupoEscala" name="IdGrupoEscala" required>
-                <option *ngFor="let item of GrupoEscalaList" [value]="item.IdGrupoEscala">
-                  {{item.Escala}}
-                </option>
-              </select>
-            </div>
-            <div class="form-group">
-              <option>Seleccione la Categoría Ocupacional</option>
-              <select class="form-control" size="1" [(ngModel)]="user. IdCatOcupacional" name=" IdCatOcupacional" required>
-                <option *ngFor="let item of CatOcupacionalList" [value]="item. IdCatOcupacional">
-                  {{item.Nombre}}
-                </option>
-              </select>
-            </div>
-            <p>
-            </p>
-            <button type="submit" class="btn btn-primary" formnovalidate value="Save" onclick="javascript:alert('Registro Almacenado')">
-                Agregar
-            </button>
-            <p>
-            </p>
-            <button class="btn btn-danger" (click)="openPDF()">Descargar PDF</button>
-            <button class="btn btn-ms btn-success" (click)="exportToExcel()" >Exportar a Excel</button>
-          </form>
-      </div>
-  </div>
-  </div>
-  <br>
-  <div class="container">  
-  <div class="row mt-25">    
-      <div>
-      
-  <table class="table table-bordered table-hover" id="tabla">
-    <thead>
-      <tr>
-          <th>NO</th>
-          <th>No. RESOLUCIÓN</th>
-          <th>GRUPO ESCALA</th>
-          <th>CATEGORÍA OCUPACIONAL</th>
-          <th>ESTADO</th>
-          <th>ACCIONES</th>
-      </tr>
-    </thead>
-  <tbody >
-      <tr *ngFor="let User of TUser">
-          <td >{{User.IdCargo}}</td>
-          <td >{{User.IdNoResolucion}}</td>
-          <td >{{User.IdGrupoEscala}}</td>
-          <td >{{User.IdCatOcupacional}}</td>
-          <td >{{User.Estado}}</td>
-          <td>  <button class="btn btn-danger"  (click)="EliminarData(User.IdCargo)" onclick="javascript:alert('Registro Eliminado')">Eliminar</button> 
-          <button class="btn btn-success" [routerLink]="['/cargo/edit', User.IdCargo]">
-              Actualizar
-          </button>
-          </td>        
 
-        </tr>
-   </tbody>
-  </table>
+  <!-- Contenido principal -->
+  <div class="container mt-4">
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+        <!-- Tarjeta del formulario -->
+        <div class="card shadow border-0 mb-4">
+          <div class="card-header bg-white">
+            <h5 class="mb-0 text-primary fw-bold">
+              <i class="bi bi-plus-circle me-2"></i> Nuevo Cargo
+            </h5>
+          </div>
+          <div class="card-body p-4">
+            <form #f="ngForm" (ngSubmit)="AgregarValor()" novalidate>
+              <!-- Campo oculto -->
+              <input type="hidden" [(ngModel)]="user.IdCargo" name="IdCargo">
+
+              <div class="row g-3">
+                <!-- Selector de Resolución -->
+                <div class="col-md-4">
+                  <div class="dropdown-control">
+                    <label for="resolucion" class="dropdown-label">Resolución</label>
+                    <select class="form-select dropdown-select" id="resolucion" 
+                            [(ngModel)]="user.IdNoResolucion" name="IdNoResolucion" required>
+                      <option value="" disabled selected hidden>Seleccione una opción</option>
+                      <option *ngFor="let item of NoResolucionList" [value]="item.IdNoResolucion">
+                        {{item.Descripcion}}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+
+                <!-- Selector de Grupo Escala -->
+                <div class="col-md-4">
+                  <div class="dropdown-control">
+                    <label for="grupoEscala" class="dropdown-label">Grupo de Escala</label>
+                    <select class="form-select dropdown-select" id="grupoEscala" 
+                            [(ngModel)]="user.IdGrupoEscala" name="IdGrupoEscala" required>
+                      <option value="" disabled selected hidden>Seleccione una opción</option>
+                      <option *ngFor="let item of GrupoEscalaList" [value]="item.IdGrupoEscala">
+                        {{item.Escala}}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+
+                <!-- Selector de Categoría Ocupacional -->
+                <div class="col-md-4">
+                  <div class="dropdown-control">
+                    <label for="categoria" class="dropdown-label">Categoría Ocupacional</label>
+                    <select class="form-select dropdown-select" id="categoria" 
+                            [(ngModel)]="user.IdCatOcupacional" name="IdCatOcupacional" required>
+                      <option value="" disabled selected hidden>Seleccione una opción</option>
+                      <option *ngFor="let item of CatOcupacionalList" [value]="item.IdCatOcupacional">
+                        {{item.Nombre}}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+
+                <!-- Botones de acción -->
+                <div class="col-12">
+                  <div class="d-flex flex-wrap gap-3 align-items-center">
+                    <button type="submit" class="btn btn-primary px-4 py-2 fw-bold" [disabled]="f.invalid">
+                      <i class="bi bi-save me-2"></i> Guardar Cargo
+                    </button>
+                    
+                    <div class="btn-group ms-auto">
+                      <button class="btn btn-outline-danger" (click)="openPDF()">
+                        <i class="bi bi-file-earmark-pdf me-2"></i> PDF
+                      </button>
+                      <button class="btn btn-outline-success" (click)="exportToExcel()">
+                        <i class="bi bi-file-earmark-excel me-2"></i> Excel
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- Tabla de registros -->
+        <div class="card shadow border-0">
+          <div class="card-body p-0">
+            <div class="table-responsive">
+              <table class="table table-hover align-middle mb-0">
+                <thead class="table-light">
+                  <tr>
+                    <th class="text-nowrap">ID</th>
+                    <th class="text-nowrap">Resolución</th>
+                    <th class="text-nowrap">Grupo Escala</th>
+                    <th class="text-nowrap">Categoría</th>
+                    <th class="text-nowrap">Estado</th>
+                    <th class="text-nowrap">Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let User of TUser">
+                    <td class="fw-semibold">{{User.IdCargo}}</td>
+                    <td>{{User.IdNoResolucion}}</td>
+                    <td>{{User.IdGrupoEscala}}</td>
+                    <td>{{User.IdCatOcupacional}}</td>
+                    <td>
+                      <span class="badge" [ngClass]="{
+                        'bg-success': User.Estado === 'Activo',
+                        'bg-danger': User.Estado === 'Inactivo',
+                        'bg-warning': User.Estado === 'Pendiente'
+                      }">
+                        {{User.Estado}}
+                      </span>
+                    </td>
+                    <td>
+                      <div class="d-flex gap-2">
+                        <button class="btn btn-sm btn-danger" (click)="EliminarData(User.IdCargo)">
+                          <i class="bi bi-trash"></i>
+                        </button>
+                        <button class="btn btn-sm btn-success" [routerLink]="['/cargo/edit', User.IdCargo]">
+                          <i class="bi bi-pencil"></i>
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  </div>
-  </div>
+</div>

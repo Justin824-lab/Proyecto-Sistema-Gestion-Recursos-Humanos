@@ -39,7 +39,7 @@ export class NavegacionComponent implements OnInit {
   filteredItems = this.menuItems;
   
   // Items destacados (puedes personalizar esta lista)
-  featuredItems = ['Empleados', 'Departamento', 'Plantilla', 'Trabaja en', 'Cargo'];
+  featuredItems = ['Empleados', 'Trabaja en', 'Cargo', 'Otros Pagos Empleados', 'Contrato'];
 
   constructor(private authService: AuthService) {}
 
