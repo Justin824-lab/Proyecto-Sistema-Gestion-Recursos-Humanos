@@ -13,8 +13,9 @@ export class OtrosPagosEmpleadosComponent implements OnInit {
   user: OtrosPagosEmpleados = {
       CI: null,
       IdPagos: null,
-      Estado: 'Activo'
+      Estado: ''
   };
+
   OtrosPagosList: any;
   Empleadoslist: any;
   constructor(private Data: DataService) { }
@@ -22,6 +23,7 @@ export class OtrosPagosEmpleadosComponent implements OnInit {
   ngOnInit(): void {
     this.getUser();
     this.getDropListEmpleados();
+    this.getDropListOtrosPagos();
   }
   
   getDropListOtrosPagos() {
@@ -45,19 +47,30 @@ export class OtrosPagosEmpleadosComponent implements OnInit {
 
   getUser() {
     this.Data.getAll('/OtrosPagosEmpleados')
-      .subscribe(res => {
+      .subscribe(
+        res => {
           this.TUser = res;
-        }, err => console.error(err));
+          console.log('Datos de TUser después de getUser:', this.TUser);
+        },
+        err => console.error(err)
+      );
   }
 
   AgregarValor() {
-    delete this.user.IdPagos;
+    console.log('Datos enviados:', this.user);
+    //delete this.user.IdPagos; // Asegúrate de que esto sea necesario según tu backend
     this.Data.save(this.user, '/OtrosPagosEmpleados')
       .subscribe(
         res => {
+          console.log('Respuesta del backend:', res);
           this.getUser();
+          alert('Registro Almacenado'); // Mueve el alert aquí
+          this.user = { CI: null, IdPagos: null, Estado: '' };
         },
-        err => console.error(err)
+        err => {
+          console.error('Error del backend:', err);
+          alert('Error al almacenar el registro');
+        }
       );
   }
 

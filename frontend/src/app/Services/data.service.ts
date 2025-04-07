@@ -55,6 +55,18 @@ export class DataService {
     return this.http.get<any>(this.API_URI + '/Estado');
   }
 
+  getDropListNoResolucion(): Observable<any[]> {
+    return this.http.get<any>(this.API_URI + '/NoResolucion');
+  }
+
+  getDropListGrupoEscala(): Observable<any[]> {
+    return this.http.get<any>(this.API_URI + '/GrupoEscala');
+  }
+
+  getDropListCatOcupacional(): Observable<any[]> {
+    return this.http.get<any>(this.API_URI + '/CatOcupacional');
+  }
+
   getOne(id: string, url: string) {
     return this.http.get(`${this.API_URI}` + url + `/${id}`);
   }

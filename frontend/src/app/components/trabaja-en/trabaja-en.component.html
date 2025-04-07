@@ -1,75 +1,142 @@
-<nav class="navbar navbar-dark bg-dark">
-    <a href="/" class="navbar-brand">REGISTRO DE TRABAJO</a>
+<div class="trabajo-container">
+  <!-- Encabezado mejorado -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="/">
+        <i class="bi bi-briefcase me-2"></i> REGISTRO DE TRABAJO
+      </a>
+    </div>
   </nav>
-  
-  <div class="agregar_contenedor"></div>
-  <div class="row mt-5">
-    <div class="card">
-      <div class="card-body">
-        <form id="formulario" name="formulario" #f="ngForm" (ngSubmit)="AgregarValor()" novalidate>
-          <div class="form-group">
-            <option>Seleccione el empleado</option>
-<select class="form-control" size="1" [(ngModel)]="user.CI" name="CI" required>
-  <option *ngFor="let lista of Empleadoslist" [value]="lista.CI">
-    {{ lista.Nombre }} {{ lista.Apellido }}
-  </option>
-</select>
-          </div>
 
-  
-          <div class="form-group">
-            <option>Seleccione el Departamento</option>
-              <select class="form-control" size="1" [(ngModel)]="user.IdDpto" name="IdDpto" required>
-                     <option *ngFor="let lista of Departamentolist" value={{lista.IdDpto}}>{{lista.Nombre}}</option>
-            </select>
+  <!-- Formulario de registro -->
+  <div class="container mt-4">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="card shadow border-0">
+          <div class="card-header bg-white py-3">
+            <h5 class="mb-0 text-primary fw-bold">
+              <i class="bi bi-person-plus me-2"></i> Asignar Trabajo
+            </h5>
           </div>
+          <div class="card-body p-4">
+            <form #f="ngForm" (ngSubmit)="AgregarValor()" novalidate>
+              <div class="row g-3">
+                <!-- Selección de Empleado -->
+                <div class="container mt-4">
+                  <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                      <div class="card shadow border-0">
+                        <div class="card-body p-4">
+                          <form #f="ngForm" (ngSubmit)="AgregarValor()" novalidate>
+                            <div class="row g-3">
+                              <!-- Dropdown de Empleado -->
+                              <div class="col-md-6">
+                                <div class="dropdown-container">
+                                  <label class="dropdown-label">Empleado</label>
+                                  <select class="form-select dropdown-select" [(ngModel)]="user.CI" name="CI" required>
+                                    <option value="" disabled selected hidden>Seleccione empleado</option>
+                                    <option *ngFor="let lista of Empleadoslist" [value]="lista.CI">
+                                      {{ lista.Nombre }} {{ lista.Apellido }}
+                                    </option>
+                                  </select>
+                                </div>
+                              </div>
+                
+                              <!-- Dropdown de Departamento -->
+                              <div class="col-md-6">
+                                <div class="dropdown-container">
+                                  <label class="dropdown-label">Departamento</label>
+                                  <select class="form-select dropdown-select" [(ngModel)]="user.IdDpto" name="IdDpto" required>
+                                    <option value="" disabled selected hidden>Seleccione departamento</option>
+                                    <option *ngFor="let lista of Departamentolist" [value]="lista.IdDpto">
+                                      {{lista.Nombre}}
+                                    </option>
+                                  </select>
+                                </div>
+                              </div>
 
-  
-          <div class="form-group">
-            <label for="" class="control-label">Fecha de Alta</label>
-            <input type="date" [(ngModel)]="user.FechaAlta" name="fechaAlta" class="form-control">
-          </div>  
-  
-          <button type="submit" class="btn btn-primary" formnovalidate value="Save" onclick="javascript:alert('Registro Almacenado')">
-            Agregar
-          </button>
-        </form>
+                <!-- Fecha de Alta -->
+                <div class="col-12">
+                  <div class="form-floating mb-3">
+                    <input type="date" class="form-control" id="fechaAlta" 
+                           [(ngModel)]="user.FechaAlta" name="fechaAlta" required>
+                    <label for="fechaAlta">Fecha de Alta</label>
+                  </div>
+                </div>
+
+                <!-- Botón de Submit -->
+                <div class="col-12">
+                  <button type="submit" class="btn btn-primary w-100 py-2 fw-bold" [disabled]="f.invalid">
+                    <i class="bi bi-save me-2"></i> GUARDAR ASIGNACIÓN
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tabla de registros -->
+    <div class="row justify-content-center mt-4">
+      <div class="col-lg-10">
+        <div class="card shadow border-0">
+          <div class="card-header bg-white py-3">
+            <h5 class="mb-0 text-primary fw-bold">
+              <i class="bi bi-list-check me-2"></i> Registros de Trabajo
+            </h5>
+            <button class="btn btn-danger" (click)="openPDF()">Descargar PDF</button>
+            <button class="btn btn-success" (click)="exportToExcel()" >Exportar a Excel</button>
+            <p>
+            </p>
+            <div class="form-group">
+            <input type="text" class="form-control" name="filterPost" placeholder="Digite el Empleado que desea Buscar" [(ngModel)]="filterPost">
+            </div>
+    
+          </div>
+          <div class="card-body p-0">
+            <div class="table-responsive">
+              <table class="table table-hover align-middle mb-0" id="tabla">
+                <thead class="table-light">
+                  <tr>
+                    <th class="text-nowrap">ID Empleado</th>
+                    <th class="text-nowrap">Departamento</th>
+                    <th class="text-nowrap">Fecha de Alta</th>
+                    <th class="text-nowrap">Estado</th>
+                    <th class="text-nowrap">Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let User of TUser | filtertrabajaen: filterPost">
+                    <td class="fw-semibold">{{User.CI}}</td>
+                    <td>{{User.IdDpto}}</td>
+                    <td>{{User.FechaAlta | date:'dd/MM/yyyy'}}</td>
+                    <td>
+                      <span class="badge bg-success" *ngIf="User.estado">Activo</span>
+                      <span class="badge bg-danger" *ngIf="!User.estado">Inactivo</span>
+                    </td>
+                    <td>
+                      <div class="d-flex gap-2">
+                        <button class="btn btn-sm btn-danger" (click)="EliminarData(User.CI)">
+                          <i class="bi bi-trash"></i> Eliminar
+                        </button>
+                        <button class="btn btn-sm btn-success" [routerLink]="['/trabaja-en/edit', User.CI]">
+                          <i class="bi bi-pencil"></i> Editar
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-  
-  <br>
-  
-  <div class="container">  
-    <div class="row mt-25">    
-      <div>
-        <table class="table table-bordered table-hover">
-          <thead>
-            <tr>
-              <th>NO</th>
-              <th>ID DEPARTAMENTO</th>
-              <th>FECHA DE ALTA</th>
-              <th>ESTADO</th>
-              <th>ACCIONES</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let User of TUser">
-              <td>{{User.CI}}</td>
-              <td>{{User.IdDpto}}</td>
-              <td>{{User.FechaAlta}}</td>
-              <td>{{User.Estado}}</td>
-              <td>
-                <button class="btn btn-danger" (click)="EliminarData(User.CI)" onclick="javascript:alert('Registro Eliminado')">Eliminar</button>
-                <button class="btn btn-success" [routerLink]="['/trabaja-en/edit', User.CI]">
-                  Actualizar
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
+<<<<<<< HEAD
 
   
+=======
+</div>
+>>>>>>> 3b64316b9d23edfdc09ef52233c4e523175e0c87

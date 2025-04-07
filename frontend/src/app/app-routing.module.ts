@@ -27,6 +27,7 @@ import { PlantillaComponent } from './components/plantilla/plantilla.component';
 import { CargoRequisitosComponent } from './components/cargo-requisitos/cargo-requisitos.component';
 import { CargoNivelUtilizacionComponent } from './components/cargo-nivel-utilizacion/cargo-nivel-utilizacion.component';
 import { OtrosPagosEmpleadosComponent } from './components/otros-pagos-empleados/otros-pagos-empleados.component';
+import { OtrospagosempleadosEditComponent } from './components/otrospagosempleados-edit/otrospagosempleados-edit.component';
 import { TlaboralComponent } from './components/tlaboral/tlaboral.component';
 import { CargoFuncionesComponent } from './components/cargo-funciones/cargo-funciones.component';
 import { NavegacionComponent } from './components/navegacion/navegacion.component';
@@ -53,6 +54,7 @@ const routes: Routes = [
   { path: 'cargo-requisitos', component: CargoRequisitosComponent },
   { path: 'cargo-nivel-utilizacion', component: CargoNivelUtilizacionComponent },
   { path: 'otros-pagos-empleados', component: OtrosPagosEmpleadosComponent },
+  { path: 'otros-pagos-empleados-edit/:CI/:IdPagos', component: OtrospagosempleadosEditComponent },
   { path: 'tlaboral', component: TlaboralComponent },
   { path: 'cargo-funciones', component: CargoFuncionesComponent },
   { path: 'empleados', component: EmpleadosComponent },

@@ -30,11 +30,20 @@
           <button type="submit" class="btn btn-primary mt-2" [disabled]="f.invalid" onclick="javascript:alert('Registro Almacenado')">
             Agregar
           </button>
+          <p>
+          </p>
+          <div class="form-group">
+            <input type="text" class="form-control" name="filterPost" placeholder="Digite el tipo de contrato que desea Buscar" [(ngModel)]="filterPost">
+          </div>
+          <p>
+          </p>
+           <button class="btn btn-danger" (click)="openPDF()">Descargar PDF</button>
+          <button  class="btn btn-success" (click)="exportToExcel()" >Exportar a Excel</button>  
         </form>
       </div>
     </div>
     <div class="row mt-3">
-      <table class="table table-bordered table-hover">
+      <table class="table table-bordered table-hover" id="tabla">
         <thead>
           <tr>
             <th>ID CONTRATO</th>
@@ -45,7 +54,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let item of TUser">
+          <tr *ngFor="let item of TUser | filtercontrato:filterPost">
             <td>{{item.IdContrato}}</td>
             <td>{{item.TipoContrato}}</td>
             <td>{{item.Duracion}}</td>

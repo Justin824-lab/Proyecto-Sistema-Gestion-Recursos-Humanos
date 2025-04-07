@@ -1,8 +1,14 @@
+<nav class="navbar navbar-dark bg-dark">
+  <a href="/" class="navbar-brand">OTROS PAGOS A EMPLEADOS</a>
+</nav>
+
 <div class="row mb-5">
   <div class="card">
     <div class="card-body">
       <h2 class="card-title">Otros Pagos a Empleados</h2>
       <form id="formOtrosPagos" name="formOtrosPagos" #f="ngForm" (ngSubmit)="AgregarValor()" novalidate>
+        
+        <!-- Campo de selección de Empleado -->
         <div class="form-group">
           <label for="CI" class="control-label">Empleado</label>
           <select class="form-control" size="1" [(ngModel)]="user.CI" name="CI" required>
@@ -10,22 +16,37 @@
             <option *ngFor="let lista of Empleadoslist" [value]="lista.CI">
               {{ lista.Nombre }} {{ lista.Apellido }}
             </option>
+          </select>         
+        </div>
+
+        <!-- Campo de selección de tipo de pago -->
+        <div class="form-group">
+          <label for="IdPagos">Seleccione el tipo de Pago</label>
+          <select class="form-control" size="1" [(ngModel)]="user.IdPagos" name="IdPagos" required>
+            <option value="" disabled selected>Seleccione el tipo de pago</option>
+            <option *ngFor="let lista of OtrosPagosList" [value]="lista.IdPagos">{{ lista.Descripcion }}</option>
           </select>
         </div>
+
+        <!-- Campo de selección de estado -->
         <div class="form-group">
-          <label for="IdPagos" class="control-label">Pago</label>
-          <input type="text" name="Pago" placeholder="DIGITE EL MONTO" class="form-control" required>
+          <label for="estado">Seleccione el Estado</label>
+          <select class="form-control" [(ngModel)]="user.Estado" name="estado" required>
+            <option value="" disabled selected>Seleccione el estado</option>
+            <option value="Activo">Activo</option>
+            <option value="Inactivo">Inactivo</option>
+            <option value="Pendiente">Pendiente</option>
+          </select>
         </div>
-        <div class="form-group">
-          <label for="Duracion" class="control-label">Estado</label>
-          <input type="text" name="Duracion" placeholder="DIGITE EL ESTADO" class="form-control" required>
-        </div>
+
+        <!-- Botón Agregar que se habilita cuando el formulario es válido -->
         <button type="submit" class="btn btn-primary mt-2" [disabled]="f.invalid" onclick="javascript:alert('Registro Almacenado')">
           Agregar
         </button>
       </form>
     </div>
   </div>
+
   <div class="row mt-3">
     <table class="table table-bordered table-hover">
       <thead>
@@ -38,14 +59,14 @@
       </thead>
       <tbody>
         <tr *ngFor="let item of TUser">
-          <td>{{item.CI}}</td>
-          <td>{{item.IdPagos}}</td>
-          <td>{{item.Estado}}</td>
+          <td>{{ item.CI }}</td>
+          <td>{{ item.IdPagos }}</td>
+          <td>{{ item.Estado }}</td>
           <td>
             <button class="btn btn-danger" (click)="EliminarData(item.CI, item.IdPagos)" onclick="javascript:alert('Registro Eliminado')">
               Eliminar
             </button>
-            <button class="btn btn-success ms-2" [routerLink]="['/otros-pagos/edit', user.CI, user.IdPagos]">
+            <button class="btn btn-success ms-2" [routerLink]="['/otros-pagos-empleados-edit', item.CI, item.IdPagos]">
               Actualizar
             </button>
           </td>
