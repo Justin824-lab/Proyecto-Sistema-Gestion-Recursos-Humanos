@@ -2,10 +2,33 @@ const controller = {};
 
 controller.list = (req, res) => {
     req.getConnection((error, conn) => {
-        conn.query('SELECT * FROM Empleados', (err, empleados) => {
-            if (err) {
-                res.json(err);
-            }
+        if (error) return res.status(500).json({ error: 'Error de conexión' });
+        const query = `
+            SELECT 
+                e.CI,
+                e.Nombre,
+                e.Apellido,
+                et.Nombre AS NombreEtnia,
+                ec.Estado AS NombreEstadoCivil,
+                cp.Color AS NombreColorPelo,
+                u.Direccion AS DireccionUbicacion,
+                c.TipoContrato,
+                co.Nombre AS NombreCargo, -- Usamos Nombre de CatOcupacional
+                es.NombreEstado,
+                e.Estado
+            FROM Empleados e
+            INNER JOIN Etnia et ON e.IdEtnia = et.IdEtnia
+            INNER JOIN EstadoCivil ec ON e.IdCivil = ec.IdCivil
+            INNER JOIN ColorPelo cp ON e.IdColorPelo = cp.IdColorPelo
+            INNER JOIN Ubicacion u ON e.IdUbicacion = u.IdUbicacion
+            INNER JOIN Contrato c ON e.IdContrato = c.IdContrato
+            INNER JOIN Cargo ca ON e.IdCargo = ca.IdCargo
+            INNER JOIN CatOcupacional co ON ca.IdCatOcupacional = co.IdCatOcupacional
+            INNER JOIN Estado es ON e.IdEstado = es.IdEstado
+        `;
+        conn.query(query, (err, empleados) => {
+            if (err) return res.status(500).json({ error: err.message });
+            console.log('Datos enviados desde Empleados:', empleados); // Depuración
             res.json(empleados);
         });
     });

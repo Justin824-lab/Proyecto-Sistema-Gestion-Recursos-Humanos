@@ -1,11 +1,22 @@
 const express = require('express');
 const router = express.Router();
-
 const OtrosPagosEmpleadosController = require('../controller/OtrosPagosEmpleadosController');
+
+console.log('Cargando rutas de OtrosPagosEmpleados'); // Depuración
+
+// Listar todos los registros
 router.get('/', OtrosPagosEmpleadosController.list);
+
+// Crear un nuevo registro
 router.post('/', OtrosPagosEmpleadosController.save);
-router.delete('/:CI', OtrosPagosEmpleadosController.delete);
-router.get('/OtrosPagosEmpleados/:id', OtrosPagosEmpleadosController.edit);
-router.post('/:CI', OtrosPagosEmpleadosController.update);
+
+// Eliminar un registro
+router.delete('/:id', OtrosPagosEmpleadosController.delete);
+
+// Obtener un registro específico
+router.get('/:id', OtrosPagosEmpleadosController.edit); // Cambiado de '/OtrosPagosEmpleados/:id'
+
+// Actualizar un registro
+router.put('/:id', OtrosPagosEmpleadosController.update); // Cambiado de POST a PUT
 
 module.exports = router;

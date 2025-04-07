@@ -8,7 +8,7 @@ controller.list = (req, res) => {
                 c.IdCargo,
                 nr.Descripcion AS Resolucion,
                 ge.Escala AS GrupoEscala,
-                co.Nombre AS CategoriaOcupacional,
+                co.Nombre AS NombreCargo, -- Cambiado de CategoriaOcupacional a NombreCargo
                 c.Estado
             FROM Cargo c
             INNER JOIN NoResolucion nr ON c.IdNoResolucion = nr.IdNoResolucion
@@ -17,6 +17,7 @@ controller.list = (req, res) => {
         `;
         conn.query(query, (err, cargos) => {
             if (err) return res.status(500).json({ error: err.message });
+            console.log('Datos enviados desde Cargo:', cargos); // Depuración
             res.json(cargos);
         });
     });
@@ -24,7 +25,6 @@ controller.list = (req, res) => {
 
 controller.edit = (req, res) => {
     const { IdCargo } = req.params;
-
     req.getConnection((err, conn) => {
         conn.query('SELECT * FROM Cargo WHERE IdCargo = ?', [IdCargo], (err, cargo) => {
             res.json(cargo[0]);
@@ -44,7 +44,6 @@ controller.save = (req, res) => {
 controller.update = (req, res) => {
     const { IdCargo } = req.params;
     const nuevo_cargo = req.body;
-
     req.getConnection((err, conn) => {
         conn.query('UPDATE Cargo SET ? WHERE IdCargo = ?', [nuevo_cargo, IdCargo], (err, rows) => { 
             res.json({ message: "Registro Actualizado" }); 

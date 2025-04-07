@@ -8,7 +8,7 @@
     </div>
   </nav>
 
-  <!-- Formulario de registro -->
+  <!-- Formulario de registro (sin cambios) -->
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-lg-10">
@@ -23,26 +23,19 @@
               <div class="row g-3">
                 <!-- Primera columna -->
                 <div class="col-md-6">
-                  <!-- Grupo CI (oculto) -->
                   <input type="hidden" [(ngModel)]="user.CI" name="CI">
-
-                  <!-- Grupo Nombre -->
                   <div class="form-floating mb-3">
                     <input type="text" class="form-control" id="Nombre" 
                            [(ngModel)]="user.Nombre" name="Nombre" 
                            placeholder="Digite el Nombre" required>
                     <label for="Nombre">Nombre</label>
                   </div>
-
-                  <!-- Grupo Apellido -->
                   <div class="form-floating mb-3">
                     <input type="text" class="form-control" id="Apellido" 
                            [(ngModel)]="user.Apellido" name="Apellido" 
                            placeholder="Digite el Apellido" required>
                     <label for="Apellido">Apellido</label>
                   </div>
-
-                  <!-- Grupo Etnia -->
                   <div class="mb-3">
                     <label for="IdEtnia" class="form-label fw-semibold">Etnia</label>
                     <select class="form-select" id="IdEtnia" 
@@ -57,7 +50,6 @@
 
                 <!-- Segunda columna -->
                 <div class="col-md-6">
-                  <!-- Grupo Estado Civil -->
                   <div class="mb-3">
                     <label for="IdCivil" class="form-label fw-semibold">Estado Civil</label>
                     <select class="form-select" id="IdCivil" 
@@ -68,8 +60,6 @@
                       </option>
                     </select>
                   </div>
-
-                  <!-- Grupo Color de Pelo -->
                   <div class="mb-3">
                     <label for="IdColorPelo" class="form-label fw-semibold">Color de Pelo</label>
                     <select class="form-select" id="IdColorPelo" 
@@ -80,8 +70,6 @@
                       </option>
                     </select>
                   </div>
-
-                  <!-- Grupo Ubicación -->
                   <div class="mb-3">
                     <label for="IdUbicacion" class="form-label fw-semibold">Ubicación</label>
                     <select class="form-select" id="IdUbicacion" 
@@ -94,7 +82,7 @@
                   </div>
                 </div>
 
-                <!-- Tercera columna (ocupando todo el ancho) -->
+                <!-- Tercera columna -->
                 <div class="col-12">
                   <div class="row g-3">
                     <div class="col-md-3">
@@ -109,7 +97,6 @@
                         </select>
                       </div>
                     </div>
-
                     <div class="col-md-3">
                       <div class="mb-3">
                         <label for="IdCargo" class="form-label fw-semibold">Cargo</label>
@@ -117,12 +104,11 @@
                                 [(ngModel)]="user.IdCargo" name="IdCargo" required>
                           <option value="" disabled selected>Seleccione el Cargo</option>
                           <option *ngFor="let lista of CargoList" [value]="lista.IdCargo">
-                            {{lista.IdCargo}}
+                            {{lista.NombreCargo}}
                           </option>
                         </select>
                       </div>
                     </div>
-
                     <div class="col-md-3">
                       <div class="mb-3">
                         <label for="IdEstado" class="form-label fw-semibold">Estado</label>
@@ -135,13 +121,11 @@
                         </select>
                       </div>
                     </div>
-
                     <div class="col-md-3 d-flex flex-column gap-2">
                       <button type="submit" class="btn btn-primary w-100 py-3 fw-bold" 
                               [disabled]="f.invalid">
                         <i class="bi bi-save me-2"></i>GUARDAR
                       </button>
-                      
                     </div>
                   </div>
                 </div>
@@ -160,7 +144,7 @@
       </div>
     </div>
 
-    <!-- Sección de búsqueda y tabla -->
+    <!-- Sección de búsqueda y tabla (modificada) -->
     <div class="row justify-content-center mt-4">
       <div class="col-lg-10">
         <div class="card shadow-sm border-0">
@@ -184,17 +168,17 @@
               <table class="table table-hover align-middle mb-0">
                 <thead class="table-light">
                   <tr>
-                    <th class="text-nowrap">CI</th>
+                    <th class="text-nowrap">Cédula</th>
                     <th class="text-nowrap">Nombre</th>
                     <th class="text-nowrap">Apellido</th>
                     <th class="text-nowrap">Etnia</th>
                     <th class="text-nowrap">Estado Civil</th>
-                    <th class="text-nowrap">IdColorPelo</th>
-                    <th class="text-nowrap">IdUbicacion</th>
-                    <th class="text-nowrap">IdContrato</th>
-                    <th class="text-nowrap">IdCargo</th>
-                    <th class="text-nowrap">IdEstado</th>
+                    <th class="text-nowrap">Color de Pelo</th>
+                    <th class="text-nowrap">Ubicación</th>
+                    <th class="text-nowrap">Contrato</th>
+                    <th class="text-nowrap">Cargo</th>
                     <th class="text-nowrap">Estado</th>
+                    <th class="text-nowrap">Estado Empleado</th>
                     <th class="text-nowrap">Acciones</th>
                   </tr>
                 </thead>
@@ -203,13 +187,13 @@
                     <td class="fw-semibold">{{User.CI}}</td>
                     <td>{{User.Nombre}}</td>
                     <td>{{User.Apellido}}</td>
-                    <td>{{User.IdEtnia}}</td>
-                    <td>{{User.IdCivil}}</td>
-                    <td>{{User.IdColorPelo}}</td>
-                    <td>{{User.IdUbicacion}}</td>
-                    <td>{{User.IdContrato}}</td>
-                    <td>{{User.IdCargo}}</td>
-                    <td>{{User.IdEstado}}</td>
+                    <td>{{User.NombreEtnia}}</td>
+                    <td>{{User.NombreEstadoCivil}}</td>
+                    <td>{{User.NombreColorPelo}}</td>
+                    <td>{{User.DireccionUbicacion}}</td>
+                    <td>{{User.TipoContrato}}</td>
+                    <td>{{User.NombreCargo}}</td>
+                    <td>{{User.NombreEstado}}</td>
                     <td>
                       <span class="badge" [ngClass]="{
                         'bg-success': User.Estado === 'Activo',
