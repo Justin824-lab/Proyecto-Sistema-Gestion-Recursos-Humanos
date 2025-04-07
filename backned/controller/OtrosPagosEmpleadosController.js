@@ -12,14 +12,27 @@ controller.list = (req, res) => {
 };
 
 controller.edit = (req, res) => {
-    const { IdCargo } = req.params;
-
+    const { id } = req.params; // Ejemplo: "1002/10"
+    const [CI, IdPagos] = id.split('/'); // Divide en "1002" y "10"
+    console.log('Cargando datos para CI:', CI, 'IdPagos:', IdPagos);
     req.getConnection((err, conn) => {
-        conn.query('SELECT * FROM OtrosPagosEmpleados WHERE IdCargo = ?', [IdCargo], (err, OtrosPagosEmpleados) => {
-            res.json(OtrosPagosEmpleados[0]);
-        });
+      if (err) {
+        console.error('Error de conexión:', err);
+        return res.status(500).json({ error: 'Error de conexión' });
+      }
+      conn.query('SELECT * FROM OtrosPagosEmpleados WHERE CI = ? AND IdPagos = ?', [CI, IdPagos], (err, OtrosPagosEmpleados) => {
+        if (err) {
+          console.error('Error en la consulta:', err);
+          return res.status(500).json({ error: err.message });
+        }
+        if (OtrosPagosEmpleados.length === 0) {
+          console.log('No se encontró registro para CI:', CI, 'IdPagos:', IdPagos);
+          return res.status(404).json({ message: 'Registro no encontrado' });
+        }
+        res.json(OtrosPagosEmpleados[0]);
+      });
     });
-};
+  };
 
 controller.save = (req, res) => {
     const data = req.body;

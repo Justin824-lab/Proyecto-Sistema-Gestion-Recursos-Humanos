@@ -5,7 +5,7 @@ const OtrosPagosEmpleadosController = require('../controller/OtrosPagosEmpleados
 router.get('/', OtrosPagosEmpleadosController.list);
 router.post('/', OtrosPagosEmpleadosController.save);
 router.delete('/:CI', OtrosPagosEmpleadosController.delete);
-router.get('/:CI', OtrosPagosEmpleadosController.edit);
+router.get('/OtrosPagosEmpleados/:id', OtrosPagosEmpleadosController.edit);
 router.post('/:CI', OtrosPagosEmpleadosController.update);
 
 module.exports = router;
