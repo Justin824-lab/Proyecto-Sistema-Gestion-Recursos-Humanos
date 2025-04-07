@@ -18,10 +18,34 @@ export class CargoComponent implements OnInit {
       IdCatOcupacional: null,
       Estado: 'Activo'
   };
+
+  NoResolucionList: any;
+GrupoEscalaList: any;
+CatOcupacionalList: any;
   constructor(private Data: DataService) { }
 
   ngOnInit(): void {
+    this.getDropListNoResolucion();
+    this.getDropListGrupoEscala();
+    this.getDropListCatOcupacional();
     this.getUser();
+  }
+  getDropListNoResolucion() {
+    this.Data.getDropListNoResolucion().subscribe((data: any) => {
+      this.NoResolucionList = data;
+    });
+  }
+  
+  getDropListGrupoEscala() {
+    this.Data.getDropListGrupoEscala().subscribe((data: any) => {
+      this.GrupoEscalaList = data;
+    });
+  }
+  
+  getDropListCatOcupacional() {
+    this.Data.getDropListCatOcupacional().subscribe((data: any) => {
+      this.CatOcupacionalList = data;
+    });
   }
   getUser() {
     this.Data.getAll('/Cargo')
