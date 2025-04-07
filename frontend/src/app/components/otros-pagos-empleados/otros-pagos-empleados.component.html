@@ -72,7 +72,7 @@
           <td>{{item.IdPagos }}</td>
           <td>{{item.Estado }}</td>
           <td>
-            <button class="btn btn-danger" (click)="EliminarData(item.CI)" onclick="javascript:alert('Registro Eliminado')">
+            <button class="btn btn-danger" (click)="EliminarData(item.CI, item.IdPagos)" onclick="javascript:alert('Registro Eliminado')">
               Eliminar
             </button>
             <button class="btn btn-success ms-2" [routerLink]="['/otros-pagos-empleados-edit', item.CI, item.IdPagos]">
