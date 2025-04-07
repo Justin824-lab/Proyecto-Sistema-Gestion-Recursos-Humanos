@@ -11,7 +11,7 @@ export class DataService {
 
   constructor(private http: HttpClient, private router: Router) { }
 
-  getAll(url: string) {
+  getAll(url: string): Observable<any> {
     return this.http.get(`${this.API_URI}` + url);
   }
   getDropListOtrosPagos(): Observable<any[]> {
