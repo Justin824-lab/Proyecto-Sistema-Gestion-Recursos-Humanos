@@ -66,7 +66,7 @@ export class OtrospagosempleadosEditComponent implements OnInit {
   }
 
   updateUser() {
-    const id = `${this.user.CI}-${this.user.IdPagos}`; // Ejemplo: "1006-3"
+    const id = `${this.user.CI}`; // Ejemplo: "1006-3"
     this.data.update(id, this.user, '/OtrosPagosEmpleados').subscribe(
       (res) => {
         alert('Registro Actualizado');

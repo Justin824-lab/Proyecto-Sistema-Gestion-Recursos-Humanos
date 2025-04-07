@@ -74,13 +74,17 @@ export class OtrosPagosEmpleadosComponent implements OnInit {
       );
   }
 
-  EliminarData(CI: number, IdPagos: number) {
-    this.Data.delete(CI/IdPagos, '/OtrosPagosEmpleados')
+  EliminarData(CI: number,) {
+    this.Data.delete(CI.toString(), '/OtrosPagosEmpleados')
       .subscribe(
         res => {
           this.getUser();
         },
-        err => console.error(err)
+        err => {
+          console.error('Error al eliminar:', err);
+        alert('Error al eliminar el registro');
+      }
+        
       );
   }
 }
