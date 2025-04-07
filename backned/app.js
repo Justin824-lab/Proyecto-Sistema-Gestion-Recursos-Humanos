@@ -59,7 +59,7 @@ app.use(morgan('dev'));
 app.use(myConnection(mysql,{
     host:'localhost',
     user:'root',
-    password:'rojo123',
+    password:'zepeda12',
     port:3306,
     database:'RecursosLaborales'
 }, 'single'));
