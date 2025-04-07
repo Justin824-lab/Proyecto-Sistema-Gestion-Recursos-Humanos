@@ -142,6 +142,8 @@
                               [disabled]="f.invalid">
                         <i class="bi bi-save me-2"></i>GUARDAR EMPLEADO
                       </button>
+                      <button (click)="exportToExcel()" class="btn btn-secondary">Exportar a Excel</button>
+                      <button class="btn btn-dark" (click)="openPDF()">Descargar PDF</button>`
                     </div>
                   </div>
                 </div>
@@ -177,7 +179,7 @@
           </div>
           <div class="card-body p-0">
             <div class="table-responsive">
-              <table class="table table-hover align-middle mb-0">
+              <table class="class=table table-borbered table-hover" id="tabla">
                 <thead class="table-light">
                   <tr>
                     <th class="text-nowrap">CI</th>
