@@ -106,6 +106,9 @@
                       <button class="btn btn-edit" [routerLink]="['/contrato/edit', item.IdContrato]">
                         <i class="bi bi-pencil-square"></i>
                       </button>
+                      <button class="btn btn-sm btn-danger" (click)="EliminarData(item.IdContrato)">
+                        <i class="bi bi-trash"></i>
+                      </button>
                     </td>
                   </tr>
                 </tbody>

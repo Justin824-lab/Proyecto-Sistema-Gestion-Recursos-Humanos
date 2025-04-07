@@ -61,7 +61,8 @@
       <thead>
         <tr>
           <th>CI</th>
-          <th>ID PAGO</th>
+          <th>Nombre</th>
+          <th>Descripcion</th>
           <th>ESTADO</th>
           <th>ACCIONES</th>
         </tr>
@@ -69,7 +70,9 @@
       <tbody>
         <tr *ngFor="let item of TUser" >
           <td>{{item.CI }}</td>
-          <td>{{item.IdPagos }}</td>
+          <td>{{item.NombreEmpleado }}</td>
+          <td>{{item.DescripcionPago}}</td>
+          
           <td>{{item.Estado }}</td>
           <td>
             <button class="btn btn-danger" (click)="EliminarData(item.CI, item.IdPagos)" onclick="javascript:alert('Registro Eliminado')">
