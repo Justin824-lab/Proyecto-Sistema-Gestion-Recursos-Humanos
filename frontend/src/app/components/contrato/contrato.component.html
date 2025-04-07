@@ -60,6 +60,7 @@
             <td>{{item.Duracion}}</td>
             <td>{{item.Estado}}</td>
             <td>
+               <button  class="btn btn-danger"  (click)="EliminarData(item.IdContrato)" onclick="javascript:alert('Registro Eliminado')" >Eliminar</button>
               <button class="btn btn-success ms-2" [routerLink]="['/contrato/edit', item.IdContrato]">
                 Actualizar
               </button>
