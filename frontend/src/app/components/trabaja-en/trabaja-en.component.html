@@ -105,10 +105,12 @@
           
           <div class="card-body p-0">
             <div class="table-responsive">
-              <table class="table table-hover align-middle mb-0">
+              <table class="table table-hover align-middle mb-0" id="tabla">
                 <thead class="table-light">
                   <tr>
-                    <th class="text-nowrap">ID Empleado</th>
+                    <th class="text-nowrap">CI</th>
+                    <th class="text-nowrap">Nombre Empleado</th>
+                    <th class="text-nowrap">Apellido Empleado</th>
                     <th class="text-nowrap">Departamento</th>
                     <th class="text-nowrap">Fecha de Alta</th>
                     <th class="text-nowrap">Estado</th>
@@ -118,18 +120,24 @@
                 <tbody>
                   <tr *ngFor="let User of TUser | filtertrabajaen: filterPost">
                     <td class="fw-semibold">{{User.CI}}</td>
-                    <td>{{User.IdDpto}}</td>
+                    <td>{{User.NombreEmpleado}}</td>
+                    <td>{{User.ApellidoEmpleado}}</td>
+                    <td>{{User.NombreDepartamento}}</td>
                     <td>{{User.FechaAlta | date:'dd/MM/yyyy'}}</td>
                     <td>
-                      <span class="badge bg-success" *ngIf="User.estado">Activo</span>
-                      <span class="badge bg-danger" *ngIf="!User.estado">Inactivo</span>
+                      <span class="badge" [ngClass]="{
+                        'bg-success': User.Estado === 'Activo',
+                        'bg-danger': User.Estado === 'Inactivo'
+                      }">
+                        {{User.Estado}}
+                      </span>
                     </td>
                     <td>
                       <div class="d-flex gap-2">
-                        <button class="btn btn-sm btn-danger" (click)="EliminarData(User.CI)">
+                        <button class="btn btn-sm btn-danger" (click)="EliminarData(User.CI, User.IdDpto)">
                           <i class="bi bi-trash"></i>
                         </button>
-                        <button class="btn btn-sm btn-success" [routerLink]="['/trabaja-en/edit', User.CI]">
+                        <button class="btn btn-sm btn-success" [routerLink]="['/trabaja-en/edit', User.CI, User.IdDpto]">
                           <i class="bi bi-pencil"></i>
                         </button>
                       </div>
