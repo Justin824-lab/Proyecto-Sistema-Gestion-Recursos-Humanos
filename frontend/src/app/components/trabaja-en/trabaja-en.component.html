@@ -21,43 +21,35 @@
           <div class="card-body p-4">
             <form #f="ngForm" (ngSubmit)="AgregarValor()" novalidate>
               <div class="row g-3">
-                <!-- Selección de Empleado -->
-                <div class="container mt-4">
-                  <div class="row justify-content-center">
-                    <div class="col-lg-8">
-                      <div class="card shadow border-0">
-                        <div class="card-body p-4">
-                          <form #f="ngForm" (ngSubmit)="AgregarValor()" novalidate>
-                            <div class="row g-3">
-                              <!-- Dropdown de Empleado -->
-                              <div class="col-md-6">
-                                <div class="dropdown-container">
-                                  <label class="dropdown-label">Empleado</label>
-                                  <select class="form-select dropdown-select" [(ngModel)]="user.CI" name="CI" required>
-                                    <option value="" disabled selected hidden>Seleccione empleado</option>
-                                    <option *ngFor="let lista of Empleadoslist" [value]="lista.CI">
-                                      {{ lista.Nombre }} {{ lista.Apellido }}
-                                    </option>
-                                  </select>
-                                </div>
-                              </div>
-                
-                              <!-- Dropdown de Departamento -->
-                              <div class="col-md-6">
-                                <div class="dropdown-container">
-                                  <label class="dropdown-label">Departamento</label>
-                                  <select class="form-select dropdown-select" [(ngModel)]="user.IdDpto" name="IdDpto" required>
-                                    <option value="" disabled selected hidden>Seleccione departamento</option>
-                                    <option *ngFor="let lista of Departamentolist" [value]="lista.IdDpto">
-                                      {{lista.Nombre}}
-                                    </option>
-                                  </select>
-                                </div>
-                              </div>
+                <!-- Dropdown de Empleado -->
+                <div class="col-md-6">
+                  <div class="form-floating">
+                    <select class="form-select" id="empleado" [(ngModel)]="user.CI" name="CI" required>
+                      <option value="" disabled selected>Seleccione empleado</option>
+                      <option *ngFor="let lista of Empleadoslist" [value]="lista.CI">
+                        {{ lista.Nombre }} {{ lista.Apellido }}
+                      </option>
+                    </select>
+                    <label for="empleado">Empleado</label>
+                  </div>
+                </div>
+
+                <!-- Dropdown de Departamento -->
+                <div class="col-md-6">
+                  <div class="form-floating">
+                    <select class="form-select" id="departamento" [(ngModel)]="user.IdDpto" name="IdDpto" required>
+                      <option value="" disabled selected>Seleccione departamento</option>
+                      <option *ngFor="let lista of Departamentolist" [value]="lista.IdDpto">
+                        {{lista.Nombre}}
+                      </option>
+                    </select>
+                    <label for="departamento">Departamento</label>
+                  </div>
+                </div>
 
                 <!-- Fecha de Alta -->
                 <div class="col-12">
-                  <div class="form-floating mb-3">
+                  <div class="form-floating">
                     <input type="date" class="form-control" id="fechaAlta" 
                            [(ngModel)]="user.FechaAlta" name="fechaAlta" required>
                     <label for="fechaAlta">Fecha de Alta</label>
@@ -66,7 +58,7 @@
 
                 <!-- Botón de Submit -->
                 <div class="col-12">
-                  <button type="submit" class="btn btn-primary w-100 py-2 fw-bold" [disabled]="f.invalid">
+                  <button type="submit" class="btn btn-primary w-100 py-3 fw-bold" [disabled]="f.invalid">
                     <i class="bi bi-save me-2"></i> GUARDAR ASIGNACIÓN
                   </button>
                 </div>
@@ -82,21 +74,38 @@
       <div class="col-lg-10">
         <div class="card shadow border-0">
           <div class="card-header bg-white py-3">
-            <h5 class="mb-0 text-primary fw-bold">
-              <i class="bi bi-list-check me-2"></i> Registros de Trabajo
-            </h5>
-            <button class="btn btn-danger" (click)="openPDF()">Descargar PDF</button>
-            <button class="btn btn-success" (click)="exportToExcel()" >Exportar a Excel</button>
-            <p>
-            </p>
-            <div class="form-group">
-            <input type="text" class="form-control" name="filterPost" placeholder="Digite el Empleado que desea Buscar" [(ngModel)]="filterPost">
+            <div class="d-flex flex-wrap justify-content-between align-items-center">
+              <h5 class="mb-0 text-primary fw-bold">
+                <i class="bi bi-list-check me-2"></i> Registros de Trabajo
+              </h5>
+              
+              <div class="d-flex flex-wrap gap-3 align-items-center">
+                <!-- Barra de búsqueda -->
+                <div class="input-group" style="width: 250px;">
+                  <span class="input-group-text bg-white">
+                    <i class="bi bi-search"></i>
+                  </span>
+                  <input type="text" class="form-control" 
+                         placeholder="Buscar empleado..." 
+                         [(ngModel)]="filterPost" name="filterPost">
+                </div>
+                
+                <!-- Botones de exportación -->
+                <div class="btn-group">
+                  <button class="btn btn-outline-danger" (click)="openPDF()">
+                    <i class="bi bi-file-earmark-pdf me-2"></i> PDF
+                  </button>
+                  <button class="btn btn-outline-success" (click)="exportToExcel()">
+                    <i class="bi bi-file-earmark-excel me-2"></i> Excel
+                  </button>
+                </div>
+              </div>
             </div>
-    
           </div>
+          
           <div class="card-body p-0">
             <div class="table-responsive">
-              <table class="table table-hover align-middle mb-0" id="tabla">
+              <table class="table table-hover align-middle mb-0">
                 <thead class="table-light">
                   <tr>
                     <th class="text-nowrap">ID Empleado</th>
@@ -118,10 +127,10 @@
                     <td>
                       <div class="d-flex gap-2">
                         <button class="btn btn-sm btn-danger" (click)="EliminarData(User.CI)">
-                          <i class="bi bi-trash"></i> Eliminar
+                          <i class="bi bi-trash"></i>
                         </button>
                         <button class="btn btn-sm btn-success" [routerLink]="['/trabaja-en/edit', User.CI]">
-                          <i class="bi bi-pencil"></i> Editar
+                          <i class="bi bi-pencil"></i>
                         </button>
                       </div>
                     </td>

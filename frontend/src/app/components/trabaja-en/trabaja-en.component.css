@@ -52,3 +52,47 @@
   .dropdown-select option[disabled][selected] {
     color: #6c757d;
   }
+
+  /* Estilos para la barra de búsqueda y botones */
+.input-group {
+  transition: all 0.3s ease;
+}
+
+.input-group:focus-within {
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+
+.btn-outline-danger, .btn-outline-success {
+  transition: all 0.3s ease;
+}
+
+.btn-outline-danger:hover {
+  background-color: #dc3545;
+  color: white;
+}
+
+.btn-outline-success:hover {
+  background-color: #28a745;
+  color: white;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .input-group {
+    width: 100% !important;
+  }
+  
+  .btn-group {
+    width: 100%;
+  }
+  
+  .btn-outline-danger, .btn-outline-success {
+    flex: 1;
+  }
+}
