@@ -24,7 +24,7 @@
             <label for="IdPagos">Seleccione el tipo de Pago</label>
             <select class="form-control" size="1" [(ngModel)]="user.IdPagos" name="IdPagos" required>
               <option value="" disabled>Seleccione el tipo de pago</option>
-              <option *ngFor="let lista of OtrosPagosList" [value]="lista.IdPagos">{{ lista.Descripcion }}</option>
+              <option *ngFor="let lista of OtrosPagosList" [value]="lista.IdPagos">{{lista.Descripcion }}</option>
             </select>
           </div>
   

@@ -31,20 +31,20 @@ controller.save = (req, res) => {
 };
 
 controller.update = (req, res) => {
-    const { IdCargo } = req.params;
+    const { CI } = req.params;
     const nuevo_OtrosPagosEmpleados = req.body;
 
     req.getConnection((err, conn) => {
-        conn.query('UPDATE OtrosPagosEmpleados SET ? WHERE IdCargo = ?', [nuevo_OtrosPagosEmpleados, IdCargo], (err, rows) => { 
+        conn.query('UPDATE OtrosPagosEmpleados SET ? WHERE CI = ?', [nuevo_OtrosPagosEmpleados, CI], (err, rows) => { 
             res.json({ message: "Registro Actualizado" }); 
         });
     });
 };
 
 controller.delete = (req, res) => {
-    const { IdCargo } = req.params;
+    const { CI } = req.params;
     req.getConnection((err, conn) => {
-        conn.query('DELETE FROM OtrosPagosEmpleados WHERE IdCargo = ?', [IdCargo], (err, rows) => {
+        conn.query('DELETE FROM OtrosPagosEmpleados WHERE CI = ?', [CI], (err, rows) => {
             res.json({ message: "Registro Eliminado" });
         });
     });

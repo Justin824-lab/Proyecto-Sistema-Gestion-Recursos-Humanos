@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { OtrosPagosEmpleados } from '../../Interfaces/user';
+import { ActivatedRoute, Router } from '@angular/router';
+import { OtrosPagosEmpleados } from 'src/app/Interfaces/user';
 import { DataService } from '../../Services/data.service';
-import { Router, ActivatedRoute } from '@angular/router';
-
 
 @Component({
   selector: 'app-otrospagosempleados-edit',
@@ -10,60 +9,73 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./otrospagosempleados-edit.component.css']
 })
 export class OtrospagosempleadosEditComponent implements OnInit {
-  TUser:any =[];
   user: OtrosPagosEmpleados = {
     CI: null,
     IdPagos: null,
     Estado: ''
-};
+  };
+  Empleadoslist: any;
+  OtrosPagosList: any;
 
-OtrosPagosList: any;
-Empleadoslist: any;
+  constructor(
+    private data: DataService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
 
-constructor(private Data: DataService,
-  private router: Router,
-  private activatedRoute: ActivatedRoute) { }
+  ngOnInit(): void {
+    this.getDropListEmpleados();
+    this.getDropListOtrosPagos();
+    this.loadData();
+  }
+
+  getDropListEmpleados() {
+    this.data.getDropListEmpleados().subscribe((data: any) => {
+      this.Empleadoslist = data;
+    });
+  }
 
   getDropListOtrosPagos() {
-    this.Data.getDropListOtrosPagos().subscribe(
-      (data) => {
-        console.log('Datos recibidos de OtrosPagos:', data);
-        this.OtrosPagosList = data;
-        console.log('OtrosPagosList actualizado:', this.OtrosPagosList);
+    this.data.getDropListOtrosPagos().subscribe((data) => {
+      this.OtrosPagosList = data;
+    });
+  }
+
+  loadData() {
+    const CI = this.route.snapshot.paramMap.get('CI');
+    const IdPagos = this.route.snapshot.paramMap.get('IdPagos');
+    if (!CI || !IdPagos) {
+      console.error('CI o IdPagos no están definidos:', CI, IdPagos);
+      this.router.navigate(['/otros-pagos-empleados']);
+      return;
+    }
+    this.data.getAll(`/OtrosPagosEmpleados/${CI}/${IdPagos}`).subscribe(
+      (res) => {
+        this.user = res || { CI: null, IdPagos: null, Estado: '' };
       },
-      (error) => {
-        console.error('Error al obtener OtrosPagos:', error);
+      (err) => {
+        console.error('Error al cargar datos:', err);
+        if (err.status === 404) {
+          alert('Registro no encontrado');
+        } else {
+          alert('Error al conectar con el servidor');
+        }
+        this.router.navigate(['/otros-pagos-empleados']);
       }
     );
   }
 
-  getDropListEmpleados() {
-    this.Data.getDropListEmpleados().subscribe((data:any)=>{
-      this.Empleadoslist=data;
-    })
-  }
-ngOnInit(): void {
-  const params = this.activatedRoute.snapshot.params;
-
-  if (params['CI']) {
-    this.Data.getOne(params['CI'],'/OtrosPagosEmpleados')
-      .subscribe(
-        res => {
-          this.user = res;
-                              },
-        err => console.log(err)
-      );
-  }
-  }
   updateUser() {
-    this.Data.update(this.user.CI!, this.user,'/OtrosPagosEmpleados')
-      .subscribe(
-        res => {
-          this.router.navigate(['/otros-pagos-empleados']);
-        },
-        err => console.error(err)
-      );
-  }  
+    const id = `${this.user.CI}`; // Ejemplo: "1006-3"
+    this.data.update(id, this.user, '/OtrosPagosEmpleados').subscribe(
+      (res) => {
+        alert('Registro Actualizado');
+        this.router.navigate(['/otros-pagos-empleados']);
+      },
+      (err) => {
+        console.error('Error al actualizar:', err);
+        alert('Error al actualizar el registro');
+      }
+    );
+  }
 }
-
-
