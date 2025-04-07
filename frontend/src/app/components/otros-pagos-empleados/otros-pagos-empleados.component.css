@@ -1,0 +1,127 @@
+/* Estilos generales */
+.pagos-container {
+    padding: 20px;
+    background-color: #f8f9fa;
+    min-height: 100vh;
+  }
+  
+  .navbar-custom {
+    background-color: #2c3e50;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .navbar-brand {
+    font-size: 1.2rem;
+    color: white !important;
+  }
+  
+  /* Tarjetas */
+  .card {
+    border: none;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-header {
+    padding: 1rem 1.5rem;
+  }
+  
+  /* Formulario */
+  .form-floating label {
+    color: #6c757d;
+  }
+  
+  .form-select, .form-control {
+    border-radius: 8px;
+    padding: 12px 15px;
+    border: 1px solid #ced4da;
+    transition: border-color 0.3s ease;
+  }
+  
+  .form-select:focus, .form-control:focus {
+    border-color: #2c3e50;
+    box-shadow: 0 0 0 0.25rem rgba(44, 62, 80, 0.25);
+  }
+  
+  /* Botones */
+  .btn {
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
+  
+  .btn-primary {
+    background-color: #2c3e50;
+    border-color: #2c3e50;
+  }
+  
+  .btn-primary:hover {
+    background-color: #1a252f;
+    border-color: #1a252f;
+  }
+  
+  /* Tabla */
+  .table {
+    margin-bottom: 0;
+  }
+  
+  .table th {
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+    color: #6c757d;
+  }
+  
+  .table-hover tbody tr:hover {
+    background-color: rgba(44, 62, 80, 0.05);
+  }
+  
+  /* Badges */
+  .badge {
+    padding: 6px 10px;
+    font-weight: 500;
+    font-size: 0.75rem;
+    border-radius: 50px;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .card-body {
+      padding: 1rem;
+    }
+    
+    .export-buttons {
+      margin-top: 1rem;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  /* Ajustes para los select */
+.form-select {
+  padding: 0.5rem 1rem;
+  height: auto;
+  line-height: 1.5;
+}
+
+/* Mejor espaciado para las etiquetas */
+.form-label {
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #495057;
+}
+
+/* Ajuste para los botones de acción */
+.export-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
